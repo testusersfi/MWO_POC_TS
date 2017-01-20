@@ -1,0 +1,1 @@
+Testers can keep the ios.app file & APK files in this location
