@@ -34,12 +34,11 @@ public class WorkOrdersPage extends PageBase {
 		Utils.captureInterimScreenshot(driver);
 		assert BasePageObjects.MORE_OPTIONS_ICON.isDisplayed();
 		assert woPageObjects.BAR_CODE_SCAN.isDisplayed();
-		// assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
 	}
 
 	public WOPreviewPage launchWOScreen() {
-	  MobileElement radioGroup = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()" + ".resourceId(\"com.ifsworld.mworkorderapps9:id/work_order__wo_no\")).scrollIntoView(" + "new UiSelector().text(\"669\"));"));
-	  radioGroup.click();
+	  MobileElement workOrder = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()" + ".resourceId(\"com.ifsworld.mworkorderapps9:id/work_order__wo_no\")).scrollIntoView(" + "new UiSelector().text(\"669\"));"));
+	  workOrder.click();
 	  return new WOPreviewPage(driver);
   }
 }

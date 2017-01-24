@@ -27,25 +27,60 @@ public class WOPreviewPage extends PageBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), previewPageObjects);
 	}
 
-	public void homeScreenVerification() {
+	public void previewScreenVerification() {
 		waitForPageToLoad(driver, previewPageObjects.SCREEN_HEADER);
 		Utils.captureInterimScreenshot(driver);
-		//assert BasePageObjects.MORE_OPTIONS_ICON.isDisplayed();
-		//assert woPageObjects.BAR_CODE_SCAN.isDisplayed();
-		// assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
+		assert previewPageObjects.DETAILS_DIRECTIVE_LABEL.isDisplayed();
+		assert previewPageObjects.DETAILS_SITE_LABEL.isDisplayed();
+		assert previewPageObjects.WO_DETAILS_BUTTON.isDisplayed();
 	}
 	
-	public void launchWOActionsScreen() {
+	public WOActionsPage launchWOActionsScreen() {
+		assert previewPageObjects.NEXT_BUTTON.isDisplayed();
+		previewPageObjects.NEXT_BUTTON.click();
+		return new WOActionsPage(driver);
+	}
+	
+	public void acceptWorkOrder() {
 		waitForPageToLoad(driver, previewPageObjects.SCREEN_HEADER);
 		Utils.log("WorkOrder Preview screen is shown");
+		try {
 		if(isElementPresent(previewPageObjects.ACCEPT_BUTTON)) {
 			previewPageObjects.ACCEPT_BUTTON.click();
 		} else {
 			Utils.log("Work Order is Started or Accepted Already");
 		}
-		assert previewPageObjects.NEXT_BUTTON.isDisplayed();
-		previewPageObjects.NEXT_BUTTON.click();
-		//return new WOActionsPage(driver);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
+	public void changeStatustoOnRoute() {
+		waitForPageToLoad(driver, previewPageObjects.ONROUTE_BUTTON);
+		try {
+		if(isElementPresent(previewPageObjects.ONROUTE_BUTTON)) {
+			previewPageObjects.ONROUTE_BUTTON.click();
+		} else {
+			Utils.log("Work Order status is updated to OnRoute already");
+		}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void changeStatustoOnSite() {
+		waitForPageToLoad(driver, previewPageObjects.ONSITE_BUTTON);
+		try {
+		if(isElementPresent(previewPageObjects.ONSITE_BUTTON)) {
+			previewPageObjects.ONSITE_BUTTON.click();
+		} else {
+			Utils.log("Work Order status is updated to ONSITE already");
+		}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

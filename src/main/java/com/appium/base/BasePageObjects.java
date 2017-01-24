@@ -16,5 +16,10 @@ public class BasePageObjects {
   @iOSFindBy(xpath = "//UIASTATICTEXT[@text='More options'")
   public static MobileElement MORE_OPTIONS_ICON;
   
+  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/next")
+  public MobileElement NEXT_BUTTON;
+  
+  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/save")
+  public MobileElement SAVE_BUTTON;
   
 }

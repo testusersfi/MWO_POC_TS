@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[We are in Android, now checking for Alert messages...]]>
+    </line>
+  </reporter-output>
+  <suite name="POC_Automation_TestSuite" duration-ms="241918" started-at="2017-01-20T15:55:40Z" finished-at="2017-01-20T15:59:42Z">
+    <groups>
+      <group name="Final.Regression.iOS">
+        <method signature="LoginTests.validLoginTest()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" class="mwo.tests.LoginTests"/>
+      </group> <!-- Final.Regression.iOS -->
+      <group name="Final.Regression.Android">
+        <method signature="LoginTests.validLoginTest()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" class="mwo.tests.LoginTests"/>
+      </group> <!-- Final.Regression.Android -->
+    </groups>
+    <test name="Test" duration-ms="241918" started-at="2017-01-20T15:55:40Z" finished-at="2017-01-20T15:59:42Z">
+      <class name="mwo.tests.LoginTests">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeSuite" is-config="true" duration-ms="34059" started-at="2017-01-20T15:55:06Z" finished-at="2017-01-20T15:55:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeClass" is-config="true" duration-ms="7" started-at="2017-01-20T15:55:40Z" finished-at="2017-01-20T15:55:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeMethod" is-config="true" duration-ms="35523" started-at="2017-01-20T15:55:40Z" finished-at="2017-01-20T15:56:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void mwo.tests.LoginTests.validLoginTest() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" duration-ms="196959" started-at="2017-01-20T15:56:16Z" finished-at="2017-01-20T15:59:33Z">
+          <reporter-output>
+            <line>
+              <![CDATA[We are in Android, now checking for Alert messages...]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- validLoginTest -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterMethod" is-config="true" duration-ms="9367" started-at="2017-01-20T15:59:33Z" finished-at="2017-01-20T15:59:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=validLoginTest status=SUCCESS method=LoginTests.validLoginTest()[pri:0, instance:mwo.tests.LoginTests@3e6358] output=We are in Android, now checking for Alert messages...]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterClass" is-config="true" duration-ms="49" started-at="2017-01-20T15:59:42Z" finished-at="2017-01-20T15:59:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterSuite" is-config="true" duration-ms="469" started-at="2017-01-20T15:59:42Z" finished-at="2017-01-20T15:59:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- mwo.tests.LoginTests -->
+    </test> <!-- Test -->
+  </suite> <!-- POC_Automation_TestSuite -->
+</testng-results>

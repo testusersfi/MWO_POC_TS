@@ -30,16 +30,21 @@ public class WOActionsPage extends PageBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), woactionPageObjects);
 	}
 
-	public void homeScreenVerification() {
+	public void woActionsScreenVerification() {
 		waitForPageToLoad(driver, woactionPageObjects.SCREEN_HEADER);
 		Utils.captureInterimScreenshot(driver);
-		//assert BasePageObjects.MORE_OPTIONS_ICON.isDisplayed();
-		//assert woPageObjects.BAR_CODE_SCAN.isDisplayed();
-		// assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
+		assert woactionPageObjects.WOACTIONS_TITLE.isDisplayed();
+		assert woactionPageObjects.WOACTIONS_SUBTITLE.isDisplayed();
+		waitForPageToLoad(driver, woactionPageObjects.WOACTIONS_MATERIAL);
+		assert woactionPageObjects.WOACTIONS_MATERIAL.isDisplayed();
+		assert woactionPageObjects.WOACTIONS_MATERIAL_SUBTITLE.isDisplayed();
 	}
 
-	public void launchTimeReportScreen() {
-		  MobileElement timeReport = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()" + ".resourceId(\"com.ifsworld.mworkorderapps9:id/debrief_menu_option_description\")).scrollIntoView(" + "new UiSelector().text(\"Time Report\"));"));
-		  timeReport.click();
+	public void launchMaterialsScreen() {
+		MobileElement timeReport = (MobileElement) driver
+				.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()"
+						+ ".resourceId(\"com.ifsworld.mworkorderapps9:id/debrief_menu_option_description\")).scrollIntoView("
+						+ "new UiSelector().text(\"Time Report\"));"));
+		timeReport.click();
 	}
 }
