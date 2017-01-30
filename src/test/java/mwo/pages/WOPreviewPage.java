@@ -11,12 +11,14 @@ import com.appium.base.PageBase;
 import com.appium.base.Utils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
-import com.report.factory.ExtentTestManager;
+import com.appium.reports.ExtentTestManager;
 
 
 import mwo.pageobjects.WOPreviewPageObjects;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class WOPreviewPage extends PageBase {
@@ -47,6 +49,7 @@ public class WOPreviewPage extends PageBase {
 		try {
 		if(isElementPresent(previewPageObjects.ACCEPT_BUTTON)) {
 			previewPageObjects.ACCEPT_BUTTON.click();
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page > Accepted the Work Order ");
 		} else {
 			Utils.log("Work Order is Started or Accepted Already");
 		}
@@ -61,6 +64,7 @@ public class WOPreviewPage extends PageBase {
 		try {
 		if(isElementPresent(previewPageObjects.ONROUTE_BUTTON)) {
 			previewPageObjects.ONROUTE_BUTTON.click();
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page > Changed Work Order Status to On Route");
 		} else {
 			Utils.log("Work Order status is updated to OnRoute already");
 		}
@@ -75,6 +79,7 @@ public class WOPreviewPage extends PageBase {
 		try {
 		if(isElementPresent(previewPageObjects.ONSITE_BUTTON)) {
 			previewPageObjects.ONSITE_BUTTON.click();
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page > Changed Work Order Status to On Site");
 		} else {
 			Utils.log("Work Order status is updated to ONSITE already");
 		}
@@ -83,4 +88,10 @@ public class WOPreviewPage extends PageBase {
 			e.printStackTrace();
 		}
 	}
+	
+	public AdditionalDetailsPage launchAdditionalDetailsScreen() {
+		previewPageObjects.WO_DETAILS_BUTTON.click();
+		return new AdditionalDetailsPage(driver);
+	}
+	
 }

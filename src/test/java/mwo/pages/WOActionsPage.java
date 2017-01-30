@@ -11,7 +11,7 @@ import com.appium.base.PageBase;
 import com.appium.base.Utils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
-import com.report.factory.ExtentTestManager;
+import com.appium.reports.ExtentTestManager;
 
 import mwo.pageobjects.HomePageObjects;
 import mwo.pageobjects.WOActionPageObjects;
@@ -40,11 +40,25 @@ public class WOActionsPage extends PageBase {
 		assert woactionPageObjects.WOACTIONS_MATERIAL_SUBTITLE.isDisplayed();
 	}
 
-	public void launchMaterialsScreen() {
-		MobileElement timeReport = (MobileElement) driver
-				.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()"
-						+ ".resourceId(\"com.ifsworld.mworkorderapps9:id/debrief_menu_option_description\")).scrollIntoView("
-						+ "new UiSelector().text(\"Time Report\"));"));
-		timeReport.click();
+	public MaterialsPage launchMaterialsScreen() {
+		woActionsScreenVerification();
+		if(isElementPresent(woactionPageObjects.WOACTIONS_MATERIAL)) {
+			woactionPageObjects.WOACTIONS_MATERIAL.click();
+			ExtentTestManager.getTest().log(LogStatus.PASS, "WO Actions Screen > Matrials Screen is displayed on click of Materials button");
+		} else {
+			Utils.log("Materials is unavailable in WO Actiions screen");
+		}
+		return new MaterialsPage(driver);
+	}
+	
+	public WOReportInPage navigatetoReportInScreen() {
+		if(isElementPresent(BasePageObjects.NEXT_BUTTON)) {
+			BasePageObjects.NEXT_BUTTON.click();
+			ExtentTestManager.getTest().log(LogStatus.PASS, "WO Actions > Report In Screen is displayed on click of Next button");
+		} else {
+			Utils.log("Failed to Navigate to Report In screen");
+		}
+		
+		return new WOReportInPage(driver);
 	}
 }

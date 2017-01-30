@@ -90,7 +90,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">3 methods,   3 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -99,6 +99,16 @@
                       <a href="#" panel-name="suite-POC_Automation_TestSuite" class="show-methods passed suite-POC_Automation_TestSuite"> (show)</a> <!-- show-methods passed suite-POC_Automation_TestSuite -->
                     </span>
                     <div class="method-list-content passed suite-POC_Automation_TestSuite">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.LoginTests" hash-for-method="inValidLoginTest">inValidLoginTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.LoginTests" hash-for-method="launchInvalidWorkOrder">launchInvalidWorkOrder</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.LoginTests" hash-for-method="validLoginTest">validLoginTest</a> <!-- method navigator-link -->
@@ -122,6 +132,20 @@
               <span class="class-name">mwo.tests.LoginTests</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="inValidLoginTest">
+                  </a> <!-- inValidLoginTest -->
+                  <span class="method-name">inValidLoginTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="launchInvalidWorkOrder">
+                  </a> <!-- launchInvalidWorkOrder -->
+                  <span class="method-name">launchInvalidWorkOrder</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="validLoginTest">
@@ -185,6 +209,14 @@
               <span class="test-group-name">Final.Regression.Android</span>
               <br/>
               <div class="method-in-group">
+                <span class="method-in-group-name">inValidLoginTest</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">launchInvalidWorkOrder</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
                 <span class="method-in-group-name">validLoginTest</span>
                 <br/>
               </div> <!-- method-in-group -->
@@ -192,6 +224,14 @@
             <div class="test-group">
               <span class="test-group-name">Final.Regression.iOS</span>
               <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">inValidLoginTest</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">launchInvalidWorkOrder</span>
+                <br/>
+              </div> <!-- method-in-group -->
               <div class="method-in-group">
                 <span class="method-in-group-name">validLoginTest</span>
                 <br/>
@@ -213,16 +253,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'validLoginTest')
 data.setCell(0, 2, 'mwo.tests.LoginTests')
-data.setCell(0, 3, 196959);
+data.setCell(0, 3, 353524);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'launchInvalidWorkOrder')
+data.setCell(1, 2, 'mwo.tests.LoginTests')
+data.setCell(1, 3, 156219);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'inValidLoginTest')
+data.setCell(2, 2, 'mwo.tests.LoginTests')
+data.setCell(2, 3, 92515);
 window.suiteTableData['POC_Automation_TestSuite']= { tableData: data, tableDiv: 'times-div-POC_Automation_TestSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
+              <span class="suite-total-time">Total running time: 10 minutes</span>
               <div id="times-div-POC_Automation_TestSuite">
               </div> <!-- times-div-POC_Automation_TestSuite -->
             </div> <!-- times-div -->
@@ -234,7 +282,19 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
+              <span class="reporter-method-name">inValidLoginTest</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
               <span class="reporter-method-name">validLoginTest</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">launchInvalidWorkOrder</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
               </div> <!-- reporter-method-output-div -->
@@ -243,16 +303,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-POC_Automation_TestSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">1 ignored method</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">mwo.tests.LoginTests</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">inValidLoginTest</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-POC_Automation_TestSuite" class="panel">
@@ -268,27 +321,51 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">beforeClass</span>
-                <span class="method-start">34066 ms</span>
+                <span class="method-start">29039 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.LoginTests.inValidLoginTest() throws java.lang.Exception)</span>
+                <span class="method-start">29046 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">inValidLoginTest</span>
+                <span class="method-start">63943 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=inValidLoginTest status=SUCCESS method=LoginTests.inValidLoginTest()[pri:1, instanc...)</span>
+                <span class="method-start">156459 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
                 <span class="method-name">beforeMethod(public void mwo.tests.LoginTests.validLoginTest() throws java.lang.Exception)</span>
-                <span class="method-start">34076 ms</span>
+                <span class="method-start">162027 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">validLoginTest</span>
-                <span class="method-start">69599 ms</span>
+                <span class="method-start">180667 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">afterMethod([TestResult name=validLoginTest status=SUCCESS method=LoginTests.validLoginTest()[pri:0, instance:mw...)</span>
-                <span class="method-start">266560 ms</span>
+                <span class="method-name">afterMethod([TestResult name=validLoginTest status=SUCCESS method=LoginTests.validLoginTest()[pri:2, instance:mw...)</span>
+                <span class="method-start">534191 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.LoginTests.launchInvalidWorkOrder() throws java.lang.Exception)</span>
+                <span class="method-start">539056 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">launchInvalidWorkOrder</span>
+                <span class="method-start">559747 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=launchInvalidWorkOrder status=SUCCESS method=LoginTests.launchInvalidWorkOrder()[pr...)</span>
+                <span class="method-start">715967 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">275928 ms</span>
+                <span class="method-start">721247 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">276007 ms</span>
+                <span class="method-start">721324 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

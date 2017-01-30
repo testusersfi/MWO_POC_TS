@@ -23,7 +23,7 @@ public class Utils {
 
 
   public static String RUNNER_MODE = "standalone";
-
+  public static String APPNAME = "MWO";
 
   // These are not used for now, as it is inherited from
   // AppiumTestDistribution
@@ -31,6 +31,7 @@ public class Utils {
   public static String EXTENT_REPORTS_DIRNAME;
   public static String EXTENT_REPORTS_FILENAME;
   public static String SCREENSHOTS_DIRNAME;
+  public static String TEST_START_DATE_TIMESTAMP;
 
   // These holds the properties
   public static Properties PROPERTIES;
@@ -76,14 +77,24 @@ public class Utils {
     Utils.log("----APK PATH----" + PROPERTIES.getProperty("ANDROID_APP_PATH"));
     Utils.log("----IPA PATH----" + PROPERTIES.getProperty("IOS_APP_PATH"));
     Utils.log("----User Dir----" + System.getProperty("user.dir"));
+    
+    TEST_START_DATE_TIMESTAMP = getCurrentDateAndTime();
 
-    EXTENT_REPORTS_DIRNAME =
-        getChildDir(getChildDir("test-reports"), "extent-reports").getAbsolutePath();
-    EXTENT_REPORTS_FILENAME = new File(new File(EXTENT_REPORTS_DIRNAME),
-        "TestAppExtentReport_" + Utils.PROPERTIES.getProperty("platform") + ".html")
-            .getAbsolutePath();
-    SCREENSHOTS_DIRNAME = getChildDir(getChildDir("target"), "screenshot_int").getAbsolutePath();
-
+    if (Utils.RUNNER_MODE.equalsIgnoreCase("standalone")) {
+        EXTENT_REPORTS_DIRNAME =
+            getChildDir(getChildDir("test-reports"), "extent-reports").getAbsolutePath();
+        EXTENT_REPORTS_FILENAME = new File(new File(EXTENT_REPORTS_DIRNAME),
+            APPNAME + "_" + Utils.PROPERTIES.getProperty("platform") + "_extentreport_"
+                + Utils.TEST_START_DATE_TIMESTAMP + ".html").getAbsolutePath();
+        SCREENSHOTS_DIRNAME = getChildDir(getChildDir(getChildDir("test-reports"), "extent-reports"),
+            APPNAME + "_" + Utils.PROPERTIES.getProperty("platform") + "_screenshots_"
+                + Utils.TEST_START_DATE_TIMESTAMP).getAbsolutePath();
+      } else {
+        EXTENT_REPORTS_DIRNAME = System.getProperty("user.dir") + "/target/";
+        EXTENT_REPORTS_FILENAME =
+            new File(new File(EXTENT_REPORTS_DIRNAME), "ExtentReport.html").getAbsolutePath();
+        SCREENSHOTS_DIRNAME = getChildDir(getChildDir("target"), "screenshot_int").getAbsolutePath();
+      }
 
   }
 
@@ -122,12 +133,12 @@ public class Utils {
   }
 
   public static void log(String logMessage) {
-    System.out.println(logMessage);
-    // Reporter.log(logMessage);
-    if (ExtentTestManager.getTest() != null) {
-      ExtentTestManager.getTest().log(LogStatus.INFO, logMessage + "<br>");
-    }
-  }
+	    System.out.println(logMessage);
+	    // Reporter.log(logMessage);
+	    if (ExtentTestManager.getTest() != null) {
+	      ExtentTestManager.getTest().log(LogStatus.INFO, logMessage + "<br>");
+	    }
+	  }
 
   public static void captureInterimScreenshot(AppiumDriver<MobileElement> driver) {
     File scrTmp, scrFile;
@@ -147,11 +158,8 @@ public class Utils {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    scrFileRelPath = Utils.convertToRelativePath(System.getProperty("user.dir") + "/target/",
-        scrFile.getAbsolutePath());
+    scrFileRelPath = Utils.convertToRelativePath(Utils.EXTENT_REPORTS_DIRNAME, scrFile.getAbsolutePath());
     Utils.log("scrFileRelPath :" +scrFileRelPath.toString());
-   // ExtentTestManager.getTest().log(LogStatus.INFO, "Intermediate Screenshot => "
-     //   + ExtentTestManager.getTest().addScreenCapture(scrFileRelPath));
     Utils.getExtentTest().log(LogStatus.INFO,
             "Intermediate Screenshot => " + Utils.getExtentTest().addScreenCapture(scrFileRelPath));
   }
@@ -275,4 +283,5 @@ public synchronized static ExtentReports getExtentReports() {
       return com.report.factory.ExtentManager.getInstance();
     }
   }
+
 }

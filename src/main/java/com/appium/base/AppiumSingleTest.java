@@ -30,6 +30,7 @@ import io.appium.java_client.service.local.flags.AndroidServerFlag;
 public class AppiumSingleTest {
   protected AppiumDriver<MobileElement> driver = null;
   protected static AppiumDriverLocalService service;
+  public static boolean reset_status = false;
 
   public static String APPIUM_SERVER_ADDRESS = "127.0.0.1";
 
@@ -52,9 +53,9 @@ public class AppiumSingleTest {
   public void androidSetup() throws MalformedURLException {
     DesiredCapabilities capabilities = DesiredCapabilities.android();
     capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.APPIUM);
-    capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "3230cfce2af59053");
+    capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, Utils.PROPERTIES.getProperty("DEVICE_ID"));
     capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "android");
-    capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.3");
+    capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, Utils.PROPERTIES.getProperty("ANDROID_PLATFORM_VERSION"));
     //capabilities.setCapability("browserName", "");
     capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,
         Utils.PROPERTIES.getProperty("ANDROID_APP_PACKAGE"));
@@ -64,7 +65,7 @@ public class AppiumSingleTest {
         Utils.PROPERTIES.getProperty("ANDROID_APP_ACTIVITY"));
     capabilities.setCapability("autoAcceptAlerts", true);
     capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
-    capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
+    capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
 
 
     File classpathRoot = new File(System.getProperty("user.dir"));

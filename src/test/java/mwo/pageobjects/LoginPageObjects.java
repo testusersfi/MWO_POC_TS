@@ -21,7 +21,7 @@ public class LoginPageObjects {
   public MobileElement ALERT_CONTINUE_BUTTON;
 
   @AndroidFindBy(
-      xpath = "//android.widget.TextView[contains(@text, 'mWorkOrder9')]")
+      xpath = "//android.widget.TextView[contains(@text, 'mWorkOrder')]")
   public MobileElement ACTION_BAR_TITLE;
   
   

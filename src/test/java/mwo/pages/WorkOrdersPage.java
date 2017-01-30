@@ -2,7 +2,10 @@ package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.plaf.basic.BasicSliderUI.ScrollListener;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Reporter;
 
@@ -11,7 +14,7 @@ import com.appium.base.PageBase;
 import com.appium.base.Utils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
-import com.report.factory.ExtentTestManager;
+import com.appium.reports.ExtentTestManager;
 
 import mwo.pageobjects.HomePageObjects;
 import mwo.pageobjects.WorkOrdersPageObjects;
@@ -36,9 +39,54 @@ public class WorkOrdersPage extends PageBase {
 		assert woPageObjects.BAR_CODE_SCAN.isDisplayed();
 	}
 
-	public WOPreviewPage launchWOScreen() {
-	  MobileElement workOrder = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()" + ".resourceId(\"com.ifsworld.mworkorderapps9:id/work_order__wo_no\")).scrollIntoView(" + "new UiSelector().text(\"669\"));"));
-	  workOrder.click();
-	  return new WOPreviewPage(driver);
-  }
+	public WOPreviewPage launchWOScreen(String wo_number) {
+		MobileElement workOrder = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()" + ".resourceId(\"com.ifsworld.mworkorderapps9:id/work_order__wo_no\")).scrollIntoView(" + "new UiSelector().text(\"679\"));"));
+		//scrollToElement(woPageObjects.WORKORDER_NUMBER);
+		workOrder.click();
+		return new WOPreviewPage(driver);
+	}
+	
+	private void scrollToElement(MobileElement el) {
+	    if (driver instanceof JavascriptExecutor) {
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", el);
+	    }
+	}
+
+	
+	public String findWorkOrder(AppiumDriver<MobileElement> driver, String data) {
+		String result = null;
+		if (Utils.getDriverPlatform(driver).equals("AndroidDriver")) {
+			result = String.format(woPageObjects.WORKORDER_NUMBER, data);
+		} else if (Utils.getDriverPlatform(driver).equals("IOSDriver")) {
+			result = String.format(woPageObjects.WORKORDER_NUMBER, data);
+		}
+		Utils.log("Final XPath: " + result);
+		return result;
+	}
+
+	public WOPreviewPage searchForWorkOrder(String wo_number) throws InterruptedException {
+		String number_Xpath = findWorkOrder(driver, wo_number);
+		Utils.log ("converted Xpath > number_Xpath: " + number_Xpath);
+			try {
+				if (isElementPresent(By.xpath(number_Xpath))) {
+					driver.findElement(By.xpath(number_Xpath)).click();
+					ExtentTestManager.getTest().log(LogStatus.PASS, "WorkOrders Screen > Work Order number" + wo_number + " screen is displayed");
+				} else  {
+					ExtentTestManager.getTest().log(LogStatus.FAIL, "WorkOrders Screen > Work Order number: " + wo_number + " is Unavilable in the WorkOrders screen");
+				}
+					
+			} catch (Exception e) {
+				//swipingVertical();
+				driver.context("NATIVE_APP");
+				driver.swipe(435, 396, 112, 496, 4000);
+			}
+		return new WOPreviewPage(driver);
+	}
+
+	public void scrollVertical(String wo_number_xpath) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+				driver.findElement(By.xpath(wo_number_xpath)));
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,80)");
+	}
+
 }

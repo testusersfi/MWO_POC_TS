@@ -9,7 +9,7 @@ import com.appium.base.PageBase;
 import com.appium.base.Utils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
-import com.report.factory.ExtentTestManager;
+import com.appium.reports.ExtentTestManager;
 
 import mwo.pageobjects.HomePageObjects;
 import io.appium.java_client.AppiumDriver;
@@ -30,13 +30,15 @@ public class HomePage extends PageBase {
 	  Utils.captureInterimScreenshot(driver);
 	  //assert homePageObjects.MORE_OPTIONS_ICON.isDisplayed();
 	  assert homePageObjects.SYSTEM_MENU_HELP.isDisplayed();
-	  assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
+	  assert homePageObjects.WORK_ORDERS_BUTTON.isEnabled();
   } 
 
   public WorkOrdersPage launchWorkOrders() {
 	  if(homePageObjects.WORK_ORDERS_BUTTON.isEnabled()) {
 		  assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
+		  homeScreenVerification();
 		  homePageObjects.WORK_ORDERS_BUTTON.click();
+		  ExtentTestManager.getTest().log(LogStatus.PASS, "Work Orders exists with this account and Work Oders button is clicked");
 	  } else {
 		  ExtentTestManager.getTest().log(LogStatus.FAIL, "No workorders exists with this account");
 	  }

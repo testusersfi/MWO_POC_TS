@@ -23,8 +23,7 @@ import com.appium.base.Utils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import com.report.factory.ExtentManager;
-import com.report.factory.ExtentTestManager;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 
@@ -131,9 +130,8 @@ public class TestBaseStandalone extends AppiumSingleTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    scrFileRelPath = Utils.convertToRelativePath(System.getProperty("user.dir") + "/target/",
-        scrFile.getAbsolutePath());
+    scrFileRelPath = Utils.convertToRelativePath(Utils.EXTENT_REPORTS_DIRNAME, scrFile.getAbsolutePath());
     Utils.log("ScrFilerelPath:" + scrFileRelPath);
-    com.appium.reports.ExtentTestManager.getTest().log(LogStatus.INFO, "Final Screenshot => " + com.appium.reports.ExtentTestManager.getTest().addScreenCapture(scrFileRelPath));
+    child.log(LogStatus.INFO, "Final Screenshot => " + parent.addScreenCapture(scrFileRelPath));
   }
 }

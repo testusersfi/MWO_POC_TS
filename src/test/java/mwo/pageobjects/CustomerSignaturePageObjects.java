@@ -1,5 +1,7 @@
 package mwo.pageobjects;
 
+import org.openqa.selenium.WebElement;
+
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindBy;
@@ -19,7 +21,7 @@ public class CustomerSignaturePageObjects {
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.TableLayout/android.widget.TableRow/android.widget.TextView[contains(@text, 'Signed By') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/mobile_separate_work_order__signed_by__lbl')]")
 	public MobileElement SIGNED_BY_LABEL;
 
-	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.TableLayout/android.widget.TableRow/android.widget.TextView[contains(@text, 'Required') and (@resource-id='com.ifsworld.mworkorderapps9:id/com.ifsworld.mworkorderapps9:id/mobile_separate_work_order__signed_by')]")
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.TableLayout/android.widget.TableRow/android.widget.EditText[@resource-id='com.ifsworld.mworkorderapps9:id/mobile_separate_work_order__signed_by']")
 	public MobileElement SIGN_BY_TEXT_FIELD;
 
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout/android.widget.TextView[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/textView3') and contains(@text, 'Please Sign Below')]")
@@ -29,5 +31,5 @@ public class CustomerSignaturePageObjects {
 	public MobileElement CLEAR_SIGN_ICON;
 
 	@AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/signature_area")
-	public MobileElement SIGNATURE_AREA;
+	public WebElement SIGNATURE_AREA;
 }

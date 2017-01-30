@@ -126,7 +126,8 @@ public class LoginPage extends PageBase {
 
 		}
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.visibilityOf(loginPageObjects.ALERT_CONTINUE_BUTTON));
+		wait.until(ExpectedConditions.or(ExpectedConditions.visibilityOf(loginPageObjects.ACTION_BAR_TITLE),
+				ExpectedConditions.visibilityOf(loginPageObjects.LOGIN_ALERT_MESSAGE)));
 		Utils.log("mwo app Login screen displayed...");
 	}
 

@@ -13,11 +13,9 @@ public class WorkOrdersPageObjects {
   @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/item_lookup_barcode")
   @iOSFindBy(xpath = "//UIASTATICTEXT[@text='Welcome to Home Screen'")
   public MobileElement BAR_CODE_SCAN;
+
   
-  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/tasks")
-  public MobileElement WORK_ORDERS_BUTTON;
-  
-  public String WORKORDER_NUMBER = "//android.widget.TableLayout[1]/android.widget.TableRow[2]/android.widget.TextView[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/work_order__wo_no’) and @text=\"%s\"]";
+  public String WORKORDER_NUMBER="//android.widget.TextView[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/work_order__wo_no') and @text=\"%s\"]" ;
 
   @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/item_lookup_barcode")
   public MobileElement WORKORDER_BARCODE;

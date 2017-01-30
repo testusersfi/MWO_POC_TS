@@ -1,30 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
     <line>
       <![CDATA[We are in Android, now checking for Alert messages...]]>
     </line>
+    <line>
+      <![CDATA[We are in Android, now checking for Alert messages...]]>
+    </line>
+    <line>
+      <![CDATA[We are in Android, now checking for Alert messages...]]>
+    </line>
   </reporter-output>
-  <suite name="POC_Automation_TestSuite" duration-ms="241918" started-at="2017-01-20T15:55:40Z" finished-at="2017-01-20T15:59:42Z">
+  <suite name="POC_Automation_TestSuite" duration-ms="692251" started-at="2017-01-30T12:31:35Z" finished-at="2017-01-30T12:43:07Z">
     <groups>
       <group name="Final.Regression.iOS">
-        <method signature="LoginTests.validLoginTest()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" class="mwo.tests.LoginTests"/>
+        <method signature="LoginTests.inValidLoginTest()[pri:1, instance:mwo.tests.LoginTests@3e6358]" name="inValidLoginTest" class="mwo.tests.LoginTests"/>
+        <method signature="LoginTests.launchInvalidWorkOrder()[pri:3, instance:mwo.tests.LoginTests@3e6358]" name="launchInvalidWorkOrder" class="mwo.tests.LoginTests"/>
+        <method signature="LoginTests.validLoginTest()[pri:2, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" class="mwo.tests.LoginTests"/>
       </group> <!-- Final.Regression.iOS -->
       <group name="Final.Regression.Android">
-        <method signature="LoginTests.validLoginTest()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" class="mwo.tests.LoginTests"/>
+        <method signature="LoginTests.inValidLoginTest()[pri:1, instance:mwo.tests.LoginTests@3e6358]" name="inValidLoginTest" class="mwo.tests.LoginTests"/>
+        <method signature="LoginTests.launchInvalidWorkOrder()[pri:3, instance:mwo.tests.LoginTests@3e6358]" name="launchInvalidWorkOrder" class="mwo.tests.LoginTests"/>
+        <method signature="LoginTests.validLoginTest()[pri:2, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" class="mwo.tests.LoginTests"/>
       </group> <!-- Final.Regression.Android -->
     </groups>
-    <test name="Test" duration-ms="241918" started-at="2017-01-20T15:55:40Z" finished-at="2017-01-20T15:59:42Z">
+    <test name="Test" duration-ms="692251" started-at="2017-01-30T12:31:35Z" finished-at="2017-01-30T12:43:07Z">
       <class name="mwo.tests.LoginTests">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeSuite" is-config="true" duration-ms="34059" started-at="2017-01-20T15:55:06Z" finished-at="2017-01-20T15:55:40Z">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeSuite" is-config="true" duration-ms="29036" started-at="2017-01-30T12:31:06Z" finished-at="2017-01-30T12:31:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeClass" is-config="true" duration-ms="7" started-at="2017-01-20T15:55:40Z" finished-at="2017-01-20T15:55:40Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeClass" is-config="true" duration-ms="4" started-at="2017-01-30T12:31:35Z" finished-at="2017-01-30T12:31:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeMethod" is-config="true" duration-ms="35523" started-at="2017-01-20T15:55:40Z" finished-at="2017-01-20T15:56:16Z">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeMethod" is-config="true" duration-ms="34897" started-at="2017-01-30T12:31:35Z" finished-at="2017-01-30T12:32:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void mwo.tests.LoginTests.inValidLoginTest() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="inValidLoginTest()[pri:1, instance:mwo.tests.LoginTests@3e6358]" name="inValidLoginTest" duration-ms="92515" started-at="2017-01-30T12:32:10Z" finished-at="2017-01-30T12:33:42Z">
+          <reporter-output>
+            <line>
+              <![CDATA[We are in Android, now checking for Alert messages...]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- inValidLoginTest -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterMethod" is-config="true" duration-ms="5567" started-at="2017-01-30T12:33:42Z" finished-at="2017-01-30T12:33:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=inValidLoginTest status=SUCCESS method=LoginTests.inValidLoginTest()[pri:1, instance:mwo.tests.LoginTests@3e6358] output=We are in Android, now checking for Alert messages...]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeMethod" is-config="true" duration-ms="18640" started-at="2017-01-30T12:33:48Z" finished-at="2017-01-30T12:34:07Z">
           <params>
             <param index="0">
               <value>
@@ -35,29 +74,58 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" duration-ms="196959" started-at="2017-01-20T15:56:16Z" finished-at="2017-01-20T15:59:33Z">
+        <test-method status="PASS" signature="validLoginTest()[pri:2, instance:mwo.tests.LoginTests@3e6358]" name="validLoginTest" duration-ms="353524" started-at="2017-01-30T12:34:07Z" finished-at="2017-01-30T12:40:00Z">
           <reporter-output>
             <line>
               <![CDATA[We are in Android, now checking for Alert messages...]]>
             </line>
           </reporter-output>
         </test-method> <!-- validLoginTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterMethod" is-config="true" duration-ms="9367" started-at="2017-01-20T15:59:33Z" finished-at="2017-01-20T15:59:42Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterMethod" is-config="true" duration-ms="4863" started-at="2017-01-30T12:40:00Z" finished-at="2017-01-30T12:40:05Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=validLoginTest status=SUCCESS method=LoginTests.validLoginTest()[pri:0, instance:mwo.tests.LoginTests@3e6358] output=We are in Android, now checking for Alert messages...]]]>
+                <![CDATA[[TestResult name=validLoginTest status=SUCCESS method=LoginTests.validLoginTest()[pri:2, instance:mwo.tests.LoginTests@3e6358] output=We are in Android, now checking for Alert messages...]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterClass" is-config="true" duration-ms="49" started-at="2017-01-20T15:59:42Z" finished-at="2017-01-20T15:59:42Z">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="beforeMethod" is-config="true" duration-ms="20691" started-at="2017-01-30T12:40:05Z" finished-at="2017-01-30T12:40:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void mwo.tests.LoginTests.launchInvalidWorkOrder() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="launchInvalidWorkOrder()[pri:3, instance:mwo.tests.LoginTests@3e6358]" name="launchInvalidWorkOrder" duration-ms="156219" started-at="2017-01-30T12:40:26Z" finished-at="2017-01-30T12:43:02Z">
+          <reporter-output>
+            <line>
+              <![CDATA[We are in Android, now checking for Alert messages...]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- launchInvalidWorkOrder -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterMethod" is-config="true" duration-ms="5280" started-at="2017-01-30T12:43:02Z" finished-at="2017-01-30T12:43:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=launchInvalidWorkOrder status=SUCCESS method=LoginTests.launchInvalidWorkOrder()[pri:3, instance:mwo.tests.LoginTests@3e6358] output=We are in Android, now checking for Alert messages...]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterClass" is-config="true" duration-ms="39" started-at="2017-01-30T12:43:07Z" finished-at="2017-01-30T12:43:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterSuite" is-config="true" duration-ms="469" started-at="2017-01-20T15:59:42Z" finished-at="2017-01-20T15:59:42Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:mwo.tests.LoginTests@3e6358]" name="afterSuite" is-config="true" duration-ms="1238" started-at="2017-01-30T12:43:07Z" finished-at="2017-01-30T12:43:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

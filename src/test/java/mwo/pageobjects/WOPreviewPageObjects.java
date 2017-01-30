@@ -68,6 +68,11 @@ public class WOPreviewPageObjects {
 
 	public MobileElement DETAILS_SCHEDULED_TIME;
 
-	//@MobileBy(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()" + ".resourceId(\"com.ifsworld.mworkorderapps9:id/work_order__wo_no\")).scrollIntoView(" + "new UiSelector().text(\"669\"));"))
-	//public MobileElement TIME_REPORT;
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/edit_contact')]")
+	public MobileElement WO_CONTACT_DETAILS_BUTTON;
+	
+	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/edit_object')]")
+	public MobileElement WO_OBJECT_DETAILS_BUTTON;
+	
+	
 }

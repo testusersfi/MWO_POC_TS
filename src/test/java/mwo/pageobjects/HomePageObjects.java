@@ -18,7 +18,7 @@ public class HomePageObjects {
   @iOSFindBy(xpath = "//UIASTATICTEXT[@text='More options'")
   public MobileElement MORE_OPTIONS_ICON;
   
-  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/tasks")
+  @AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/tasks') and contains(@text, 'Work Orders')]")
   public MobileElement WORK_ORDERS_BUTTON;
 
 }
