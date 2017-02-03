@@ -34,6 +34,7 @@ public class SyncMonitorPage extends PageBase {
 	}
 
 	public HomePage syncVerification() {
+		syncMonitorScreenVerification();
 		if (isElementPresent(syncPageObjects.SYNC_FAILURE_ERROR)) {
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Sync is failed");
 		} else {

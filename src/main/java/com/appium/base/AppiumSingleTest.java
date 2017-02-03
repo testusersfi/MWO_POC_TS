@@ -68,10 +68,10 @@ public class AppiumSingleTest {
     capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
 
 
-    File classpathRoot = new File(System.getProperty("user.dir"));
+/*    File classpathRoot = new File(System.getProperty("user.dir"));
     File app = new File(Utils.PROPERTIES.getProperty("ANDROID_APP_PATH"));
     capabilities.setCapability(MobileCapabilityType.APP, Utils.PROPERTIES.getProperty("ANDROID_APP_PATH"));
-    Utils.log("----APK Absolute Path: " + app.getAbsolutePath());
+    Utils.log("----APK Absolute Path: " + app.getAbsolutePath());*/
     
     
     driver =
@@ -87,6 +87,7 @@ public class AppiumSingleTest {
     File classpathRoot = new File(System.getProperty("user.dir"));
     File app = new File(classpathRoot, Utils.PROPERTIES.getProperty("IOS_APP_PATH"));
     capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+    
     Utils.log("----IPA Absolute Path: " + app.getAbsolutePath());
     driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
   }

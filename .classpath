@@ -161,5 +161,7 @@
 	<classpathentry kind="lib" path="lib/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="lib/AppiumTestDistribution-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinivas.bavirisetti/workspace/mwo_app_tests/lib/ifs-fnd-ap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinivas.bavirisetti/workspace/mwo_app_tests/lib/ifs-fnd-common.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

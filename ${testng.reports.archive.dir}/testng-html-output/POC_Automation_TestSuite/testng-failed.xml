@@ -4,15 +4,15 @@
   <test name="Test(failed)">
     <groups>
       <run>
-        <include name="Final.All"/>
+        <include name="Testing"/>
       </run>
     </groups>
     <classes>
       <class name="mwo.tests.LoginTests">
         <methods>
           <include name="afterClass"/>
-          <include name="validLoginTest"/>
           <include name="beforeSuite"/>
+          <include name="scrollTest"/>
           <include name="afterSuite"/>
           <include name="afterMethod"/>
           <include name="beforeMethod"/>

@@ -30,18 +30,30 @@ public class HomePage extends PageBase {
 	  Utils.captureInterimScreenshot(driver);
 	  //assert homePageObjects.MORE_OPTIONS_ICON.isDisplayed();
 	  assert homePageObjects.SYSTEM_MENU_HELP.isDisplayed();
-	  assert homePageObjects.WORK_ORDERS_BUTTON.isEnabled();
+	  assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
   } 
 
   public WorkOrdersPage launchWorkOrders() {
 	  if(homePageObjects.WORK_ORDERS_BUTTON.isEnabled()) {
 		  assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
-		  homeScreenVerification();
+		  //homeScreenVerification();
 		  homePageObjects.WORK_ORDERS_BUTTON.click();
+		 // driver.
 		  ExtentTestManager.getTest().log(LogStatus.PASS, "Work Orders exists with this account and Work Oders button is clicked");
 	  } else {
 		  ExtentTestManager.getTest().log(LogStatus.FAIL, "No workorders exists with this account");
 	  }
 	  return new WorkOrdersPage(driver);
+  }
+  
+  public SyncMonitorPage initiateManualSync() {
+	  assert homePageObjects.SYNC_BUTTON.isDisplayed();
+	  threadSleep(3000);
+	  homePageObjects.SYNC_BUTTON.click();
+	  return new SyncMonitorPage(driver);
+  }
+  
+  public void enableairplane() {
+	  turnOnAirPlaneMode();
   }
 }

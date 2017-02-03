@@ -66,7 +66,7 @@ public class CustomerSignaturePage extends PageBase {
 				threadSleep(4000);
 				dismissScanBarCodealert();
 				// customerSignaturePageObjects.SIGN_BY_TEXT_FIELD.sendKeys(username);
-				executeadbcommand(username);
+				enterTextUsingadb(username);
 				hideKeyboardBasedOnPlatform();
 				ExtentTestManager.getTest().log(LogStatus.PASS, "CustomerSignature Page > Customer Signature is entered");
 			}
@@ -76,12 +76,9 @@ public class CustomerSignaturePage extends PageBase {
 	}
 	
 	public void drawSignOntheCanvas() {
-		switchToWebView("WEBVIEW_com.ifsworld.mworkorderapps9");
-	    Actions builder = new Actions(driver);
-	    TouchAction temp = new TouchAction(driver);
-	    TouchAction drawAction = temp.moveTo(customerSignaturePageObjects.SIGNATURE_AREA,135,15).perform().moveTo(200, 60) // 2nd points (x1,y1)
+	    TouchAction builder = new TouchAction(driver);
+	    TouchAction drawAction = builder.moveTo(customerSignaturePageObjects.SIGNATURE_AREA,400,1300).perform().moveTo(200, 60) // 2nd points (x1,y1)
 	              .release();
 	    drawAction.perform();
-	    switchToNativeView();
 	}
 }

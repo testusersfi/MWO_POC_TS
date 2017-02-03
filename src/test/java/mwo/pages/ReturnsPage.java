@@ -47,7 +47,7 @@ public class ReturnsPage extends PageBase {
 	}
 	
 	public WOActionsPage confirmItemReturn() throws InterruptedException {
-		if(isElementPresent(returnsPageObjects.SERIAL_NUMBER_LABEL)) {
+		if(isElementPresent(returnsPageObjects.QUANTITY_TO_RETURN_TEXT_FIELD)) {
 			BasePageObjects.SAVE_BUTTON.click();
 			Thread.sleep(2000);
 			ReturnsScreenUIVerification();

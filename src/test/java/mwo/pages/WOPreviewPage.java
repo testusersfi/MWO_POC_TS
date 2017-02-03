@@ -94,4 +94,13 @@ public class WOPreviewPage extends PageBase {
 		return new AdditionalDetailsPage(driver);
 	}
 	
+	public void contactDetailsVerification() throws InterruptedException {
+		//String contact_button = previewPageObjects.WO_CONTACT_DETAILS_BUTTON.toString();
+		scrolltoText(previewPageObjects.WO_CONTACT_DETAILS_BUTTON);
+	}
+	
+	public void objectDetailsVerfication() throws InterruptedException {
+		//String contact_button = previewPageObjects.WO_OBJECT_DETAILS_BUTTON.toString();
+		scrolltoText(previewPageObjects.WO_OBJECT_DETAILS_BUTTON);
+	}
 }

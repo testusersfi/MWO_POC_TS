@@ -85,7 +85,7 @@ public class SelectPartPage extends PageBase {
 		assert selectPartScreenPageObjects.SELECT_PART_SCREEN_HEADER.isDisplayed();
 		hideKeyboardBasedOnPlatform();
 		if (isElementPresent(selectPartScreenPageObjects.PART_DESCRIPTION)) {
-			//enterSearchText(part_desc);
+			enterSearchText(part_desc);
 			selectPartScreenPageObjects.PART_DESCRIPTION.click();
 			selectLotBatchScreenUI(batch_number);
 			selectSerialNumberScreenUI(serial_number);
@@ -115,7 +115,7 @@ public class SelectPartPage extends PageBase {
 			goBack();
 		}
 		Utils.log("Enter the search text");
-		executeadbcommand(search_text);
+		enterTextUsingadb(search_text);
 		//selectPartScreenPageObjects.SEARCH_TEXT_FIELD.sendKeys(search_text);
 		hideKeyboardBasedOnPlatform();
 	}

@@ -24,6 +24,7 @@ import mwo.pages.WorkOrdersPage;
 import com.appium.base.AppiumSingleTest;
 
 import com.appium.base.JSonParser;
+import com.appium.base.PageBase;
 
 public class LoginTests extends TestBase {
 
@@ -42,6 +43,8 @@ public class LoginTests extends TestBase {
   CustomerSignaturePage	customerSignaturePage;
   MySignaturePage mySignaturePage;
   AdditionalDetailsPage additionalDetailsPage;
+  PageBase basePage;
+  
   public LoginTests() throws Exception {
 
   }
@@ -84,6 +87,9 @@ public class LoginTests extends TestBase {
     mySignaturePage = customerSignaturePage.navigateToSelfSignScreen();
     reportWebViewPage = mySignaturePage.collectSelfSignature();
     woPage = reportWebViewPage.completeWorkOrder();
+    homePage = woPage.navigateBackToHomeScreen();
+    syncPage = homePage.initiateManualSync();
+    syncPage.syncVerification();
   }
   
   
@@ -115,5 +121,32 @@ public class LoginTests extends TestBase {
     //previewPage = woPage.launchWOScreen(obj.getString("order_number"));
     previewPage = woPage.searchForWorkOrder(obj.getString("wrong_order"));
   }
-
+  
+  @Test(groups = {"Testing"}, priority=1)
+  public void scrollTest() throws Exception {
+	JSONArray cred = JSonParser.getCredentials("Credentials");
+	//JSONObject obj = new JSONObject(cred.toString());
+	JSONObject obj =  cred.getJSONObject(0);
+    loginPage = new LoginPage(driver);
+    System.out.println("launched mwo application");
+    loginPage.AppLaunchVerification();
+    loginPage.validLoginFunctionality(obj.getString("username"), obj.getString("password"), obj.getString("serviceurl"), obj.getString("systemid"));
+    syncPage = new SyncMonitorPage(driver);
+    syncPage.syncMonitorScreenVerification();
+    homePage = syncPage.syncVerification();
+    //homePage.homeScreenVerification();
+    woPage = homePage.launchWorkOrders();
+    previewPage = woPage.searchForWorkOrder(obj.getString("order_number"));
+    //previewPage.acceptWorkOrder();
+    //previewPage = additionalDetailsPage.changeDirectiveText();
+   // previewPage.changeStatustoOnRoute();
+   // previewPage.changeStatustoOnSite();
+    //previewPage.contactDetailsVerification();
+    //previewPage.objectDetailsVerfication();
+    actionsPage = previewPage.launchWOActionsScreen();
+    reportInPage = actionsPage.navigatetoReportInScreen();
+    reportWebViewPage = reportInPage.navigateToWOReportScreen();
+    customerSignaturePage = reportWebViewPage.navigateToCustomerSignatureScreen();
+    customerSignaturePage.drawSignOntheCanvas();
+  }
 }

@@ -40,7 +40,7 @@ public class WorkOrdersPage extends PageBase {
 	}
 
 	public WOPreviewPage launchWOScreen(String wo_number) {
-		MobileElement workOrder = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()" + ".resourceId(\"com.ifsworld.mworkorderapps9:id/work_order__wo_no\")).scrollIntoView(" + "new UiSelector().text(\"679\"));"));
+		MobileElement workOrder = (MobileElement) driver.findElements(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()" + ".resourceId(\"com.ifsworld.mworkorderapps9:id/work_order__wo_no\")).scrollIntoView(" + "new UiSelector().text(\"655\"));"));
 		//scrollToElement(woPageObjects.WORKORDER_NUMBER);
 		workOrder.click();
 		return new WOPreviewPage(driver);
@@ -66,7 +66,11 @@ public class WorkOrdersPage extends PageBase {
 
 	public WOPreviewPage searchForWorkOrder(String wo_number) throws InterruptedException {
 		String number_Xpath = findWorkOrder(driver, wo_number);
-		Utils.log ("converted Xpath > number_Xpath: " + number_Xpath);
+		Utils.log("Entered scroll view method");
+		scrollListView(number_Xpath);
+		driver.findElement(By.xpath(number_Xpath)).click();
+		//scrollElement(driver, wo_number, true);
+		/*Utils.log ("converted Xpath > number_Xpath: " + number_Xpath);
 			try {
 				if (isElementPresent(By.xpath(number_Xpath))) {
 					driver.findElement(By.xpath(number_Xpath)).click();
@@ -77,9 +81,9 @@ public class WorkOrdersPage extends PageBase {
 					
 			} catch (Exception e) {
 				//swipingVertical();
-				driver.context("NATIVE_APP");
-				driver.swipe(435, 396, 112, 496, 4000);
-			}
+				//driver.context("NATIVE_APP");
+				driver.swipe(540, 650, 540, 1630, 4000);
+			}*/
 		return new WOPreviewPage(driver);
 	}
 
@@ -87,6 +91,12 @@ public class WorkOrdersPage extends PageBase {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
 				driver.findElement(By.xpath(wo_number_xpath)));
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,80)");
+	}
+	
+	public HomePage navigateBackToHomeScreen() {
+		goBack();
+		threadSleep(3000);
+		return new HomePage(driver);
 	}
 
 }
