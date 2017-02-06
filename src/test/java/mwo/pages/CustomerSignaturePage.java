@@ -77,8 +77,10 @@ public class CustomerSignaturePage extends PageBase {
 	
 	public void drawSignOntheCanvas() {
 	    TouchAction builder = new TouchAction(driver);
-	    TouchAction drawAction = builder.moveTo(customerSignaturePageObjects.SIGNATURE_AREA,400,1300).perform().moveTo(200, 60) // 2nd points (x1,y1)
-	              .release();
+	    
+	    //TouchAction drawAction = builder.moveTo(customerSignaturePageObjects.SIGNATURE_AREA,400,1100).perform().moveTo(540, 1300) // 2nd points (x1,y1)
+	    //          .release();
+	    TouchAction drawAction = builder.longPress(customerSignaturePageObjects.SIGNATURE_AREA).moveTo(200, 200).moveTo(250, 250).release().perform();
 	    drawAction.perform();
 	}
 }

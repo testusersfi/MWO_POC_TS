@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.invoke.SwitchPoint;
+import java.text.DateFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -68,6 +69,13 @@ public abstract class PageBase {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		el = wait.until(ExpectedConditions.visibilityOf(mobileElement));
 		return el;
+	}
+	
+	public static void getCurrentDate() {
+		 DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		 Date date = new Date();
+		 String date1= dateFormat.format(date);
+		 System.out.println(date1);
 	}
 
 	public static void waitUntilElementsAreInvisible(List<WebElement> mobileElement) {
