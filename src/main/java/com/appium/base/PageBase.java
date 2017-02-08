@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.invoke.SwitchPoint;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.text.DateFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -16,6 +19,13 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -335,11 +345,6 @@ public abstract class PageBase {
 
 	//public static void scrollListView(String direction, String value) throws InterruptedException {
 	public static void scrollListView(String value) throws InterruptedException {
-/*      SwipeElementDirection dir;
-
-      if (direction.toUpperCase().equals("DOWN")) { dir = SwipeElementDirection.DOWN; }
-      else { dir = SwipeElementDirection.UP;}*/
-
 
       boolean searchElement = true;
       String lastTxtElement = null;
@@ -352,7 +357,11 @@ public abstract class PageBase {
 
           elements = driver.findElementsById("com.ifsworld.mworkorderapps9:id/work_order__wo_no");
           lastTxtElement = elements.get(elements.size() - 1).getText();
-
+          
+          if(isElementPresent(By.xpath(value))) {
+        	  driver.findElementByXPath(value).isDisplayed();
+              searchElement = false; 
+          } else {
           //compare element's text between last index of previous swipe and last index of current swipe to detect end of scrolling
           if (lastTxtElement.equals(previousTxtElement)){
               throw new NoSuchElementException("stopperElement not found");
@@ -370,11 +379,10 @@ public abstract class PageBase {
           {
               //swipe up|down when desired element is not displayed
         	  Utils.log("entered exception loop");
-              //driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().className(\"android.widget.ListView\")")).swipe(dir, 1700);
         	  MobileElement element1 = driver.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout");
-            // driver.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout").swipe(SwipeElementDirection.DOWN, 2000);
         	  swipingVertical(element1);
         	 
+          }
           }
       }
 	}
@@ -386,8 +394,6 @@ public abstract class PageBase {
 				try {
 					// stop when desired element is displayed
 					Utils.log("entered try loop");
-					// driver.findElement(MobileBy.AndroidUIAutomator("new
-					// UiSelector().text(\"" + value + "\")")).isDisplayed();
 					isElementPresent(element_to_verify);
 					assert element_to_verify.isDisplayed();
 					searchElement = false;
@@ -395,18 +401,47 @@ public abstract class PageBase {
 				} catch (Exception e) {
 					// swipe up|down when desired element is not displayed
 					Utils.log("entered exception loop");
-					// driver.findElement(MobileBy.AndroidUIAutomator("new
-					// UiSelector().className(\"android.widget.ListView\")")).swipe(dir,
-					// 1700);
 					MobileElement element1 = driver
 							.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout");
-					// driver.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout").swipe(SwipeElementDirection.DOWN,
-					// 2000);
 					swipingVertical(element1);
 
 				}
 			}
 		}
 	}
+	
+	public void turnOffSSLValidation() throws NoSuchAlgorithmException, KeyManagementException {
+		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+			@Override
+			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+				return null;
+			}
 
+			@Override
+			public void checkClientTrusted(X509Certificate[] certs, String authType) {
+			}
+
+			@Override
+			public void checkServerTrusted(X509Certificate[] certs, String authType) {
+			}
+		} };
+
+		// Install the all-trusting trust manager
+		SSLContext sc = SSLContext.getInstance("SSL");
+		sc.init(null, trustAllCerts, new java.security.SecureRandom());
+		HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+
+		// Create all-trusting host name verifier
+		HostnameVerifier allHostsValid = new HostnameVerifier() {
+			public boolean verify(String hostname, SSLSession session) {
+				return true;
+			}
+		};
+	}
+
+	public void drawSignOntheCanvas(WebElement element) {
+	    TouchAction builder = new TouchAction(driver);
+	    TouchAction drawAction = builder.longPress(element).moveTo(200, 200).moveTo(250, 250).release().perform();
+	    drawAction.perform();
+	}
 }

@@ -12,8 +12,8 @@
         <methods>
           <include name="afterClass"/>
           <include name="beforeSuite"/>
-          <include name="scrollTest"/>
           <include name="afterSuite"/>
+          <include name="returnWorkOrder"/>
           <include name="afterMethod"/>
           <include name="beforeMethod"/>
           <include name="beforeClass"/>

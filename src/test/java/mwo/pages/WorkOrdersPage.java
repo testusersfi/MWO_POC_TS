@@ -1,5 +1,8 @@
 package mwo.pages;
 
+import java.io.FileNotFoundException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.plaf.basic.BasicSliderUI.ScrollListener;
@@ -23,6 +26,7 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import mwo.apiresponses.PLSQLQueries;
 
 public class WorkOrdersPage extends PageBase {
 	WorkOrdersPageObjects woPageObjects = new WorkOrdersPageObjects();
@@ -64,26 +68,11 @@ public class WorkOrdersPage extends PageBase {
 		return result;
 	}
 
-	public WOPreviewPage searchForWorkOrder(String wo_number) throws InterruptedException {
+	public WOPreviewPage searchForWorkOrder(String wo_number) throws InterruptedException  {
 		String number_Xpath = findWorkOrder(driver, wo_number);
 		Utils.log("Entered scroll view method");
 		scrollListView(number_Xpath);
 		driver.findElement(By.xpath(number_Xpath)).click();
-		//scrollElement(driver, wo_number, true);
-		/*Utils.log ("converted Xpath > number_Xpath: " + number_Xpath);
-			try {
-				if (isElementPresent(By.xpath(number_Xpath))) {
-					driver.findElement(By.xpath(number_Xpath)).click();
-					ExtentTestManager.getTest().log(LogStatus.PASS, "WorkOrders Screen > Work Order number" + wo_number + " screen is displayed");
-				} else  {
-					ExtentTestManager.getTest().log(LogStatus.FAIL, "WorkOrders Screen > Work Order number: " + wo_number + " is Unavilable in the WorkOrders screen");
-				}
-					
-			} catch (Exception e) {
-				//swipingVertical();
-				//driver.context("NATIVE_APP");
-				driver.swipe(540, 650, 540, 1630, 4000);
-			}*/
 		return new WOPreviewPage(driver);
 	}
 

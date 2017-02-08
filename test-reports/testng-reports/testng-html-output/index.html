@@ -23,7 +23,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -37,7 +37,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-POC_Automation_TestSuite">
-              <span class="suite-name border-passed">POC_Automation_TestSuite</span>
+              <span class="suite-name border-failed">POC_Automation_TestSuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -90,21 +90,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-POC_Automation_TestSuite" class="hide-methods passed suite-POC_Automation_TestSuite"> (hide)</a> <!-- hide-methods passed suite-POC_Automation_TestSuite -->
-                      <a href="#" panel-name="suite-POC_Automation_TestSuite" class="show-methods passed suite-POC_Automation_TestSuite"> (show)</a> <!-- show-methods passed suite-POC_Automation_TestSuite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-POC_Automation_TestSuite" class="hide-methods failed suite-POC_Automation_TestSuite"> (hide)</a> <!-- hide-methods failed suite-POC_Automation_TestSuite -->
+                      <a href="#" panel-name="suite-POC_Automation_TestSuite" class="show-methods failed suite-POC_Automation_TestSuite"> (show)</a> <!-- show-methods failed suite-POC_Automation_TestSuite -->
                     </span>
-                    <div class="method-list-content passed suite-POC_Automation_TestSuite">
+                    <div class="method-list-content failed suite-POC_Automation_TestSuite">
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.LoginTests" hash-for-method="scrollTest">scrollTest</a> <!-- method navigator-link -->
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.LoginTests" hash-for-method="returnWorkOrder">returnWorkOrder</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-POC_Automation_TestSuite -->
+                    </div> <!-- method-list-content failed suite-POC_Automation_TestSuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -116,21 +116,34 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-POC_Automation_TestSuite" class="panel POC_Automation_TestSuite">
-          <div class="suite-POC_Automation_TestSuite-class-passed">
+          <div class="suite-POC_Automation_TestSuite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">mwo.tests.LoginTests</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="scrollTest">
-                  </a> <!-- scrollTest -->
-                  <span class="method-name">scrollTest</span>
+                  <a name="returnWorkOrder">
+                  </a> <!-- returnWorkOrder -->
+                  <span class="method-name">returnWorkOrder</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for visibility of all []
+Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b&apos;, time: &apos;2016-03-15 16:57:40&apos;
+System info: host: &apos;BDC7-L-1Z7XLV1&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_121&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.ifsworld.mworkorderapps9, app=./binaries/MobileWorkOrder_PRE_DEL.apk, networkConnectionEnabled=true, warnings={}, appWaitPackage=com.ifsworld.mworkorderapps9, databaseEnabled=false, version=, deviceName=701014be, fullReset=true, platform=ANDROID, deviceUDID=701014be, appActivity=com.ifsworld.mworkorder.LauncherActivity, desired={appPackage=com.ifsworld.mworkorderapps9, app=./binaries/MobileWorkOrder_PRE_DEL.apk, appWaitPackage=com.ifsworld.mworkorderapps9, version=, deviceName=701014be, fullReset=true, platform=ANDROID, appActivity=com.ifsworld.mworkorder.LauncherActivity, platformVersion=5.0.1, automationName=Appium, browserName=android, takesScreenshot=true, platformName=Android, autoAcceptAlerts=true}, platformVersion=5.0.1, webStorageEnabled=false, locationContextEnabled=false, automationName=Appium, takesScreenshot=true, browserName=android, javascriptEnabled=true, platformName=Android, autoAcceptAlerts=true}]
+Session ID: 1f4c8a9c-ab68-41ae-8dbe-5f73f85ec6cb
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
+	at com.appium.base.PageBase.waitForElementsVisible(Unknown Source)
+	at mwo.pages.LoginPage.validLoginFunctionality(Unknown Source)
+	at mwo.tests.LoginTests.returnWorkOrder(Unknown Source)
+... Removed 23 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-POC_Automation_TestSuite-class-passed -->
+          </div> <!-- suite-POC_Automation_TestSuite-class-failed -->
         </div> <!-- panel POC_Automation_TestSuite -->
         <div panel-name="test-xml-POC_Automation_TestSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -185,7 +198,7 @@
               <span class="test-group-name">Testing</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">scrollTest</span>
+                <span class="method-in-group-name">returnWorkOrder</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -207,14 +220,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'scrollTest')
+data.setCell(0, 1, 'returnWorkOrder')
 data.setCell(0, 2, 'mwo.tests.LoginTests')
-data.setCell(0, 3, 101026);
+data.setCell(0, 3, 152891);
 window.suiteTableData['POC_Automation_TestSuite']= { tableData: data, tableDiv: 'times-div-POC_Automation_TestSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-POC_Automation_TestSuite">
               </div> <!-- times-div-POC_Automation_TestSuite -->
             </div> <!-- times-div -->
@@ -226,7 +239,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
-              <span class="reporter-method-name">scrollTest</span>
+              <span class="reporter-method-name">returnWorkOrder</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
               </div> <!-- reporter-method-output-div -->
@@ -245,7 +258,7 @@ return data;
                 <br/>
                 <span class="ignored-method-name">launchInvalidWorkOrder</span>
                 <br/>
-                <span class="ignored-method-name">returnWorkOrder</span>
+                <span class="ignored-method-name">scrollTest</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -264,27 +277,29 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">beforeClass</span>
-                <span class="method-start">39759 ms</span>
+                <span class="method-start">27409 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">beforeMethod(public void mwo.tests.LoginTests.scrollTest() throws java.lang.Exception)</span>
-                <span class="method-start">39770 ms</span>
+                <span class="method-name">beforeMethod(public void mwo.tests.LoginTests.returnWorkOrder() throws java.lang.Exception)</span>
+                <span class="method-start">27418 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">scrollTest</span>
-                <span class="method-start">51100 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">returnWorkOrder</span>
+                <span class="method-start">70112 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">afterMethod([TestResult name=scrollTest status=SUCCESS method=LoginTests.scrollTest()[pri:1, instance:mwo.tests....)</span>
-                <span class="method-start">152126 ms</span>
+                <span class="method-name">afterMethod([TestResult name=returnWorkOrder status=FAILURE method=LoginTests.returnWorkOrder()[pri:2, instance:...)</span>
+                <span class="method-start">223005 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">157316 ms</span>
+                <span class="method-start">230903 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">157389 ms</span>
+                <span class="method-start">230993 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -2,10 +2,9 @@ package mwo.tests;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import com.appium.testng.TestBase;
-
+import mwo.apiresponses.PLSQLQueries;
 import mwo.pages.AdditionalDetailsPage;
 import mwo.pages.CustomerSignaturePage;
 import mwo.pages.HomePage;
@@ -21,10 +20,12 @@ import mwo.pages.WOActionsPage;
 import mwo.pages.WOPreviewPage;
 import mwo.pages.WOReportInPage;
 import mwo.pages.WorkOrdersPage;
-import com.appium.base.AppiumSingleTest;
+import mwo.apiresponses.PLSQLQueries;
+
 
 import com.appium.base.JSonParser;
 import com.appium.base.PageBase;
+
 
 public class LoginTests extends TestBase {
 
@@ -49,10 +50,11 @@ public class LoginTests extends TestBase {
 
   }
 
-  @Test(groups = {"Final.Regression.Android", "Final.Regression.iOS"}, priority=2)
+  //@Test(groups = {"Final.Regression.Android", "Final.Regression.iOS"}, priority=2)
+  @Test(groups = {"Testing"}, priority=2)
   public void returnWorkOrder() throws Exception {
+	String order_numer = PLSQLQueries.createWorkOrder();
 	JSONArray cred = JSonParser.getCredentials("Credentials");
-	//JSONObject obj = new JSONObject(cred.toString());
 	JSONObject obj =  cred.getJSONObject(0);
     loginPage = new LoginPage(driver);
     System.out.println("launched mwo application");
@@ -63,10 +65,8 @@ public class LoginTests extends TestBase {
     homePage = syncPage.syncVerification();
     homePage.homeScreenVerification();
     woPage = homePage.launchWorkOrders();
-    //previewPage = woPage.launchWOScreen(obj.getString("order_number"));
-    previewPage = woPage.searchForWorkOrder(obj.getString("order_number"));
+    previewPage = woPage.searchForWorkOrder(order_numer);
     previewPage.acceptWorkOrder();
-    //previewPage = additionalDetailsPage.changeDirectiveText();
     previewPage.changeStatustoOnRoute();
     previewPage.changeStatustoOnSite();
     actionsPage = previewPage.launchWOActionsScreen();
@@ -122,7 +122,7 @@ public class LoginTests extends TestBase {
     previewPage = woPage.searchForWorkOrder(obj.getString("wrong_order"));
   }
   
-  @Test(groups = {"Testing"}, priority=1)
+  @Test(groups = {"Final.regression"}, priority=1)
   public void scrollTest() throws Exception {
 	JSONArray cred = JSonParser.getCredentials("Credentials");
 	//JSONObject obj = new JSONObject(cred.toString());
@@ -147,6 +147,5 @@ public class LoginTests extends TestBase {
     reportInPage = actionsPage.navigatetoReportInScreen();
     reportWebViewPage = reportInPage.navigateToWOReportScreen();
     customerSignaturePage = reportWebViewPage.navigateToCustomerSignatureScreen();
-    customerSignaturePage.drawSignOntheCanvas();
   }
 }

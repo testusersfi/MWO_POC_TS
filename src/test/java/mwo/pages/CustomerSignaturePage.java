@@ -2,32 +2,29 @@ package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Reporter;
+
 
 import com.appium.base.BasePageObjects;
 import com.appium.base.PageBase;
 import com.appium.base.Utils;
-import com.relevantcodes.extentreports.ExtentReports;
+
 import com.relevantcodes.extentreports.LogStatus;
 import com.appium.reports.ExtentTestManager;
 
 import mwo.pageobjects.CustomerSignaturePageObjects;
-import mwo.pageobjects.HomePageObjects;
-import mwo.pageobjects.WOReportInPageObjects;
-import mwo.pageobjects.WorkOrdersPageObjects;
+
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
+
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
+
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
 
 public class CustomerSignaturePage extends PageBase {
 	CustomerSignaturePageObjects customerSignaturePageObjects = new CustomerSignaturePageObjects();
+	PageBase basePage;
 
 	public CustomerSignaturePage(AppiumDriver<MobileElement> driver) {
 		super(driver);
@@ -68,19 +65,11 @@ public class CustomerSignaturePage extends PageBase {
 				// customerSignaturePageObjects.SIGN_BY_TEXT_FIELD.sendKeys(username);
 				enterTextUsingadb(username);
 				hideKeyboardBasedOnPlatform();
+				basePage.drawSignOntheCanvas(customerSignaturePageObjects.SIGNATURE_AREA);
 				ExtentTestManager.getTest().log(LogStatus.PASS, "CustomerSignature Page > Customer Signature is entered");
 			}
 		} else {
 			Utils.log("Customer signature screen is not displayed");
 		}
-	}
-	
-	public void drawSignOntheCanvas() {
-	    TouchAction builder = new TouchAction(driver);
-	    
-	    //TouchAction drawAction = builder.moveTo(customerSignaturePageObjects.SIGNATURE_AREA,400,1100).perform().moveTo(540, 1300) // 2nd points (x1,y1)
-	    //          .release();
-	    TouchAction drawAction = builder.longPress(customerSignaturePageObjects.SIGNATURE_AREA).moveTo(200, 200).moveTo(250, 250).release().perform();
-	    drawAction.perform();
 	}
 }

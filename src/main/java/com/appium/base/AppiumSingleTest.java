@@ -65,13 +65,12 @@ public class AppiumSingleTest {
         Utils.PROPERTIES.getProperty("ANDROID_APP_ACTIVITY"));
     capabilities.setCapability("autoAcceptAlerts", true);
     capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
-    capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
+    capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
 
-
-/*    File classpathRoot = new File(System.getProperty("user.dir"));
+    File classpathRoot = new File(System.getProperty("user.dir"));
     File app = new File(Utils.PROPERTIES.getProperty("ANDROID_APP_PATH"));
     capabilities.setCapability(MobileCapabilityType.APP, Utils.PROPERTIES.getProperty("ANDROID_APP_PATH"));
-    Utils.log("----APK Absolute Path: " + app.getAbsolutePath());*/
+    Utils.log("----APK Absolute Path: " + app.getAbsolutePath());
     
     
     driver =
