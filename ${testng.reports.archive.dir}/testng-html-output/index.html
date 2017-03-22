@@ -101,7 +101,7 @@
                     <div class="method-list-content failed suite-POC_Automation_TestSuite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.LoginTests" hash-for-method="returnWorkOrder">returnWorkOrder</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.SyncTests" hash-for-method="syncInterruption">syncInterruption</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-POC_Automation_TestSuite -->
@@ -119,25 +119,31 @@
           <div class="suite-POC_Automation_TestSuite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">mwo.tests.LoginTests</span>
+              <span class="class-name">mwo.tests.SyncTests</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="returnWorkOrder">
-                  </a> <!-- returnWorkOrder -->
-                  <span class="method-name">returnWorkOrder</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Timed out after 30 seconds waiting for visibility of all []
+                  <a name="syncInterruption">
+                  </a> <!-- syncInterruption -->
+                  <span class="method-name">syncInterruption</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: Locator map: 
+- native content: &quot;By.xpath: //android.widget.TextView[@resource-id=&apos;com.ifsworld.mworkorderapps9:id/sync__datatype&apos; and contains(@text, &apos;Sync Ended&apos;)]&quot; 
+- html content: &quot;by id or name &quot;SYNC_COMPLETED_MESSAGE&quot;&quot;
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b&apos;, time: &apos;2016-03-15 16:57:40&apos;
-System info: host: &apos;BDC7-L-1Z7XLV1&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_121&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{appPackage=com.ifsworld.mworkorderapps9, app=./binaries/MobileWorkOrder_PRE_DEL.apk, networkConnectionEnabled=true, warnings={}, appWaitPackage=com.ifsworld.mworkorderapps9, databaseEnabled=false, version=, deviceName=701014be, fullReset=true, platform=ANDROID, deviceUDID=701014be, appActivity=com.ifsworld.mworkorder.LauncherActivity, desired={appPackage=com.ifsworld.mworkorderapps9, app=./binaries/MobileWorkOrder_PRE_DEL.apk, appWaitPackage=com.ifsworld.mworkorderapps9, version=, deviceName=701014be, fullReset=true, platform=ANDROID, appActivity=com.ifsworld.mworkorder.LauncherActivity, platformVersion=5.0.1, automationName=Appium, browserName=android, takesScreenshot=true, platformName=Android, autoAcceptAlerts=true}, platformVersion=5.0.1, webStorageEnabled=false, locationContextEnabled=false, automationName=Appium, takesScreenshot=true, browserName=android, javascriptEnabled=true, platformName=Android, autoAcceptAlerts=true}]
-Session ID: 1f4c8a9c-ab68-41ae-8dbe-5f73f85ec6cb
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:261)
-	at com.appium.base.PageBase.waitForElementsVisible(Unknown Source)
-	at mwo.pages.LoginPage.validLoginFunctionality(Unknown Source)
-	at mwo.tests.LoginTests.returnWorkOrder(Unknown Source)
+System info: host: &apos;BDC7-L-1Z7XLV1&apos;, ip: &apos;10.239.225.203&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_121&apos;
+Driver info: driver.version: unknown
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:97)
+	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.intercept(InterceptorOfASingleElement.java:52)
+	at io.appium.java_client.android.AndroidElement$$EnhancerByCGLIB$$86ac5fef.toString(&lt;generated&gt;)
+	at java.lang.String.valueOf(String.java:2994)
+	at java.lang.StringBuilder.append(StringBuilder.java:131)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.toString(ExpectedConditions.java:293)
+	at org.openqa.selenium.support.ui.ExpectedConditions$48.toString(ExpectedConditions.java:1481)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:257)
+	at mwo.pages.SyncMonitorPage.syncCompletedVerification(Unknown Source)
+	at mwo.tests.SyncTests.syncInterruption(Unknown Source)
 ... Removed 23 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -170,7 +176,7 @@ Session ID: 1f4c8a9c-ab68-41ae-8dbe-5f73f85ec6cb
       &lt;/run&gt;
     &lt;/groups&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;mwo.tests.LoginTests&quot;/&gt;
+      &lt;class name=&quot;mwo.tests.SyncTests&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- POC_Automation_TestSuite --&gt;
@@ -198,7 +204,7 @@ Session ID: 1f4c8a9c-ab68-41ae-8dbe-5f73f85ec6cb
               <span class="test-group-name">Testing</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">returnWorkOrder</span>
+                <span class="method-in-group-name">syncInterruption</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -220,14 +226,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'returnWorkOrder')
-data.setCell(0, 2, 'mwo.tests.LoginTests')
-data.setCell(0, 3, 152891);
+data.setCell(0, 1, 'syncInterruption')
+data.setCell(0, 2, 'mwo.tests.SyncTests')
+data.setCell(0, 3, 783785);
 window.suiteTableData['POC_Automation_TestSuite']= { tableData: data, tableDiv: 'times-div-POC_Automation_TestSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 13 minutes</span>
               <div id="times-div-POC_Automation_TestSuite">
               </div> <!-- times-div-POC_Automation_TestSuite -->
             </div> <!-- times-div -->
@@ -239,7 +245,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
-              <span class="reporter-method-name">returnWorkOrder</span>
+              <span class="reporter-method-name">syncInterruption</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
               </div> <!-- reporter-method-output-div -->
@@ -248,17 +254,13 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-POC_Automation_TestSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">3 ignored methods</span>
+            <span class="header-content">1 ignored method</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">mwo.tests.LoginTests</span>
+              <span class="ignored-class-name">mwo.tests.SyncTests</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">inValidLoginTest</span>
-                <br/>
-                <span class="ignored-method-name">launchInvalidWorkOrder</span>
-                <br/>
-                <span class="ignored-method-name">scrollTest</span>
+                <span class="ignored-method-name">syncVerification</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -270,36 +272,36 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">mwo.tests.LoginTests</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">mwo.tests.SyncTests</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">beforeSuite</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">beforeClass</span>
-                <span class="method-start">27409 ms</span>
+                <span class="method-start">25738 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">beforeMethod(public void mwo.tests.LoginTests.returnWorkOrder() throws java.lang.Exception)</span>
-                <span class="method-start">27418 ms</span>
+                <span class="method-name">beforeMethod(public void mwo.tests.SyncTests.syncInterruption() throws java.lang.Exception)</span>
+                <span class="method-start">25749 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">returnWorkOrder</span>
-                <span class="method-start">70112 ms</span>
+                <span class="method-name">syncInterruption</span>
+                <span class="method-start">49052 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">afterMethod([TestResult name=returnWorkOrder status=FAILURE method=LoginTests.returnWorkOrder()[pri:2, instance:...)</span>
-                <span class="method-start">223005 ms</span>
+                <span class="method-name">afterMethod([TestResult name=syncInterruption status=FAILURE method=SyncTests.syncInterruption()[pri:1, instance...)</span>
+                <span class="method-start">832838 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">230903 ms</span>
+                <span class="method-start">838590 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">230993 ms</span>
+                <span class="method-start">838698 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

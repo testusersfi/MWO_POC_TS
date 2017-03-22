@@ -12,7 +12,6 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class MySignaturePage extends PageBase {
-	PageBase basePage;
 	MySignaturePageObjects mySignaturePageObjects = new MySignaturePageObjects();
 
 	public MySignaturePage(AppiumDriver<MobileElement> driver) {
@@ -38,7 +37,7 @@ public class MySignaturePage extends PageBase {
 
 	public ReportWebViewPage collectSelfSignature() {
 		mySignatureScreenUIVerification();
-		basePage.drawSignOntheCanvas(mySignaturePageObjects.SIGNATURE_AREA);
+		drawSignOntheCanvas(mySignaturePageObjects.SIGNATURE_AREA);
 		mySignaturePageObjects.NEXT_BUTTON.click();
 		ExtentTestManager.getTest().log(LogStatus.PASS,
 				"MySignature Page > Report web view Page is displayed on click of Next button");

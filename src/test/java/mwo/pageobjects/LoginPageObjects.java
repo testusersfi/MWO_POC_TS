@@ -52,7 +52,7 @@ public class LoginPageObjects {
   @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'android:id/message') and contains(@text,'Activating')]")
   public List<WebElement> ACTIVATING_MESSAGE;
   
-  @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'android:id/message') and contains(@text,'Initializing …')]")
+  @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'android:id/message') and contains(@text,'Initializing')]")
   public List<WebElement> SYNC_INITIALIZING_MESSAGE;
   
   @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'android:id/message') and contains(@text,'You have entered an invalid username and/or password')]")

@@ -26,30 +26,6 @@ public class TimeReportPageObjects {
 
 }
 
-	/*Quantity_edittext: 	//android.widget.EditText[contains(@resource-id,'com.ifsworld.mworkorderapps9:id/mobile_time_report__hours')]
 
-	Next_button: //android.widget.LinearLayout/android.widget.Button[contains(@resource-id,'com.ifsworld.mworkorderapps9:id/next')]
-
-	Add_button:
-	// android.widget.LinearLayout/android.widget.Button[contains(@resource-id,
-	// 'com.ifsworld.mworkorderapps9:id/save’)]
-
-	Report in screen:
-
-	Report in title:
-	// android.widget.ScrollView/android.widget.LinearLayout/android.widget.TextView[@text='Report
-	// In']
-
-	Report In Description:
-	// android.widget.ScrollView/android.widget.LinearLayout/android.widget.TextView[contains(@text,
-	// 'Please Report In your Work Order')]
-
-	SAVE_BUTTON (ids)
-	  com.ifsworld.mworkorderapps9:id/save
-
-	  Next_button:
-	  com.ifsworld.mworkorderapps9:id/next
 
   
-}
-*/

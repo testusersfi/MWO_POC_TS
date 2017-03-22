@@ -18,10 +18,18 @@ public class HomePageObjects {
   @iOSFindBy(xpath = "//UIASTATICTEXT[@text='More options'")
   public MobileElement MORE_OPTIONS_ICON;
   
-  @AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/tasks') and contains(@text, 'Work Orders')]")
+  //@AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/tasks') and contains(@text, 'Work Orders')]")
+  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/tasks")
   public MobileElement WORK_ORDERS_BUTTON;
   
-  @AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/sync') and contains(@text, 'Sync')]")
+  //@AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/sync') and contains(@text, 'Sync')]")
+  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/sync")
   public MobileElement SYNC_BUTTON;
+  
+  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/newWorkOrder")
+  public MobileElement NEW_WORK_ORDER_BUTTON;
+  
+  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/admin")
+  public MobileElement ADMIN_BUTTON;
 
 }

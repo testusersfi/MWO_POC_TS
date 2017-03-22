@@ -12,9 +12,11 @@ import mwo.pages.LoginPage;
 import mwo.pages.MaterialListPage;
 import mwo.pages.MaterialsPage;
 import mwo.pages.MySignaturePage;
+import mwo.pages.OnHoldPage;
 import mwo.pages.ReportWebViewPage;
 import mwo.pages.ReturnsPage;
 import mwo.pages.SelectPartPage;
+import mwo.pages.SuspendPage;
 import mwo.pages.SyncMonitorPage;
 import mwo.pages.WOActionsPage;
 import mwo.pages.WOPreviewPage;
@@ -25,6 +27,7 @@ import mwo.apiresponses.PLSQLQueries;
 
 import com.appium.base.JSonParser;
 import com.appium.base.PageBase;
+import com.appium.base.Utils;
 
 
 public class LoginTests extends TestBase {
@@ -44,16 +47,18 @@ public class LoginTests extends TestBase {
   CustomerSignaturePage	customerSignaturePage;
   MySignaturePage mySignaturePage;
   AdditionalDetailsPage additionalDetailsPage;
-  PageBase basePage;
+  SuspendPage wo_suspendPage;
+  OnHoldPage wo_onholdPage;
   
   public LoginTests() throws Exception {
 
   }
 
-  //@Test(groups = {"Final.Regression.Android", "Final.Regression.iOS"}, priority=2)
-  @Test(groups = {"Testing"}, priority=2)
+  @Test(groups = {"Final.Regression.Android", "Final.Regression.iOS"}, priority=2)
+ //@Test(groups = {"Testing"}, priority=2)
   public void returnWorkOrder() throws Exception {
-	String order_numer = PLSQLQueries.createWorkOrder();
+	final String order_number = PLSQLQueries.createWorkOrder();
+	Utils.log("WO created using PLSQL" + order_number);
 	JSONArray cred = JSonParser.getCredentials("Credentials");
 	JSONObject obj =  cred.getJSONObject(0);
     loginPage = new LoginPage(driver);
@@ -65,7 +70,7 @@ public class LoginTests extends TestBase {
     homePage = syncPage.syncVerification();
     homePage.homeScreenVerification();
     woPage = homePage.launchWorkOrders();
-    previewPage = woPage.searchForWorkOrder(order_numer);
+    previewPage = woPage.searchForWorkOrder(order_number);
     previewPage.acceptWorkOrder();
     previewPage.changeStatustoOnRoute();
     previewPage.changeStatustoOnSite();
@@ -88,8 +93,8 @@ public class LoginTests extends TestBase {
     reportWebViewPage = mySignaturePage.collectSelfSignature();
     woPage = reportWebViewPage.completeWorkOrder();
     homePage = woPage.navigateBackToHomeScreen();
-    syncPage = homePage.initiateManualSync();
-    syncPage.syncVerification();
+    //syncPage = homePage.initiateManualSync();
+    //syncPage.syncVerification();
   }
   
   
@@ -121,31 +126,57 @@ public class LoginTests extends TestBase {
     //previewPage = woPage.launchWOScreen(obj.getString("order_number"));
     previewPage = woPage.searchForWorkOrder(obj.getString("wrong_order"));
   }
-  
-  @Test(groups = {"Final.regression"}, priority=1)
-  public void scrollTest() throws Exception {
-	JSONArray cred = JSonParser.getCredentials("Credentials");
-	//JSONObject obj = new JSONObject(cred.toString());
-	JSONObject obj =  cred.getJSONObject(0);
-    loginPage = new LoginPage(driver);
-    System.out.println("launched mwo application");
-    loginPage.AppLaunchVerification();
-    loginPage.validLoginFunctionality(obj.getString("username"), obj.getString("password"), obj.getString("serviceurl"), obj.getString("systemid"));
-    syncPage = new SyncMonitorPage(driver);
-    syncPage.syncMonitorScreenVerification();
-    homePage = syncPage.syncVerification();
-    //homePage.homeScreenVerification();
-    woPage = homePage.launchWorkOrders();
-    previewPage = woPage.searchForWorkOrder(obj.getString("order_number"));
-    //previewPage.acceptWorkOrder();
-    //previewPage = additionalDetailsPage.changeDirectiveText();
-   // previewPage.changeStatustoOnRoute();
-   // previewPage.changeStatustoOnSite();
-    //previewPage.contactDetailsVerification();
-    //previewPage.objectDetailsVerfication();
-    actionsPage = previewPage.launchWOActionsScreen();
-    reportInPage = actionsPage.navigatetoReportInScreen();
-    reportWebViewPage = reportInPage.navigateToWOReportScreen();
-    customerSignaturePage = reportWebViewPage.navigateToCustomerSignatureScreen();
-  }
+	
+	//@Test(groups = { "Final.Regression.Android", "Final.Regression.iOS" }, priority = 2)
+	@Test(groups = {"Testing"}, priority=2)
+	public void suspendWorkOrder() throws Exception {
+		final String order_number = "714";
+		Utils.log("WO created using PLSQL" + order_number);
+		JSONArray cred = JSonParser.getCredentials("Credentials");
+		JSONObject obj =  cred.getJSONObject(0);
+	    loginPage = new LoginPage(driver);
+	    System.out.println("launched mwo application");
+	    loginPage.AppLaunchVerification();
+	    loginPage.validLoginFunctionality(obj.getString("username"), obj.getString("password"), obj.getString("serviceurl"), obj.getString("systemid"));
+	    syncPage = new SyncMonitorPage(driver);
+	    syncPage.syncMonitorScreenVerification();
+	    homePage = syncPage.syncVerification();
+	    homePage.homeScreenVerification();
+	    woPage = homePage.launchWorkOrders();
+	    previewPage = woPage.searchForWorkOrder(order_number);
+	    //previewPage.acceptWorkOrder();
+	    //previewPage.changeStatustoOnRoute();
+	    //previewPage.changeStatustoOnSite();
+	    wo_suspendPage = previewPage.changeStatusToSuspend();
+	    previewPage = wo_suspendPage.suspendWorkOrder();
+	    previewPage.rejectButtonVerificationPostSuspendWO();
+	    wo_onholdPage = previewPage.changeWOStatusToReject();
+	    previewPage = wo_onholdPage.rejectWorkOrder();
+	}
+	
+	
+	@Test(groups = { "Final.Regression.Android", "Final.Regression.iOS" }, priority = 2)
+	//@Test(groups = {"Testing"}, priority=2)
+	public void onHoldWorkOrder() throws Exception {
+		final String order_number = "713";
+		Utils.log("WO created using PLSQL" + order_number);
+		JSONArray cred = JSonParser.getCredentials("Credentials");
+		JSONObject obj =  cred.getJSONObject(0);
+	    loginPage = new LoginPage(driver);
+	    System.out.println("launched mwo application");
+	    loginPage.AppLaunchVerification();
+	    loginPage.validLoginFunctionality(obj.getString("username"), obj.getString("password"), obj.getString("serviceurl"), obj.getString("systemid"));
+	    syncPage = new SyncMonitorPage(driver);
+	    syncPage.syncMonitorScreenVerification();
+	    homePage = syncPage.syncVerification();
+	    homePage.homeScreenVerification();
+	    woPage = homePage.launchWorkOrders();
+	    previewPage = woPage.searchForWorkOrder(order_number);
+	    previewPage.acceptWorkOrder();
+	    previewPage.changeStatustoOnRoute();
+	    previewPage.changeStatustoOnSite();
+	    wo_onholdPage= previewPage.changeStatusToOnHold();
+	    previewPage = wo_onholdPage.onHoldWO();
+	    previewPage.buttonOffHoldVerification();
+	}
 }

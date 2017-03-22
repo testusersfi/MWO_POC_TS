@@ -24,7 +24,6 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class CustomerSignaturePage extends PageBase {
 	CustomerSignaturePageObjects customerSignaturePageObjects = new CustomerSignaturePageObjects();
-	PageBase basePage;
 
 	public CustomerSignaturePage(AppiumDriver<MobileElement> driver) {
 		super(driver);
@@ -65,7 +64,7 @@ public class CustomerSignaturePage extends PageBase {
 				// customerSignaturePageObjects.SIGN_BY_TEXT_FIELD.sendKeys(username);
 				enterTextUsingadb(username);
 				hideKeyboardBasedOnPlatform();
-				basePage.drawSignOntheCanvas(customerSignaturePageObjects.SIGNATURE_AREA);
+				drawSignOntheCanvas(customerSignaturePageObjects.SIGNATURE_AREA);
 				ExtentTestManager.getTest().log(LogStatus.PASS, "CustomerSignature Page > Customer Signature is entered");
 			}
 		} else {

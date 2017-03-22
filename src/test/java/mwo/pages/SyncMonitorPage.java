@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import com.appium.base.PageBase;
 import com.appium.base.Utils;
@@ -35,12 +37,42 @@ public class SyncMonitorPage extends PageBase {
 
 	public HomePage syncVerification() {
 		syncMonitorScreenVerification();
-		if (isElementPresent(syncPageObjects.SYNC_FAILURE_ERROR)) {
+		if (isElementPresent(syncPageObjects.SYNC_FAILED_MESSAGE)) {
+			Utils.captureInterimScreenshot(driver);
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Sync is failed");
 		} else {
 			ExtentTestManager.getTest().log(LogStatus.PASS, "Sync is successful and MWO Homescreen is displayed");
 		}
 		return new HomePage(driver);
 	}
+	
+	public void syncWaitTime() {
+		threadSleep(40000);
+	}
 
+	public void syncFailureVerification() {
+		if (isElementPresent(syncPageObjects.SYNC_FAILED_MESSAGE)) {
+			Utils.captureInterimScreenshot(driver);
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Sync is failed");
+		} else {
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Sync is completed before switching off internet");
+		}
+	}
+	
+	public void syncCompletedVerification() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.and(ExpectedConditions.invisibilityOfAllElements(syncPageObjects.SYNC_FAILURE_ERROR),
+				ExpectedConditions.visibilityOf(syncPageObjects.SYNC_COMPLETED_MESSAGE)));
+		if (isElementPresent(syncPageObjects.SYNC_COMPLETED_MESSAGE)) {
+			Utils.captureInterimScreenshot(driver);
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Sync is Ended");
+		} else {
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Sync failed due to some issues");
+		}
+	}
+	
+	public HomePage navigateBacktoHomePage() {
+		goBack();
+		return new HomePage(driver);
+	}
 }

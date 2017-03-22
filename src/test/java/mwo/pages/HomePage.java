@@ -26,7 +26,7 @@ public class HomePage extends PageBase {
   }
 
   public void homeScreenVerification() {
-	  waitForPageToLoad(driver, homePageObjects.SCREEN_HEADER);
+	  waitForPageToLoad(driver, homePageObjects.WORK_ORDERS_BUTTON);
 	  Utils.captureInterimScreenshot(driver);
 	  //assert homePageObjects.MORE_OPTIONS_ICON.isDisplayed();
 	  assert homePageObjects.SYSTEM_MENU_HELP.isDisplayed();
@@ -38,7 +38,6 @@ public class HomePage extends PageBase {
 		  assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
 		  //homeScreenVerification();
 		  homePageObjects.WORK_ORDERS_BUTTON.click();
-		 // driver.
 		  ExtentTestManager.getTest().log(LogStatus.PASS, "Work Orders exists with this account and Work Oders button is clicked");
 	  } else {
 		  ExtentTestManager.getTest().log(LogStatus.FAIL, "No workorders exists with this account");
@@ -48,12 +47,40 @@ public class HomePage extends PageBase {
   
   public SyncMonitorPage initiateManualSync() {
 	  assert homePageObjects.SYNC_BUTTON.isDisplayed();
-	  threadSleep(3000);
+	  threadSleep(2000);
 	  homePageObjects.SYNC_BUTTON.click();
 	  return new SyncMonitorPage(driver);
   }
   
-  public void enableairplane() {
+  public NewWOPage newWorkOrder() {
+	  if(homePageObjects.NEW_WORK_ORDER_BUTTON.isEnabled()) {
+		  assert homePageObjects.NEW_WORK_ORDER_BUTTON.isDisplayed();
+		  homePageObjects.NEW_WORK_ORDER_BUTTON.click();
+		  ExtentTestManager.getTest().log(LogStatus.PASS, "Create New Work Orders with this account and New Work Orders button is clicked");
+	  } else {
+		  ExtentTestManager.getTest().log(LogStatus.FAIL, "Cannot create new Work Order");
+	  }
+	return new NewWOPage(driver);	  
+  }
+  
+  public AdminPage launchAdminScreen() {
+	  if(isElementPresent(homePageObjects.ADMIN_BUTTON)) {
+		  assert homePageObjects.ADMIN_BUTTON.isDisplayed();
+		  homePageObjects.ADMIN_BUTTON.click();
+		  ExtentTestManager.getTest().log(LogStatus.PASS, "Admin button is present and button is clicked");
+		  return new AdminPage(driver);
+	  } else {
+		  ExtentTestManager.getTest().log(LogStatus.FAIL, "Admin button is not visible in the home screen");
+	  }
+	  return null;
+  }
+  
+  public void switchOffInternet() {
 	  turnOnAirPlaneMode();
+  }
+  
+  public void switchOnInternet() {
+	  turnOffAirplaneMode();
+	  threadSleep(10000);
   }
 }

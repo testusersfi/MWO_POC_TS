@@ -3,10 +3,18 @@ package com.appium.base;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
+
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -25,8 +33,6 @@ public class Utils {
   public static String RUNNER_MODE = "standalone";
   public static String APPNAME = "MWO";
 
-  // These are not used for now, as it is inherited from
-  // AppiumTestDistribution
   public static String APPIUM_SERVER_ADDRESS = "127.0.0.1";
   public static String EXTENT_REPORTS_DIRNAME;
   public static String EXTENT_REPORTS_FILENAME;
@@ -283,5 +289,46 @@ public synchronized static ExtentReports getExtentReports() {
       return com.report.factory.ExtentManager.getInstance();
     }
   }
+
+
+public void writeDataToExcel(String excelsheetname, Map<String, Object[]> myData) {
+	XSSFWorkbook workbook = new XSSFWorkbook();
+	XSSFSheet sheet = workbook.createSheet(excelsheetname);
+	Map<String, Object[]> data = myData;
+	//data.put("1", new Object[] {"S.NO", "WO_NUMBER", "DIRECTIVE_TEXT"});
+	//data.put("2", new Object[] {"1", "A11111", "testing testing"});
+	//Iterate over data and write to sheet
+			Set<String> keyset = data.keySet();
+			int rownum = 0;
+			for (String key : keyset)
+			{
+			    Row row = sheet.createRow(rownum++);
+			    Object [] objArr = data.get(key);
+			    int cellnum = 0;
+			    for (Object obj : objArr)
+			    {
+			       Cell cell = row.createCell(cellnum++);
+			       if(obj instanceof String)
+			            cell.setCellValue((String)obj);
+			        else if(obj instanceof Integer)
+			            cell.setCellValue((Integer)obj);
+			    }
+			}
+			try 
+			{
+				//Write the workbook in file system
+			    FileOutputStream out = new FileOutputStream(new File("C:\\Users\\srinivas.bavirisetti\\workspace\\mwo_app_tests\\WorkOrders_Prepared_From_Mobile.xlsx"));
+			    
+			    workbook.write(out);
+			    out.close();			    
+			    System.out.println("WorkOrders_Prepared_From_Mobile.xlsx written successfully on disk.");
+			     
+			} 
+			catch (Exception e) 
+			{
+			    e.printStackTrace();
+			}
+		}
+
 
 }

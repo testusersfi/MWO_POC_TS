@@ -22,6 +22,7 @@ import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class WOPreviewPage extends PageBase {
+	OnHoldPage wo_onholdPage;
 	WOPreviewPageObjects previewPageObjects = new WOPreviewPageObjects();
 
 	public WOPreviewPage(AppiumDriver<MobileElement> driver) {
@@ -44,56 +45,74 @@ public class WOPreviewPage extends PageBase {
 	}
 	
 	public void acceptWorkOrder() {
-		waitForPageToLoad(driver, previewPageObjects.SCREEN_HEADER);
-		Utils.log("WorkOrder Preview screen is shown");
-		try {
-		if(isElementPresent(previewPageObjects.ACCEPT_BUTTON)) {
-			previewPageObjects.ACCEPT_BUTTON.click();
-			ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page > Accepted the Work Order ");
-		} else {
-			Utils.log("Work Order is Started or Accepted Already");
-		}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		changeWOStatus(previewPageObjects.ACCEPT_BUTTON);
 	}
 
 	public void changeStatustoOnRoute() {
-		waitForPageToLoad(driver, previewPageObjects.ONROUTE_BUTTON);
-		try {
-		if(isElementPresent(previewPageObjects.ONROUTE_BUTTON)) {
-			previewPageObjects.ONROUTE_BUTTON.click();
-			ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page > Changed Work Order Status to On Route");
-		} else {
-			Utils.log("Work Order status is updated to OnRoute already");
-		}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		changeWOStatus(previewPageObjects.ONROUTE_BUTTON);
 	}
 	
 	public void changeStatustoOnSite() {
-		waitForPageToLoad(driver, previewPageObjects.ONSITE_BUTTON);
+		changeWOStatus(previewPageObjects.ONSITE_BUTTON);
+	}
+	
+	
+	public OnHoldPage changeStatusToOnHold() {
+		changeStatusToOnHoldorReject(previewPageObjects.ONHOLD_BUTTON);
+		return new OnHoldPage(driver);
+	}
+	
+	public OnHoldPage changeWOStatusToReject() {
+		changeStatusToOnHoldorReject(previewPageObjects.REJECT_BUTTON);
+		return new OnHoldPage(driver);
+	}
+	
+	public OnHoldPage changeStatusToOnHoldorReject(MobileElement status_button_element) {
+		waitForPageToLoad(driver, status_button_element);
 		try {
-		if(isElementPresent(previewPageObjects.ONSITE_BUTTON)) {
-			previewPageObjects.ONSITE_BUTTON.click();
-			ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page > Changed Work Order Status to On Site");
-		} else {
-			Utils.log("Work Order status is updated to ONSITE already");
-		}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+			if(isElementPresent(status_button_element)) {
+				status_button_element.click();
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page >"+ status_button_element.toString() + "is displayed on click of On Hold/Reject button");
+				return new OnHoldPage(driver);
+			} else {
+				Utils.log(status_button_element.toString() + "button is not displayed");
+			}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		return null;
+	}
+	
+	public SuspendPage changeStatusToSuspend() {
+		waitForPageToLoad(driver, previewPageObjects.SUSPEND_BUTTON);
+		try {
+			if(isElementPresent(previewPageObjects.SUSPEND_BUTTON)) {
+				previewPageObjects.SUSPEND_BUTTON.click();
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page > Suspend or Abort screen is displayed on click of Suspend button ");
+				return new SuspendPage(driver);
+			} else {
+				Utils.log("Suspend button is not displayed");
+			}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		return null;
 	}
 	
 	public AdditionalDetailsPage launchAdditionalDetailsScreen() {
 		previewPageObjects.WO_DETAILS_BUTTON.click();
 		return new AdditionalDetailsPage(driver);
 	}
+	public void rejectButtonVerificationPostSuspendWO() {
+		assert previewPageObjects.REJECT_BUTTON.isDisplayed();
+		previewScreenVerification();
+	}
 	
+	public void buttonOffHoldVerification() {
+		assert previewPageObjects.OFFHOLD_BUTTON.isDisplayed();
+	}
 	public void contactDetailsVerification() throws InterruptedException {
 		//String contact_button = previewPageObjects.WO_CONTACT_DETAILS_BUTTON.toString();
 		scrolltoText(previewPageObjects.WO_CONTACT_DETAILS_BUTTON);
@@ -102,5 +121,21 @@ public class WOPreviewPage extends PageBase {
 	public void objectDetailsVerfication() throws InterruptedException {
 		//String contact_button = previewPageObjects.WO_OBJECT_DETAILS_BUTTON.toString();
 		scrolltoText(previewPageObjects.WO_OBJECT_DETAILS_BUTTON);
+	}
+	
+	public void changeWOStatus(MobileElement status_button) {
+		waitForPageToLoad(driver, status_button);
+		try {
+			if(isElementPresent(status_button)) {
+				status_button.click();
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Preview Page > Suspend or Abort screen is displayed on click of Suspend button ");
+				
+			} else {
+				Utils.log(status_button.toString() + "is not displayed");
+			}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
 	}
 }

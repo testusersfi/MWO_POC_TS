@@ -8,9 +8,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.exec.CommandLine;
-import org.apache.commons.exec.DefaultExecuteResultHandler;
-import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteException;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -25,7 +22,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
-import io.appium.java_client.service.local.flags.AndroidServerFlag;
+
 
 public class AppiumSingleTest {
   protected AppiumDriver<MobileElement> driver = null;
@@ -35,9 +32,10 @@ public class AppiumSingleTest {
   public static String APPIUM_SERVER_ADDRESS = "127.0.0.1";
 
   public AppiumDriver<MobileElement> initializeDriver() throws IOException {
-
+  //public AppiumDriver<MobileElement> initializeDriver(String dName, String dVersion, String URL) throws IOException {
     if (Utils.PROPERTIES.getProperty("platform").equals("android")) {
-      androidSetup();
+    	androidSetup();
+    	//androidSetup(dName, dVersion, URL);
     } else if (Utils.PROPERTIES.getProperty("platform").equals("ios")) {
       iosSetup();
     } else {
@@ -51,10 +49,13 @@ public class AppiumSingleTest {
   }
 
   public void androidSetup() throws MalformedURLException {
+  //public void androidSetup(String dName,String dVersion, String appium_URL) throws MalformedURLException {
     DesiredCapabilities capabilities = DesiredCapabilities.android();
     capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.APPIUM);
     capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, Utils.PROPERTIES.getProperty("DEVICE_ID"));
+    //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, dName);
     capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "android");
+    //capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, dVersion);
     capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, Utils.PROPERTIES.getProperty("ANDROID_PLATFORM_VERSION"));
     //capabilities.setCapability("browserName", "");
     capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,
@@ -65,7 +66,8 @@ public class AppiumSingleTest {
         Utils.PROPERTIES.getProperty("ANDROID_APP_ACTIVITY"));
     capabilities.setCapability("autoAcceptAlerts", true);
     capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
-    capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
+    //capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
+    capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
 
     File classpathRoot = new File(System.getProperty("user.dir"));
     File app = new File(Utils.PROPERTIES.getProperty("ANDROID_APP_PATH"));
@@ -73,8 +75,8 @@ public class AppiumSingleTest {
     Utils.log("----APK Absolute Path: " + app.getAbsolutePath());
     
     
-    driver =
-        new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+    driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+    //driver = new AndroidDriver<MobileElement>(new URL(appium_URL), capabilities);
   }
 
   public void iosSetup() throws MalformedURLException {

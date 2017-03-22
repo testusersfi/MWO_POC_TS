@@ -20,10 +20,10 @@ public class WorkOrdersPageObjects {
   @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/item_lookup_barcode")
   public MobileElement WORKORDER_BARCODE;
   
-  @AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/action_button1’) and @text='ACCEPT']")
+  @AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/action_button1') and @text='ACCEPT']")
   public MobileElement ACCEPT_BUTTON;
   
-  @AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/action_button1’) and @text='ONROUTE']")
+  @AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/action_button1') and @text='ONROUTE']")
   public MobileElement ONROUTE_BUTTON;
   
   @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/next")

@@ -24,5 +24,20 @@ public class BasePageObjects {
 
 	@AndroidFindBy(id = "android:id/title")
 	public static MobileElement SCAN_BAR_CODE_LONGPRESS;
+	
+	@AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/search_criteria")
+	public static MobileElement SEARCH_TEXT_FIELD;
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'android:id/button2') and contains(@text, 'Return')]")
+	public static MobileElement COMPLETE_WO_ALERT_BUTTON_RETURN;
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'android:id/button1') and contains(@text, 'Keep')]")
+	public static MobileElement COMPLETE_WO_ALERT_BUTTON_KEEP;
+	
+	@AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/reason_description")
+	public static MobileElement REASON_DESCRIPTION;
+	
+	public static String REASON_CODE_ANDROID = "//android.widget.ListView/android.widget.CheckedTextView[contains(@resource-id, 'android:id/text1') and @text = \"%s\"]";
+	
 
 }

@@ -16,6 +16,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import com.annotation.values.Description;
 import com.appium.base.AppiumSingleTest;
@@ -51,6 +52,7 @@ public class TestBaseStandalone extends AppiumSingleTest {
    * Before suite
    * 
    */
+  
   @BeforeSuite(alwaysRun = true)
   public void beforeSuite() throws Exception {
 	    extent = Utils.initialiseExtentReports();
@@ -91,12 +93,14 @@ public class TestBaseStandalone extends AppiumSingleTest {
 	    Utils.getExtentReports().endTest(parent);
 	    Utils.getExtentReports().flush();
   }
-
+ // @Parameters({ "deviceName_","platformVersion_", "URL_" })
   @BeforeMethod(alwaysRun = true)
   public void beforeMethod(Method caller) throws Exception {
+  	//public void beforeMethod(Method caller, String deviceName_, String platformVersion_, String URL_) throws Exception {
 	  child = Utils.startExtentTest(caller.getName(), caller.getClass().getSimpleName());
 	    // From beforeClass
-	    driver = super.initializeDriver();
+	   // driver = super.initializeDriver(deviceName_,platformVersion_,URL_);
+	  driver = super.initializeDriver();
 	    Utils.log(">> " + caller.getDeclaringClass().getSimpleName() + "." + caller.getName());
   }
 

@@ -5,36 +5,18 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.invoke.SwitchPoint;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
 import java.text.DateFormat;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
-import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.UnsupportedCommandException;
@@ -52,10 +34,9 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.report.factory.ExtentTestManager;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.AppiumSetting;
-import io.appium.java_client.MobileBy;
+
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.SwipeElementDirection;
+
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDeviceActionShortcuts;
 import io.appium.java_client.android.AndroidDriver;
@@ -72,6 +53,10 @@ public abstract class PageBase {
 	public PageBase(AppiumDriver<MobileElement> driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), basePageObjects);
+	}
+
+	public enum SWIPE_V_OPTIONS {
+		UP, DOWN
 	}
 
 	public static WebElement getElementWhenVisible(WebDriver driver, MobileElement mobileElement) {
@@ -130,7 +115,7 @@ public abstract class PageBase {
 
 	public static boolean waitForPageToLoad(AppiumDriver<MobileElement> driver, WebElement mobileElement) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 50);
 			wait.until(ExpectedConditions.visibilityOf(mobileElement));
 			return true;
 		} catch (TimeoutException | NoSuchElementException e) {
@@ -145,7 +130,7 @@ public abstract class PageBase {
 	}
 
 	public static void waitForElementsVisible(AppiumDriver<MobileElement> driver, List<WebElement> mobileElement) {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 50);
 		wait.until(ExpectedConditions.visibilityOfAllElements(mobileElement));
 	}
 
@@ -285,11 +270,11 @@ public abstract class PageBase {
 	}
 
 	public void enterTextUsingadb(String text) {
-		String[] adb_command = { "/bin/sh", "-c", "adb shell input text \"" + text + "\"" };
+		String[] adb_command = { "sh", "-c", "adb shell input text \"" + text + "\"" };
 		executeadbcommand(adb_command);
 	}
 
-	public static void swipingVertical(MobileElement element) throws InterruptedException {
+	public void swipingVertical(MobileElement element,  SWIPE_V_OPTIONS swipeOptions) throws InterruptedException {
 		// Get the size of screen.
 		
 		int offset = 1;
@@ -299,7 +284,7 @@ public abstract class PageBase {
         int starty = location.getY() + size.getHeight() + offset;
         int y1 = (int) 0.8*starty;
         
-        driver.swipe(p.getX(), y1, p.getX(), location.getY(), 4000);
+        //driver.swipe(p.getX(), y1, p.getX(), location.getY(), 4000);
 /*		System.out.println(size);
 
 		// Find swipe start and end point from screen's with and height.
@@ -314,7 +299,15 @@ public abstract class PageBase {
 
 		// Swipe from Top to Bottom.
 		driver.swipe(startx, endy, startx, starty, 3000);*/
-		Thread.sleep(2000);
+        
+        if (swipeOptions == SWIPE_V_OPTIONS.UP) {
+            // Swipe Up from Bottom to Top.
+        	driver.swipe(p.getX(), y1, p.getX(), location.getY(), 4000);
+          } else {
+            // Swipe Down from Top to Bottom.
+        	  driver.swipe(p.getX(), location.getY(), p.getX(), y1, 3000);
+          }
+       threadSleep(2000);
 	}
 
 	public void dismissScanBarCodealert() {
@@ -326,25 +319,25 @@ public abstract class PageBase {
 	}
 
 	public void turnOnAirPlaneMode() {
-		String[] put_ap_on = { "/bin/sh", "-c", "adb shell settings put global airplane_mode_on 1" };
+		String[] put_ap_on = { "sh", "-c", "adb shell settings put global airplane_mode_on 1" };
 		executeadbcommand(put_ap_on);
 		threadSleep(4000);
-		String[] turnon_Airplane = { "/bin/sh", "-c",
+		String[] turnon_Airplane = { "sh", "-c",
 				"adb shell am broadcast -a android.intent.action.AIRPLANE_MODE --ez state true" };
 		executeadbcommand(turnon_Airplane);
 	}
 
 	public void turnOffAirplaneMode() {
-		String[] access_Settings = { "/bin/sh", "-c", "adb shell settings put global airplane_mode_on 0" };
+		String[] access_Settings = { "sh", "-c", "adb shell settings put global airplane_mode_on 0" };
 		executeadbcommand(access_Settings);
 		threadSleep(4000);
-		String[] turnoff_Airplane = { "/bin/sh", "-c",
+		String[] turnoff_Airplane = { "sh", "-c",
 				"adb shell am broadcast -a android.intent.action.AIRPLANE_MODE --ez state false" };
 		executeadbcommand(turnoff_Airplane);
 	}
 
-	//public static void scrollListView(String direction, String value) throws InterruptedException {
-	public static void scrollListView(String value) throws InterruptedException {
+
+	public void scrollListView(String value) throws InterruptedException {
 
       boolean searchElement = true;
       String lastTxtElement = null;
@@ -358,10 +351,10 @@ public abstract class PageBase {
           elements = driver.findElementsById("com.ifsworld.mworkorderapps9:id/work_order__wo_no");
           lastTxtElement = elements.get(elements.size() - 1).getText();
           
-          if(isElementPresent(By.xpath(value))) {
+/*          if(isElementPresent(By.xpath(value))) {
         	  driver.findElementByXPath(value).isDisplayed();
               searchElement = false; 
-          } else {
+          } else {*/
           //compare element's text between last index of previous swipe and last index of current swipe to detect end of scrolling
           if (lastTxtElement.equals(previousTxtElement)){
               throw new NoSuchElementException("stopperElement not found");
@@ -380,14 +373,14 @@ public abstract class PageBase {
               //swipe up|down when desired element is not displayed
         	  Utils.log("entered exception loop");
         	  MobileElement element1 = driver.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout");
-        	  swipingVertical(element1);
+        	  swipingVertical(element1, SWIPE_V_OPTIONS.UP);
         	 
           }
-          }
+          
       }
 	}
 
-	public static void scrolltoText(MobileElement element_to_verify) throws InterruptedException {
+	public void scrolltoText(MobileElement element_to_verify) throws InterruptedException {
 		for (int i = 0; i < 4; i++) {
 			boolean searchElement = true;
 			if (searchElement) {
@@ -403,45 +396,54 @@ public abstract class PageBase {
 					Utils.log("entered exception loop");
 					MobileElement element1 = driver
 							.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout");
-					swipingVertical(element1);
+					swipingVertical(element1, SWIPE_V_OPTIONS.UP);
 
 				}
 			}
 		}
 	}
 	
-	public void turnOffSSLValidation() throws NoSuchAlgorithmException, KeyManagementException {
-		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-			@Override
-			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				return null;
-			}
 
-			@Override
-			public void checkClientTrusted(X509Certificate[] certs, String authType) {
-			}
-
-			@Override
-			public void checkServerTrusted(X509Certificate[] certs, String authType) {
-			}
-		} };
-
-		// Install the all-trusting trust manager
-		SSLContext sc = SSLContext.getInstance("SSL");
-		sc.init(null, trustAllCerts, new java.security.SecureRandom());
-		HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-
-		// Create all-trusting host name verifier
-		HostnameVerifier allHostsValid = new HostnameVerifier() {
-			public boolean verify(String hostname, SSLSession session) {
-				return true;
-			}
-		};
-	}
-
-	public void drawSignOntheCanvas(WebElement element) {
+	public static void drawSignOntheCanvas(WebElement element) {
 	    TouchAction builder = new TouchAction(driver);
 	    TouchAction drawAction = builder.longPress(element).moveTo(200, 200).moveTo(250, 250).release().perform();
 	    drawAction.perform();
+	}
+	
+	public void enterTextinCommentsFeild(MobileElement comments_field, String comments) {
+		if(isElementPresent(comments_field)) {
+			comments_field.click();
+			//enterTextUsingadb(comments);
+			comments_field.sendKeys(comments);
+			hideKeyboardBasedOnPlatform();
+		} else {
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Comments field is not available");
+		}
+	}
+	
+	public String findRelativeXpath(AppiumDriver<MobileElement> driver, String page_object , String reason_type) {
+		String result = null;
+		if (Utils.getDriverPlatform(driver).equals("AndroidDriver")) {
+			result = String.format(page_object, reason_type);
+			return result;
+		} else if (Utils.getDriverPlatform(driver).equals("IOSDriver")) {
+			result = String.format(page_object, reason_type);
+		}
+		Utils.log("Final XPath: " + result);
+		return null;
+		
+	}
+	
+	public void networkCheck() {
+		
+		//boolean connected = false;
+		//ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+		 //   if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED || 
+		   //         connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+		        //we are connected to a network
+		        //connected = true;
+		    //}
+		    //else
+		      //  connected = false;
 	}
 }

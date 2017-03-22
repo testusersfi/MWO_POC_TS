@@ -69,10 +69,15 @@ public class WorkOrdersPage extends PageBase {
 	}
 
 	public WOPreviewPage searchForWorkOrder(String wo_number) throws InterruptedException  {
-		String number_Xpath = findWorkOrder(driver, wo_number);
-		Utils.log("Entered scroll view method");
-		scrollListView(number_Xpath);
-		driver.findElement(By.xpath(number_Xpath)).click();
+	//	if(wo_number != null) {
+			String number_Xpath = findWorkOrder(driver, wo_number);
+			Utils.log("Entered scroll view method");
+			scrollListView(number_Xpath);
+			driver.findElement(By.xpath(number_Xpath)).click();
+			ExtentTestManager.getTest().log(LogStatus.PASS, "Work Order is present and cliked on the relevant workorder");
+		//} else {
+		//	ExtentTestManager.getTest().log(LogStatus.FAIL, "Work order number is empty");
+		//}
 		return new WOPreviewPage(driver);
 	}
 

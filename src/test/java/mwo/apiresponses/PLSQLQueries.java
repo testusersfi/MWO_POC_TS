@@ -24,13 +24,16 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import com.appium.base.PageBase;
+import com.appium.reports.ExtentTestManager;
+import com.relevantcodes.extentreports.LogStatus;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 
 public class PLSQLQueries {
-	private static String wo_number = null;
+	public static String wo_number;
+	public static Record bindVars;
 	static PageBase basePage;
 	public static String createWorkOrder() throws FileNotFoundException, KeyManagementException, NoSuchAlgorithmException {
 		TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
@@ -69,8 +72,8 @@ public class PLSQLQueries {
 			System.out.println("Creating ServerConnection...");
 			// Server2 srvConn = new Server2();
 			FndServerConnection srvConn = new FndServerConnection();
-			srvConn.setConnectionString("http://ldnpvgbm1036-2.corpnet.ifsworld.com:61080");
-
+			//srvConn.setConnectionString("http://ldnpvgbm1036-2.corpnet.ifsworld.com:61080");
+			srvConn.setConnectionString("http://ldnaccngsdev1:58080");
 			srvConn.setCredentials("ACC_UKUSER", "ACC_UKUSER");
 
 			if (srvConn.connect()) {
@@ -78,7 +81,7 @@ public class PLSQLQueries {
 				// PlsqlSelectCommand cmd = new PlsqlSelectCommand(srvConn.srv,
 				// "SELECT mch_code FROM IFSAPP.maintenance_object_lov WHERE
 				// connection_type = 'EQUIPMENT'");
-				String content = new Scanner(new File("C:\\Users\\srinivas.bavirisetti\\workspace\\pl_sql_scripts\\create_wo.sql")).useDelimiter("\\Z").next();
+				String content = new Scanner(new File("C:\\Users\\srinivas.bavirisetti\\workspace\\mwo_app_tests\\pl_sql_scripts\\create_wo.sql")).useDelimiter("\\Z").next();
 				System.out.println(content);
 				PlsqlCommand command = new PlsqlCommand(srvConn.srv, content);
 				Record bindVars = command.getBindVariables();
@@ -86,14 +89,21 @@ public class PLSQLQueries {
 				command.execute();
 				String wo_number = bindVars.find("out_result").getString();
 				System.out.println("work_order_number:"+ wo_number);
-				
+				if(wo_number != null) {
+				ExtentTestManager.getTest().log(LogStatus.PASS, " created Work order number using PLSQL script and work order number is "+ wo_number);
+				return bindVars.find("out_result").getString();
+				} else {
+					ExtentTestManager.getTest().log(LogStatus.FAIL, "creating work order is failed");
+				}
+				srvConn.disconnect();		
 			} else
 				System.out.println("ServerConnection Not Created.");
+				ExtentTestManager.getTest().log(LogStatus.FAIL, "Failed to establish the database connection");
 		} catch (APException err) {
 			err.printStackTrace(System.out);
 		}
 		
-		return wo_number;
+		return null;
 	}
-
+	
 }
