@@ -10,7 +10,6 @@ import com.appium.base.PageBase;
 import com.appium.base.Utils;
 import com.relevantcodes.extentreports.LogStatus;
 import com.appium.reports.ExtentTestManager;
-
 import mwo.pageobjects.LoginPageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -24,6 +23,7 @@ public class LoginPage extends PageBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), loginPageObjects);
 	}
 
+	//Login with valid user credentials
 	public void validLoginFunctionality(String Email, String Pwd, String Serviceurl, String Systemid)
 			throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -56,7 +56,7 @@ public class LoginPage extends PageBase {
 		}
 
 	}
-
+	// Verify the activation alert UI and confirm the alert
 	public void activationAlertDisplay(String Email, String Password) {
 		if (isElementPresent(loginPageObjects.LOGIN_ALERT_MESSAGE)) {
 			assert loginPageObjects.LOGIN_ALERT_TITLE.isDisplayed();
@@ -83,7 +83,7 @@ public class LoginPage extends PageBase {
 		Utils.log("Login Page " + element + "Textfield is Clicked and entered");
 		hideKeyboardBasedOnPlatform();
 	}
-
+	// Login with invalid credentials
 	public void invalidLoginVerification(String Email, String Pwd, String Serviceurl, String Systemid)
 			throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -117,6 +117,7 @@ public class LoginPage extends PageBase {
 
 	}
 
+	// Verify the app launch 
 	public void AppLaunchVerification() {
 		LoginPage loginPage = new LoginPage(driver);
 		if (Utils.getDriverPlatform(driver).equals("AndroidDriver")) {

@@ -9,7 +9,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -39,7 +38,6 @@ import io.appium.java_client.MobileElement;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDeviceActionShortcuts;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -65,12 +63,12 @@ public abstract class PageBase {
 		el = wait.until(ExpectedConditions.visibilityOf(mobileElement));
 		return el;
 	}
-	
+
 	public static void getCurrentDate() {
-		 DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		 Date date = new Date();
-		 String date1= dateFormat.format(date);
-		 System.out.println(date1);
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		Date date = new Date();
+		String date1 = dateFormat.format(date);
+		System.out.println(date1);
 	}
 
 	public static void waitUntilElementsAreInvisible(List<WebElement> mobileElement) {
@@ -212,36 +210,6 @@ public abstract class PageBase {
 		}
 	}
 
-	public void switchToWebView(String webViewName) {
-		driver.manage().timeouts().implicitlyWait(
-				Integer.parseInt(Utils.PROPERTIES.getProperty("IMPLICIT_WAIT_SECONDS")), TimeUnit.SECONDS);
-		threadSleep(15000);
-
-		Set<String> contextSet = driver.getContextHandles();
-		Utils.log("driver.getContextHandles() ==> " + contextSet);
-		Utils.log("count of contexts  => " + contextSet.toArray().length);
-		if (Utils.getDriverPlatform(driver).equals("AndroidDriver")) {
-			// We are in Android
-			for (String contextName : contextSet) {
-				if (contextName.contains(webViewName)) {
-					((AndroidDriver<MobileElement>) driver).context(contextName);
-					threadSleep(5000);
-					Utils.log("Android Context is set to ==> " + driver.getContext());
-					break;
-				}
-			}
-		} else if (Utils.getDriverPlatform(driver).equals("IOSDriver")) {
-			// We are in iOS
-			String tmpCtx = contextSet.toArray()[(contextSet.toArray().length - 1)].toString();
-			((IOSDriver<MobileElement>) driver)
-					.context(contextSet.toArray()[(contextSet.toArray().length - 1)].toString());
-			threadSleep(5000);
-			Utils.log("iOS Context is set to ==> " + driver.getContext());
-		}
-		Utils.log("Current URL ==> '" + driver.getCurrentUrl() + "'");
-		Utils.log("Page Source ==> <iframe src='" + driver.getCurrentUrl() + "' width='400' height='700'></iframe>");
-	}
-
 	public void switchToNativeView() {
 		driver.context("NATIVE_APP");
 	}
@@ -274,40 +242,40 @@ public abstract class PageBase {
 		executeadbcommand(adb_command);
 	}
 
-	public void swipingVertical(MobileElement element,  SWIPE_V_OPTIONS swipeOptions) throws InterruptedException {
+	public void swipingVertical(MobileElement element, SWIPE_V_OPTIONS swipeOptions) throws InterruptedException {
 		// Get the size of screen.
-		
+
 		int offset = 1;
-        Point p = element.getCenter();
-        Point location = element.getLocation();
-        Dimension size = element.getSize();
-        int starty = location.getY() + size.getHeight() + offset;
-        int y1 = (int) 0.8*starty;
-        
-        //driver.swipe(p.getX(), y1, p.getX(), location.getY(), 4000);
-/*		System.out.println(size);
+		Point p = element.getCenter();
+		Point location = element.getLocation();
+		Dimension size = element.getSize();
+		int starty = location.getY() + size.getHeight() + offset;
+		int y1 = (int) 0.8 * starty;
 
-		// Find swipe start and end point from screen's with and height.
-		// Find starty point which is at bottom side of screen.
-		int starty = (int) (size.height * 0.80);
-		// Find endy point which is at top side of screen.
-		int endy = (int) (size.height * 0.20);
-		// Find horizontal point where you wants to swipe. It is in middle of
-		// screen width.
-		int startx = size.width / 2;
-		System.out.println("starty = " + starty + " ,endy = " + endy + " , startx = " + startx);
+		// driver.swipe(p.getX(), y1, p.getX(), location.getY(), 4000);
+		/*
+		 * System.out.println(size);
+		 * 
+		 * // Find swipe start and end point from screen's with and height. //
+		 * Find starty point which is at bottom side of screen. int starty =
+		 * (int) (size.height * 0.80); // Find endy point which is at top side
+		 * of screen. int endy = (int) (size.height * 0.20); // Find horizontal
+		 * point where you wants to swipe. It is in middle of // screen width.
+		 * int startx = size.width / 2; System.out.println("starty = " + starty
+		 * + " ,endy = " + endy + " , startx = " + startx);
+		 * 
+		 * // Swipe from Top to Bottom. driver.swipe(startx, endy, startx,
+		 * starty, 3000);
+		 */
 
-		// Swipe from Top to Bottom.
-		driver.swipe(startx, endy, startx, starty, 3000);*/
-        
-        if (swipeOptions == SWIPE_V_OPTIONS.UP) {
-            // Swipe Up from Bottom to Top.
-        	driver.swipe(p.getX(), y1, p.getX(), location.getY(), 4000);
-          } else {
-            // Swipe Down from Top to Bottom.
-        	  driver.swipe(p.getX(), location.getY(), p.getX(), y1, 3000);
-          }
-       threadSleep(2000);
+		if (swipeOptions == SWIPE_V_OPTIONS.UP) {
+			// Swipe Up from Bottom to Top.
+			driver.swipe(p.getX(), y1, p.getX(), location.getY(), 4000);
+		} else {
+			// Swipe Down from Top to Bottom.
+			driver.swipe(p.getX(), location.getY(), p.getX(), y1, 3000);
+		}
+		threadSleep(2000);
 	}
 
 	public void dismissScanBarCodealert() {
@@ -336,48 +304,42 @@ public abstract class PageBase {
 		executeadbcommand(turnoff_Airplane);
 	}
 
-
 	public void scrollListView(String value) throws InterruptedException {
 
-      boolean searchElement = true;
-      String lastTxtElement = null;
-      String previousTxtElement;
-      List<MobileElement> elements;
+		boolean searchElement = true;
+		String lastTxtElement = null;
+		String previousTxtElement;
+		List<MobileElement> elements;
 
-      while(searchElement)
-      {
-          previousTxtElement = (lastTxtElement != null) ? lastTxtElement : "unset";
+		while (searchElement) {
+			previousTxtElement = (lastTxtElement != null) ? lastTxtElement : "unset";
 
-          elements = driver.findElementsById("com.ifsworld.mworkorderapps9:id/work_order__wo_no");
-          lastTxtElement = elements.get(elements.size() - 1).getText();
-          
-/*          if(isElementPresent(By.xpath(value))) {
-        	  driver.findElementByXPath(value).isDisplayed();
-              searchElement = false; 
-          } else {*/
-          //compare element's text between last index of previous swipe and last index of current swipe to detect end of scrolling
-          if (lastTxtElement.equals(previousTxtElement)){
-              throw new NoSuchElementException("stopperElement not found");
-          }
+			elements = driver.findElementsById("com.ifsworld.mworkorderapps9:id/work_order__wo_no");
+			lastTxtElement = elements.get(elements.size() - 1).getText();
 
-          try
-          {
-              //stop when desired element is displayed
-        	  Utils.log("entered try loop");
-              //driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().text(\"" + value + "\")")).isDisplayed();
-        	  driver.findElementByXPath(value);
-              searchElement = false;
-          }
-          catch (Exception e)
-          {
-              //swipe up|down when desired element is not displayed
-        	  Utils.log("entered exception loop");
-        	  MobileElement element1 = driver.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout");
-        	  swipingVertical(element1, SWIPE_V_OPTIONS.UP);
-        	 
-          }
-          
-      }
+			// compare element's text between last index of previous swipe and
+			// last index of current swipe to detect end of scrolling
+			if (lastTxtElement.equals(previousTxtElement)) {
+				throw new NoSuchElementException("stopperElement not found");
+			}
+
+			try {
+				// stop when desired element is displayed
+				Utils.log("entered try loop");
+				// driver.findElement(MobileBy.AndroidUIAutomator("new
+				// UiSelector().text(\"" + value + "\")")).isDisplayed();
+				driver.findElementByXPath(value);
+				searchElement = false;
+			} catch (Exception e) {
+				// swipe up|down when desired element is not displayed
+				Utils.log("entered exception loop");
+				MobileElement element1 = driver
+						.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout");
+				swipingVertical(element1, SWIPE_V_OPTIONS.UP);
+
+			}
+
+		}
 	}
 
 	public void scrolltoText(MobileElement element_to_verify) throws InterruptedException {
@@ -402,48 +364,35 @@ public abstract class PageBase {
 			}
 		}
 	}
-	
 
 	public static void drawSignOntheCanvas(WebElement element) {
-	    TouchAction builder = new TouchAction(driver);
-	    TouchAction drawAction = builder.longPress(element).moveTo(200, 200).moveTo(250, 250).release().perform();
-	    drawAction.perform();
+		TouchAction builder = new TouchAction(driver);
+		TouchAction drawAction = builder.longPress(element).moveTo(200, 200).moveTo(250, 250).release().perform();
+		drawAction.perform();
 	}
-	
+
 	public void enterTextinCommentsFeild(MobileElement comments_field, String comments) {
-		if(isElementPresent(comments_field)) {
+		if (isElementPresent(comments_field)) {
 			comments_field.click();
-			//enterTextUsingadb(comments);
+			// enterTextUsingadb(comments);
 			comments_field.sendKeys(comments);
 			hideKeyboardBasedOnPlatform();
 		} else {
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Comments field is not available");
 		}
 	}
-	
-	public String findRelativeXpath(AppiumDriver<MobileElement> driver, String page_object , String reason_type) {
+
+	public String findRelativeXpath(AppiumDriver<MobileElement> driver, String page_object, String verification_text) {
 		String result = null;
 		if (Utils.getDriverPlatform(driver).equals("AndroidDriver")) {
-			result = String.format(page_object, reason_type);
+			result = String.format(page_object, verification_text);
 			return result;
 		} else if (Utils.getDriverPlatform(driver).equals("IOSDriver")) {
-			result = String.format(page_object, reason_type);
+			result = String.format(page_object, verification_text);
 		}
 		Utils.log("Final XPath: " + result);
 		return null;
-		
+
 	}
-	
-	public void networkCheck() {
-		
-		//boolean connected = false;
-		//ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-		 //   if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED || 
-		   //         connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-		        //we are connected to a network
-		        //connected = true;
-		    //}
-		    //else
-		      //  connected = false;
-	}
+
 }

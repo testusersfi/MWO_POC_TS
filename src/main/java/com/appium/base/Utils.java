@@ -45,7 +45,7 @@ public class Utils {
   private static Properties appProperties;
   private static Properties localProperties;
   
-  // Extent
+  // Extent Reports
   private static ExtentReports extent;
 
   static {
@@ -140,7 +140,6 @@ public class Utils {
 
   public static void log(String logMessage) {
 	    System.out.println(logMessage);
-	    // Reporter.log(logMessage);
 	    if (ExtentTestManager.getTest() != null) {
 	      ExtentTestManager.getTest().log(LogStatus.INFO, logMessage + "<br>");
 	    }
@@ -191,9 +190,6 @@ public class Utils {
 
   public static String convertToRelativePath(String basePath, String filePath) {
     StringBuilder relativePath = null;
-
-    // Thanks to:
-    // http://mrpmorris.blogspot.com/2007/05/convert-absolute-path-to-relative-path.html
     basePath = basePath.replaceAll("\\\\", "/");
     filePath = filePath.replaceAll("\\\\", "/");
 
@@ -295,9 +291,6 @@ public void writeDataToExcel(String excelsheetname, Map<String, Object[]> myData
 	XSSFWorkbook workbook = new XSSFWorkbook();
 	XSSFSheet sheet = workbook.createSheet(excelsheetname);
 	Map<String, Object[]> data = myData;
-	//data.put("1", new Object[] {"S.NO", "WO_NUMBER", "DIRECTIVE_TEXT"});
-	//data.put("2", new Object[] {"1", "A11111", "testing testing"});
-	//Iterate over data and write to sheet
 			Set<String> keyset = data.keySet();
 			int rownum = 0;
 			for (String key : keyset)

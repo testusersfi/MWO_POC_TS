@@ -23,6 +23,7 @@ public class SuspendPage extends PageBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), suspendPageObjects);
 	}
 
+	// Verify the suspend work order screen UI
 	public void suspendScreenUIVerification() {
 		waitForPageToLoad(driver, suspendPageObjects.REASON_CODE_LABEL);
 		Utils.captureInterimScreenshot(driver);
@@ -37,6 +38,7 @@ public class SuspendPage extends PageBase {
 		assert suspendPageObjects.REASON_TITLE.isDisplayed();
 	}
 
+	// Suspend the work order
 	public WOPreviewPage suspendWorkOrder() {
 		waitForPageToLoad(driver, suspendPageObjects.REASON_CODE_LABEL);
 		selectReason("Sickness");
@@ -45,6 +47,7 @@ public class SuspendPage extends PageBase {
 		return new WOPreviewPage(driver);
 	}
 
+	// Select the reason for suspending the work order
 	public void selectReason(String reason_type) {
 		waitForPageToLoad(driver, suspendPageObjects.SPINNER_DEFAULT_TEXT);
 		suspendPageObjects.REASON_CODE_SPINNER.click();
@@ -57,21 +60,10 @@ public class SuspendPage extends PageBase {
 		}
 	}
 
+	// enter comments in Notes field
 	public void enterCommentsInNotesField() {
 		waitForPageToLoad(driver, suspendPageObjects.REASON_NOTES_LABEL);
-		/*
-		 * if(isElementPresent(suspendPageObjects.REASON_COMMENTS_FIELD)) {
-		 * suspendPageObjects.REASON_COMMENTS_FIELD.click();
-		 * //enterTextUsingadb(
-		 * "Suspending%sthe%swork%order%sdue%sto%healthissues");
-		 * suspendPageObjects.REASON_COMMENTS_FIELD.
-		 * sendKeys("Due to health issues suspending workorder");
-		 * hideKeyboardBasedOnPlatform(); } else {
-		 * ExtentTestManager.getTest().log(LogStatus.FAIL,
-		 * "Comments field is not available"); }
-		 */
 		enterTextinCommentsFeild(suspendPageObjects.REASON_COMMENTS_FIELD, "Due to health issues suspending workorder");
-
 	}
 
 }

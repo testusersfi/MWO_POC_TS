@@ -1,20 +1,13 @@
 package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.support.PageFactory;
-
-import com.appium.base.BasePageObjects;
 import com.appium.base.PageBase;
 import com.appium.base.Utils;
-import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 import com.appium.reports.ExtentTestManager;
-
 import mwo.pageobjects.MaterialsPageObjects;
-
 import io.appium.java_client.AppiumDriver;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
@@ -30,8 +23,6 @@ public class MaterialsPage extends PageBase {
 	public void materialsScreenVerification() {
 		waitForPageToLoad(driver, materialsPageObjects.PARTS_FROM_MY_STOCK_LABEL);
 		Utils.captureInterimScreenshot(driver);
-
-		//assert BasePageObjects.MORE_OPTIONS_ICON.isDisplayed();
 		assert materialsPageObjects.MATERIALS_TITLE.isDisplayed();
 		assert materialsPageObjects.MATERIALS_DESCRIPTION.isDisplayed();
 		assert materialsPageObjects.PARTS_FROM_MY_STOCK_DESCRIPTION.isDisplayed();
@@ -46,13 +37,16 @@ public class MaterialsPage extends PageBase {
 	public SelectPartPage launchPartsFromMyStock() {
 		materialsScreenVerification();
 		materialsPageObjects.PARTS_FROM_MY_STOCK_DESCRIPTION.click();
-		ExtentTestManager.getTest().log(LogStatus.PASS, "Materials Page > Parts from MyStock screen is displayed on click of Parts from my stock button");
+		ExtentTestManager.getTest().log(LogStatus.PASS,
+				"Materials Page > Parts from MyStock screen is displayed on click of Parts from my stock button");
 		return new SelectPartPage(driver);
 	}
 
+	// Navigate to MaterialList screen
 	public MaterialListPage launchMaterialListPage() {
 		materialsPageObjects.ISSUE_PLANNED_LABEL.click();
-		ExtentTestManager.getTest().log(LogStatus.PASS, "Materials Page > Material List screen is displayed on click of Issue Planned button");
+		ExtentTestManager.getTest().log(LogStatus.PASS,
+				"Materials Page > Material List screen is displayed on click of Issue Planned button");
 		return new MaterialListPage(driver);
 	}
 

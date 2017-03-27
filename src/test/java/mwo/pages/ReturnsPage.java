@@ -1,23 +1,15 @@
 package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.support.PageFactory;
-
 import com.appium.base.BasePageObjects;
 import com.appium.base.PageBase;
 import com.appium.base.Utils;
-import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 import com.appium.reports.ExtentTestManager;
-
 import mwo.pageobjects.WOReturnsPageObjects;
-
 import io.appium.java_client.AppiumDriver;
-
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class ReturnsPage extends PageBase {
@@ -28,7 +20,7 @@ public class ReturnsPage extends PageBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), returnsPageObjects);
 	}
 
-	// Verify the Materials screen UI
+	// Verify the return materials screen UI
 	public void ReturnsScreenUIVerification() {
 		waitForPageToLoad(driver, returnsPageObjects.QUANTITY_TO_RETURN_FIELD_LABEL);
 		Utils.captureInterimScreenshot(driver);
@@ -39,6 +31,7 @@ public class ReturnsPage extends PageBase {
 		assert returnsPageObjects.QUANTITY_TO_RETURN_TEXT_FIELD.isDisplayed();
 	}
 
+	// select parts to return
 	public SelectPartPage selectPartToReturn() {
 		assert returnsPageObjects.PART_NUMBER_TEXT_FIELD.isDisplayed();
 		returnsPageObjects.PART_NUMBER_TEXT_FIELD.click();
@@ -46,16 +39,17 @@ public class ReturnsPage extends PageBase {
 		return new SelectPartPage(driver);
 	}
 	
+	// Confirm the part returns and navigate to WO preview screen
 	public WOActionsPage confirmItemReturn() throws InterruptedException {
 		if(isElementPresent(returnsPageObjects.QUANTITY_TO_RETURN_TEXT_FIELD)) {
 			BasePageObjects.SAVE_BUTTON.click();
 			Thread.sleep(2000);
 			ReturnsScreenUIVerification();
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			goBack();
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			goBack();
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			goBack();
 		} else {
 			Utils.log("Return parts are not selected");

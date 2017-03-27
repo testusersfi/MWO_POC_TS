@@ -1,14 +1,8 @@
 package mwo.apiresponses;
 
 import ifs.fnd.ap.Record;
-import ifs.fnd.ap.RecordAttribute;
+
 import ifs.fnd.ap.PlsqlCommand;
-import ifs.fnd.ap.PlsqlCommandCollection;
-import ifs.fnd.ap.PlsqlSelectCommand;
-import ifs.fnd.ap.PlsqlBaseMethodCommand;
-import ifs.fnd.ap.PlsqlBaseMethodAction;
-import ifs.fnd.ap.PlsqlBaseMethodType;
-import ifs.fnd.ap.RecordCollection;
 import java.util.Properties;
 import java.util.Scanner;
 import ifs.fnd.ap.APException;
@@ -70,7 +64,6 @@ public class PLSQLQueries {
 
 			// Create a server Connection
 			System.out.println("Creating ServerConnection...");
-			// Server2 srvConn = new Server2();
 			FndServerConnection srvConn = new FndServerConnection();
 			//srvConn.setConnectionString("http://ldnpvgbm1036-2.corpnet.ifsworld.com:61080");
 			srvConn.setConnectionString("http://ldnaccngsdev1:58080");

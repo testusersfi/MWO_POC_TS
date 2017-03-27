@@ -4,7 +4,6 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONObject;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -72,20 +71,6 @@ public class TestBaseDistributed extends AppiumParallelTest {
     // killAppiumServer();
   }
 
-  public String getUserName() {
-    String[] crds = Thread.currentThread().getName().toString().split("_");
-    System.out.println(crds[1]);
-    JSONObject user = jSonParser.getUserData(Integer.parseInt(crds[1]));
-    //return user.get("userName").toString();
-    return null;
-  }
-
-  public String getPassword() {
-    String[] crds = Thread.currentThread().getName().toString().split("_");
-    JSONObject user = jSonParser.getUserData(Integer.parseInt(crds[1]));
-    //return user.get("password").toString();
-    return null;
-  }
 
   public synchronized DesiredCapabilities androidNative() {
     System.out.println("Setting Android Desired Capabilities:");

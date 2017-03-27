@@ -19,6 +19,7 @@ public class MySignaturePage extends PageBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), mySignaturePageObjects);
 	}
 
+	// Verify My signature screen UI
 	public void mySignatureScreenUIVerification() {
 		waitForPageToLoad(driver, mySignaturePageObjects.MY_SIGNATURE_TITLE);
 		Utils.captureInterimScreenshot(driver);
@@ -35,6 +36,7 @@ public class MySignaturePage extends PageBase {
 		assert mySignaturePageObjects.NEXT_BUTTON.isDisplayed();
 	}
 
+	// Collect self signature
 	public ReportWebViewPage collectSelfSignature() {
 		mySignatureScreenUIVerification();
 		drawSignOntheCanvas(mySignaturePageObjects.SIGNATURE_AREA);

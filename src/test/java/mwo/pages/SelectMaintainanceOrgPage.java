@@ -21,6 +21,7 @@ public class SelectMaintainanceOrgPage extends PageBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), maintOrgScreenPageObjects);
 	}
 
+	// Select Maintenance org for preparing new work order from mobile
 	public NewWOPage selectMaintOrg() {
 		hideKeyboardBasedOnPlatform();
 		waitForPageToLoad(driver, BasePageObjects.SEARCH_TEXT_FIELD);

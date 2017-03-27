@@ -1,26 +1,14 @@
 package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Reporter;
-
-import com.appium.base.BasePageObjects;
 import com.appium.base.PageBase;
 import com.appium.base.Utils;
-import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
 import com.appium.reports.ExtentTestManager;
-
-import mwo.pageobjects.HomePageObjects;
 import mwo.pageobjects.SelectPartScreenPageObjects;
-import mwo.pageobjects.WOActionPageObjects;
-import mwo.pageobjects.WorkOrdersPageObjects;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class SelectPartPage extends PageBase {
@@ -31,6 +19,7 @@ public class SelectPartPage extends PageBase {
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), selectPartScreenPageObjects);
 	}
 
+	// Select part serial number for the serialized part
 	public void selectSerialNumberScreenUI(String part_serial_number) {
 		hideKeyboardBasedOnPlatform();
 		if (isElementPresent(selectPartScreenPageObjects.SERIAL_NUMBER_SCREEN_HEADER)
@@ -45,6 +34,7 @@ public class SelectPartPage extends PageBase {
 		}
 	}
 
+	// Select part lot batch number for the serialized part
 	public void selectLotBatchScreenUI(String lot_batch_number) {
 		hideKeyboardBasedOnPlatform();
 		if (isElementPresent(selectPartScreenPageObjects.SELECT_LOT_BATCH_NUMBER_SCREEN_HEADER)
@@ -59,8 +49,8 @@ public class SelectPartPage extends PageBase {
 		}
 	}
 
+	// Issue parts for the selected work order
 	public MaterialsPage issueParts(String part_desc, String batch_number, String serial_number) {
-
 		waitForPageToLoad(driver, selectPartScreenPageObjects.SEARCH_TEXT_FIELD);
 		Utils.captureInterimScreenshot(driver);
 		assert selectPartScreenPageObjects.SELECT_PART_SCREEN_HEADER.isDisplayed();
@@ -78,10 +68,10 @@ public class SelectPartPage extends PageBase {
 		return new MaterialsPage(driver);
 	}
 	
+	// return the parts for the work order
 	public ReturnsPage returnParts(String part_desc, String batch_number, String serial_number) {
 		waitForPageToLoad(driver, selectPartScreenPageObjects.SEARCH_TEXT_FIELD);
 		Utils.captureInterimScreenshot(driver);
-		
 		assert selectPartScreenPageObjects.SELECT_PART_SCREEN_HEADER.isDisplayed();
 		hideKeyboardBasedOnPlatform();
 		if (isElementPresent(selectPartScreenPageObjects.PART_DESCRIPTION)) {
@@ -95,28 +85,25 @@ public class SelectPartPage extends PageBase {
 
 		return new ReturnsPage(driver);
 	}
-
+	
+	// Verify the Item details UI
 	public void singleItemUIVerification() {
 		assert selectPartScreenPageObjects.PART_DESCRIPTION.isDisplayed();
 		assert selectPartScreenPageObjects.PART_ITEM1.isDisplayed();
 		assert selectPartScreenPageObjects.PART_ITEM2.isDisplayed();
 	}
 
+	// Enter search text to select the relevant Part
 	public void enterSearchText(String search_text) {
 		Utils.log("Search Text field is clicked");
 		selectPartScreenPageObjects.SEARCH_TEXT_FIELD.click();
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		if(isElementPresent(BasePageObjects.SCAN_BAR_CODE_LONGPRESS)) {
-			goBack();
 		}
 		Utils.log("Enter the search text");
 		enterTextUsingadb(search_text);
-		//selectPartScreenPageObjects.SEARCH_TEXT_FIELD.sendKeys(search_text);
 		hideKeyboardBasedOnPlatform();
 	}
 }
