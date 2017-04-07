@@ -45,20 +45,20 @@ public class OnHoldPage extends PageBase {
 	}
 
 	// Update the WO status as OnHold
-	public WOPreviewPage onHoldWO() {
+	public WOPreviewPage onHoldWO(String reason_code) {
 		waitForPageToLoad(driver, onHoldPageObjects.REASON_CODE_LABEL);
 		onHoldScreenUI();
-		selectReasonCode("Test");
+		selectReasonCode(reason_code);
 		enterCommentsInNotesField();
 		BasePageObjects.SAVE_BUTTON.click();
 		return new WOPreviewPage(driver);
 	}
 
 	// Reject the work order
-	public WOPreviewPage rejectWorkOrder() {
+	public WOPreviewPage rejectWorkOrder(String reason_code) {
 		waitForPageToLoad(driver, onHoldPageObjects.REASON_CODE_LABEL);
 		rejectScreenUI();
-		selectReasonCode("Test30");
+		selectReasonCode(reason_code);
 		enterCommentsInNotesField();
 		BasePageObjects.SAVE_BUTTON.click();
 		return new WOPreviewPage(driver);
@@ -68,9 +68,12 @@ public class OnHoldPage extends PageBase {
 	public void selectReasonCode(String reason_type) {
 		waitForPageToLoad(driver, onHoldPageObjects.REASON_CODE_SPINNER);
 		onHoldPageObjects.REASON_CODE_SPINNER.click();
-		String reason_code_path = findRelativeXpath(driver, BasePageObjects.REASON_CODE_ANDROID, reason_type);
-		if (isElementPresent(By.xpath(reason_code_path))) {
-			driver.findElement(By.xpath(reason_code_path)).click();
+		// uncomment the below lines (72, 73, 75) for selecting the proper reason code
+		//String reason_code_path = findRelativeXpath(driver, BasePageObjects.REASON_CODE_ANDROID, reason_type);		
+		//if (isElementPresent(By.xpath(reason_code_path))) {
+		if(isElementPresent(BasePageObjects.REASON_CODE)) {
+			//driver.findElement(By.xpath(reason_code_path)).click();
+			BasePageObjects.REASON_CODE.click();
 			ExtentTestManager.getTest().log(LogStatus.PASS, "Given reason code is selected");
 		} else {
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Given reason code is not available in the list");

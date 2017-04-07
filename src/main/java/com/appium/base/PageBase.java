@@ -321,13 +321,12 @@ public abstract class PageBase {
 			// last index of current swipe to detect end of scrolling
 			if (lastTxtElement.equals(previousTxtElement)) {
 				throw new NoSuchElementException("stopperElement not found");
+				//ExtentTestManager.getTest().log(LogStatus.FAIL, "Given work order does not exist in the List");
 			}
 
 			try {
 				// stop when desired element is displayed
 				Utils.log("entered try loop");
-				// driver.findElement(MobileBy.AndroidUIAutomator("new
-				// UiSelector().text(\"" + value + "\")")).isDisplayed();
 				driver.findElementByXPath(value);
 				searchElement = false;
 			} catch (Exception e) {
@@ -336,6 +335,7 @@ public abstract class PageBase {
 				MobileElement element1 = driver
 						.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout");
 				swipingVertical(element1, SWIPE_V_OPTIONS.UP);
+				
 
 			}
 
@@ -373,9 +373,9 @@ public abstract class PageBase {
 
 	public void enterTextinCommentsFeild(MobileElement comments_field, String comments) {
 		if (isElementPresent(comments_field)) {
-			comments_field.click();
-			// enterTextUsingadb(comments);
-			comments_field.sendKeys(comments);
+			 comments_field.click();
+			 enterTextUsingadb(comments);
+			//comments_field.sendKeys(comments);
 			hideKeyboardBasedOnPlatform();
 		} else {
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Comments field is not available");

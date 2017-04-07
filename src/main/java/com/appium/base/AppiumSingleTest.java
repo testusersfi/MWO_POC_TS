@@ -60,7 +60,7 @@ public class AppiumSingleTest {
 				Utils.PROPERTIES.getProperty("ANDROID_APP_ACTIVITY"));
 		capabilities.setCapability("autoAcceptAlerts", true);
 		capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
-		// capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
+		//capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
 		capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
 
 		// File classpathRoot = new File(System.getProperty("user.dir"));

@@ -22,4 +22,9 @@ public class AdditionalDetailsPageObjects {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@resource-id = 'com.ifsworld.mworkorderapps9:id/mobile_separate_work_order__directive']")
 	public MobileElement DIRECTIVE_TEXTFIELD;
 
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'WO Site') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/mobile_separate_work_order__site__lbl')]")
+	public MobileElement WO_SITE_LABEL;
+	
+	@AndroidFindBy(xpath= "//android.widget.TextView[@resource-id = 'com.ifsworld.mworkorderapps9:id/mobile_separate_work_order__site']")
+	public MobileElement WO_SITE_TEXT; 
 }

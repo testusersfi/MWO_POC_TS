@@ -31,16 +31,11 @@ public class AdditionalDetailsPage extends PageBase {
 	}
 	
 	//This method can be used to change the directive description
-	public WOPreviewPage changeDirectiveText() {
+	public WOPreviewPage changeDirectiveText(String directive_description) {
 		additionalDetailsPageObjects.DIRECTIVE_TEXTFIELD.clear();
-		threadSleep(2000);
-		dismissScanBarCodealert();
 		additionalDetailsPageObjects.DIRECTIVE_TEXTFIELD.click();
-		threadSleep(2000);
-		dismissScanBarCodealert();
-		additionalDetailsPageObjects.DIRECTIVE_TEXTFIELD.sendKeys("Repair Electricity Meter");
-		threadSleep(2000);
-		dismissScanBarCodealert();
+		enterTextUsingadb(directive_description);
+		hideKeyboardBasedOnPlatform();
 		BasePageObjects.SAVE_BUTTON.click();
 		assert BasePageObjects.NEXT_BUTTON.isDisplayed();
 		BasePageObjects.NEXT_BUTTON.click();

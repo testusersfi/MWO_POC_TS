@@ -148,4 +148,15 @@ public class WOPreviewPage extends PageBase {
 			e.printStackTrace();
 		}
 	}
+
+	public ObjectDetailsPage launchObjectDetailsScreen() {
+		previewPageObjects.WO_OBJECT_DETAILS_BUTTON.click();
+		return new ObjectDetailsPage(driver);
+	}
+
+	public ContactDetailsPage launchContactDetailsScreen() {
+		previewPageObjects.WO_CONTACT_DETAILS_BUTTON.click();
+		return new ContactDetailsPage(driver);
+	}
+
 }

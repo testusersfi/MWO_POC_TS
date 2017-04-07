@@ -22,6 +22,9 @@ public class BasePageObjects {
 	@AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/save")
 	public static MobileElement SAVE_BUTTON;
 
+	@AndroidFindBy(xpath = "//android.widget.Button[@resource-id = 'com.ifsworld.mworkorderapps9:id/save' and @text = 'Add']")
+	public static MobileElement ADD_BUTTON;
+	
 	@AndroidFindBy(id = "android:id/title")
 	public static MobileElement SCAN_BAR_CODE_LONGPRESS;
 	
@@ -38,6 +41,9 @@ public class BasePageObjects {
 	public static MobileElement REASON_DESCRIPTION;
 	
 	public static String REASON_CODE_ANDROID = "//android.widget.ListView/android.widget.CheckedTextView[contains(@resource-id, 'android:id/text1') and @text = \"%s\"]";
+	
+	@AndroidFindBy(xpath = "//android.widget.ListView/android.widget.CheckedTextView[contains(@resource-id, 'android:id/text1') and @index = 1]")
+	public static MobileElement REASON_CODE;
 	
 
 }

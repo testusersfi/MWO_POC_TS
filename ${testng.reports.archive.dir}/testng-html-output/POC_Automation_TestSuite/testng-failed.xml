@@ -8,17 +8,17 @@
       </run>
     </groups>
     <classes>
-      <class name="mwo.tests.SyncTests">
+      <class name="mwo.tests.LoginTests">
         <methods>
           <include name="afterClass"/>
-          <include name="syncInterruption"/>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="afterMethod"/>
           <include name="beforeMethod"/>
           <include name="beforeClass"/>
+          <include name="onHoldWorkOrder"/>
         </methods>
-      </class> <!-- mwo.tests.SyncTests -->
+      </class> <!-- mwo.tests.LoginTests -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [POC_Automation_TestSuite] -->

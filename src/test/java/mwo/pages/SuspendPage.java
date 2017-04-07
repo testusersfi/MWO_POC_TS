@@ -41,7 +41,7 @@ public class SuspendPage extends PageBase {
 	// Suspend the work order
 	public WOPreviewPage suspendWorkOrder() {
 		waitForPageToLoad(driver, suspendPageObjects.REASON_CODE_LABEL);
-		selectReason("Sickness");
+		selectReason("Customer not contacted");
 		enterCommentsInNotesField();
 		BasePageObjects.SAVE_BUTTON.click();
 		return new WOPreviewPage(driver);
@@ -62,8 +62,12 @@ public class SuspendPage extends PageBase {
 
 	// enter comments in Notes field
 	public void enterCommentsInNotesField() {
-		waitForPageToLoad(driver, suspendPageObjects.REASON_NOTES_LABEL);
+		if (isElementPresent(suspendPageObjects.REASON_NOTES_LABEL)) {
 		enterTextinCommentsFeild(suspendPageObjects.REASON_COMMENTS_FIELD, "Due to health issues suspending workorder");
+		} else {
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Comments text field is not visible in the screen");
+		}
+		
 	}
 
 }

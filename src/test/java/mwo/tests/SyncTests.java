@@ -43,9 +43,9 @@ public class SyncTests extends TestBase {
 
 	}
 
-	@Test(groups = { "Final.Regression.Android", "Final.Regression.iOS" }, priority = 2)
+	@Test(groups = {"Final.Regression.Android"}, priority = 1)
 	// @Test(groups = { "Testing" }, priority = 1)
-	public void syncVerification() throws Exception {
+	public void offlineToOnlineSyncVerification() throws Exception {
 		Map<String, Object[]> data = new TreeMap<String, Object[]>();
 		data.put("1", new Object[] { "S.NO", "WO_NUMBER", "DIRECTIVE_TEXT" });
 		JSONArray cred = JSonParser.getCredentials("Credentials");
@@ -80,9 +80,8 @@ public class SyncTests extends TestBase {
 		syncPage.syncWaitTime();
 	}
 
-	// @Test(groups = { "Final.Regression.Android", "Final.Regression.iOS" },
-	// priority = 2)
-	@Test(groups = { "Testing" }, priority = 1)
+	@Test(groups = { "Final.Regression.Android"}, priority = 2)
+	//@Test(groups = { "Testing" }, priority = 2)
 	public void syncInterruption() throws Exception {
 		// Load the Test Data
 		Map<String, Object[]> data = new TreeMap<String, Object[]>();
@@ -93,19 +92,14 @@ public class SyncTests extends TestBase {
 		loginPage = new LoginPage(driver);
 		System.out.println("launched mwo application");
 		loginPage.AppLaunchVerification();
-		// loginPage.validLoginFunctionality(obj.getString("username"),
-		// obj.getString("password"),
-		// obj.getString("serviceurl"), obj.getString("systemid"));
-
-		loginPage.validLoginFunctionality("ACC_USER1", "ACC_USER1", obj.getString("serviceurl"),
-				obj.getString("systemid"));
+		loginPage.validLoginFunctionality(obj.getString("username"), obj.getString("password"), obj.getString("serviceurl"), obj.getString("systemid"));
 		syncPage = new SyncMonitorPage(driver);
 		syncPage.syncMonitorScreenVerification();
 		homePage = syncPage.syncVerification();
 		// Disable the Internet, since sync will be initiated on every Save
 		homePage.switchOffInternet();
 		// Create multiple work orders
-		for (int i = 1; i <= 15; i++) {
+		for (int i = 1; i <= 25; i++) {
 			newWOPage = homePage.newWorkOrder();
 			String wo_number = newWOPage.extractWONumber();
 			ExtentTestManager.getTest().log(LogStatus.PASS, "System originating id: " + wo_number);

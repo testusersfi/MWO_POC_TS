@@ -53,6 +53,7 @@ public class ReturnsPage extends PageBase {
 			goBack();
 		} else {
 			Utils.log("Return parts are not selected");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Return parts are not associated with the user");
 		}
 		return new WOActionsPage(driver);
 	}

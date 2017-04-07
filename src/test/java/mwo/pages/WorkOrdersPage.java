@@ -35,13 +35,7 @@ public class WorkOrdersPage extends PageBase {
 		// String number_Xpath = findWorkOrder(driver, wo_number);
 		String number_Xpath = findRelativeXpath(driver, woPageObjects.WORKORDER_NUMBER, wo_number);
 		Utils.log("Entered scroll view method");
-		try {
-			scrollListView(number_Xpath);
-		} catch (Exception e) {
-			if (e.getMessage().equalsIgnoreCase("NoSuchElementException")) {
-				ExtentTestManager.getTest().log(LogStatus.FAIL, "Work Order is not not available in the List");
-			}
-		}
+		scrollListView(number_Xpath);
 		driver.findElement(By.xpath(number_Xpath)).click();
 		ExtentTestManager.getTest().log(LogStatus.PASS, "Work Order is present and cliked on the relevant workorder");
 		return new WOPreviewPage(driver);
