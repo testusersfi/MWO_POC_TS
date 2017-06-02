@@ -55,13 +55,13 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>7/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Mar 22 17:14:23 IST 2017</td>
+<td>Started on:</td><td>Fri Jun 02 19:21:33 IST 2017</td>
 </tr>
-<tr><td>Total time:</td><td>812 seconds (812931 ms)</td>
+<tr><td>Total time:</td><td>1795 seconds (1795143 ms)</td>
 </tr><tr>
-<td>Included groups:</td><td>Testing </td>
+<td>Included groups:</td><td>Final.All Final.Regression.Android </td>
 </tr><tr>
 <td>Excluded groups:</td><td></td>
 </tr>
@@ -75,49 +75,41 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='mwo.tests.SyncTests.syncInterruption()'><b>syncInterruption</b><br>Test class: mwo.tests.SyncTests<br/>
-<a href="#Output-1342346098" onClick='toggleBox("Output-1342346098", this, "Show output", "Hide output");'>Show output</a>
+<td title='mwo.tests.GPMergeTests.activateUserAndIssueMaterialRequest()'><b>activateUserAndIssueMaterialRequest</b><br>Test class: mwo.tests.GPMergeTests<br/>
+<a href="#Output-179779934" onClick='toggleBox("Output-179779934", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1342346098" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1342346098">
+<a href="#Output-179779934" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-179779934">
 We are in Android, now checking for Alert messages...<br/>
 </div>
 </td>
 <td><div><pre>org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: Locator map: 
-- native content: &quot;By.xpath: //android.widget.TextView[@resource-id=&apos;com.ifsworld.mworkorderapps9:id/sync__datatype&apos; and contains(@text, &apos;Sync Ended&apos;)]&quot; 
-- html content: &quot;by id or name &quot;SYNC_COMPLETED_MESSAGE&quot;&quot;
+- native content: &quot;By.xpath: //android.widget.ImageView[contains(@content-desc,&apos;More options&apos;)]&quot; 
+- html content: &quot;by id or name &quot;MORE_OPTIONS_ICON&quot;&quot;
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b&apos;, time: &apos;2016-03-15 16:57:40&apos;
-System info: host: &apos;BDC7-L-1Z7XLV1&apos;, ip: &apos;10.239.225.203&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_121&apos;
+System info: host: &apos;BDC7-L-1Z7XLV1&apos;, ip: &apos;10.246.73.131&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_121&apos;
 Driver info: driver.version: unknown
 	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:97)
 	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.intercept(InterceptorOfASingleElement.java:52)
-	at io.appium.java_client.android.AndroidElement$$EnhancerByCGLIB$$86ac5fef.toString(&lt;generated&gt;)
-	at java.lang.String.valueOf(String.java:2994)
-	at java.lang.StringBuilder.append(StringBuilder.java:131)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.toString(ExpectedConditions.java:293)
-	at org.openqa.selenium.support.ui.ExpectedConditions$48.toString(ExpectedConditions.java:1481)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:257)
-	at mwo.pages.SyncMonitorPage.syncCompletedVerification(Unknown Source)
-	at mwo.tests.SyncTests.syncInterruption(Unknown Source)
-... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1342346098", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1342346098'><pre>org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: Locator map: 
-- native content: &quot;By.xpath: //android.widget.TextView[@resource-id=&apos;com.ifsworld.mworkorderapps9:id/sync__datatype&apos; and contains(@text, &apos;Sync Ended&apos;)]&quot; 
-- html content: &quot;by id or name &quot;SYNC_COMPLETED_MESSAGE&quot;&quot;
+	at io.appium.java_client.android.AndroidElement$$EnhancerByCGLIB$$ff0cbada.isDisplayed(&lt;generated&gt;)
+	at mwo.pages.HomePage.homeScreenVerification(Unknown Source)
+	at mwo.pages.HomePage.launchWorkOrders(Unknown Source)
+	at mwo.tests.GPMergeTests.activateUserAndIssueMaterialRequest(Unknown Source)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace179779934", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace179779934'><pre>org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: Locator map: 
+- native content: &quot;By.xpath: //android.widget.ImageView[contains(@content-desc,&apos;More options&apos;)]&quot; 
+- html content: &quot;by id or name &quot;MORE_OPTIONS_ICON&quot;&quot;
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b&apos;, time: &apos;2016-03-15 16:57:40&apos;
-System info: host: &apos;BDC7-L-1Z7XLV1&apos;, ip: &apos;10.239.225.203&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_121&apos;
+System info: host: &apos;BDC7-L-1Z7XLV1&apos;, ip: &apos;10.246.73.131&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_121&apos;
 Driver info: driver.version: unknown
 	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:97)
 	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.intercept(InterceptorOfASingleElement.java:52)
-	at io.appium.java_client.android.AndroidElement$$EnhancerByCGLIB$$86ac5fef.toString(&lt;generated&gt;)
-	at java.lang.String.valueOf(String.java:2994)
-	at java.lang.StringBuilder.append(StringBuilder.java:131)
-	at org.openqa.selenium.support.ui.ExpectedConditions$10.toString(ExpectedConditions.java:293)
-	at org.openqa.selenium.support.ui.ExpectedConditions$48.toString(ExpectedConditions.java:1481)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:257)
-	at mwo.pages.SyncMonitorPage.syncCompletedVerification(Unknown Source)
-	at mwo.tests.SyncTests.syncInterruption(Unknown Source)
+	at io.appium.java_client.android.AndroidElement$$EnhancerByCGLIB$$ff0cbada.isDisplayed(&lt;generated&gt;)
+	at mwo.pages.HomePage.homeScreenVerification(Unknown Source)
+	at mwo.pages.HomePage.launchWorkOrders(Unknown Source)
+	at mwo.tests.GPMergeTests.activateUserAndIssueMaterialRequest(Unknown Source)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -142,8 +134,100 @@ Driver info: driver.version: unknown
 	at org.testng.TestNG.privateMain(TestNG.java:1355)
 	at org.testng.TestNG.main(TestNG.java:1324)
 </pre></div></td>
-<td>783</td>
-<td>mwo.tests.SyncTests@67b6d4ae</td></tr>
+<td>228</td>
+<td>mwo.tests.GPMergeTests@35d176f7</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='mwo.tests.GPMergeTests.CreateNewWOFromClient()'><b>CreateNewWOFromClient</b><br>Test class: mwo.tests.GPMergeTests<br/>
+<a href="#Output-2005028997" onClick='toggleBox("Output-2005028997", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2005028997" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2005028997">
+We are in Android, now checking for Alert messages...<br/>
+</div>
+</td>
+<td></td>
+<td>210</td>
+<td>mwo.tests.GPMergeTests@35d176f7</td></tr>
+<tr>
+<td title='mwo.tests.GPMergeTests.ObjectMeasurementsClientToEE()'><b>ObjectMeasurementsClientToEE</b><br>Test class: mwo.tests.GPMergeTests<br/>
+<a href="#Output-1370283822" onClick='toggleBox("Output-1370283822", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1370283822" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1370283822">
+We are in Android, now checking for Alert messages...<br/>
+</div>
+</td>
+<td></td>
+<td>101</td>
+<td>mwo.tests.GPMergeTests@35d176f7</td></tr>
+<tr>
+<td title='mwo.tests.GPMergeTests.activationFailureTest()'><b>activationFailureTest</b><br>Test class: mwo.tests.GPMergeTests<br/>
+<a href="#Output-238762799" onClick='toggleBox("Output-238762799", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-238762799" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-238762799">
+We are in Android, now checking for Alert messages...<br/>
+</div>
+</td>
+<td></td>
+<td>109</td>
+<td>mwo.tests.GPMergeTests@35d176f7</td></tr>
+<tr>
+<td title='mwo.tests.GPMergeTests.addExpenseClaimToTheWO()'><b>addExpenseClaimToTheWO</b><br>Test class: mwo.tests.GPMergeTests<br/>
+<a href="#Output-873827336" onClick='toggleBox("Output-873827336", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-873827336" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-873827336">
+We are in Android, now checking for Alert messages...<br/>
+</div>
+</td>
+<td></td>
+<td>215</td>
+<td>mwo.tests.GPMergeTests@35d176f7</td></tr>
+<tr>
+<td title='mwo.tests.GPMergeTests.addPictureToTheWO()'><b>addPictureToTheWO</b><br>Test class: mwo.tests.GPMergeTests<br/>
+<a href="#Output-2111457497" onClick='toggleBox("Output-2111457497", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2111457497" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2111457497">
+We are in Android, now checking for Alert messages...<br/>
+</div>
+</td>
+<td></td>
+<td>218</td>
+<td>mwo.tests.GPMergeTests@35d176f7</td></tr>
+<tr>
+<td title='mwo.tests.GPMergeTests.completeWorkOrder()'><b>completeWorkOrder</b><br>Test class: mwo.tests.GPMergeTests<br/>
+<a href="#Output-2090991873" onClick='toggleBox("Output-2090991873", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2090991873" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2090991873">
+We are in Android, now checking for Alert messages...<br/>
+</div>
+</td>
+<td></td>
+<td>190</td>
+<td>mwo.tests.GPMergeTests@35d176f7</td></tr>
+<tr>
+<td title='mwo.tests.GPMergeTests.verifyUIDesignerAccessAndAddTimeReportToTheWO()'><b>verifyUIDesignerAccessAndAddTimeReportToTheWO</b><br>Test class: mwo.tests.GPMergeTests<br/>
+<a href="#Output-250112971" onClick='toggleBox("Output-250112971", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-250112971" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-250112971">
+We are in Android, now checking for Alert messages...<br/>
+</div>
+</td>
+<td></td>
+<td>217</td>
+<td>mwo.tests.GPMergeTests@35d176f7</td></tr>
 </table><p>
 </body>
 </html>

@@ -44,7 +44,6 @@ public class WorkOrdersPage extends PageBase {
 	// Navigate back to Home screen
 	public HomePage navigateBackToHomeScreen() {
 		goBack();
-		threadSleep(3000);
 		return new HomePage(driver);
 	}
 

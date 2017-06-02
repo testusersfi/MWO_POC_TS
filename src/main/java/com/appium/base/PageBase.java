@@ -113,7 +113,7 @@ public abstract class PageBase {
 
 	public static boolean waitForPageToLoad(AppiumDriver<MobileElement> driver, WebElement mobileElement) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 50);
+			WebDriverWait wait = new WebDriverWait(driver, 10);
 			wait.until(ExpectedConditions.visibilityOf(mobileElement));
 			return true;
 		} catch (TimeoutException | NoSuchElementException e) {
@@ -241,6 +241,11 @@ public abstract class PageBase {
 		String[] adb_command = { "sh", "-c", "adb shell input text \"" + text + "\"" };
 		executeadbcommand(adb_command);
 	}
+	
+	public void inputKeyeventUsingadb(int  key_code) {
+		String[] adb_command = { "sh", "-c", "adb shell input keyevent \"" + key_code + "\"" };
+		executeadbcommand(adb_command);
+	}
 
 	public void swipingVertical(MobileElement element, SWIPE_V_OPTIONS swipeOptions) throws InterruptedException {
 		// Get the size of screen.
@@ -314,20 +319,25 @@ public abstract class PageBase {
 		while (searchElement) {
 			previousTxtElement = (lastTxtElement != null) ? lastTxtElement : "unset";
 
-			elements = driver.findElementsById("com.ifsworld.mworkorderapps9:id/work_order__wo_no");
+			if (value.contains("work_order__wo_no"))
+				elements = driver.findElementsById("com.ifsworld.mworkorderapps9:id/work_order__wo_no");
+			else
+				elements = driver.findElementsById("com.ifsworld.mworkorderapps9:id/debrief_menu_option_name");
+			
 			lastTxtElement = elements.get(elements.size() - 1).getText();
 
 			// compare element's text between last index of previous swipe and
 			// last index of current swipe to detect end of scrolling
 			if (lastTxtElement.equals(previousTxtElement)) {
 				throw new NoSuchElementException("stopperElement not found");
-				//ExtentTestManager.getTest().log(LogStatus.FAIL, "Given work order does not exist in the List");
+				// ExtentTestManager.getTest().log(LogStatus.FAIL, "Given work
+				// order does not exist in the List");
 			}
 
 			try {
 				// stop when desired element is displayed
 				Utils.log("entered try loop");
-				driver.findElementByXPath(value);
+					driver.findElementByXPath(value);
 				searchElement = false;
 			} catch (Exception e) {
 				// swipe up|down when desired element is not displayed
@@ -335,7 +345,6 @@ public abstract class PageBase {
 				MobileElement element1 = driver
 						.findElementByXPath("//android.widget.LinearLayout/android.widget.FrameLayout");
 				swipingVertical(element1, SWIPE_V_OPTIONS.UP);
-				
 
 			}
 
@@ -367,15 +376,15 @@ public abstract class PageBase {
 
 	public static void drawSignOntheCanvas(WebElement element) {
 		TouchAction builder = new TouchAction(driver);
-		TouchAction drawAction = builder.longPress(element).moveTo(200, 200).moveTo(250, 250).release().perform();
+		TouchAction drawAction = builder.longPress(element).moveTo(100, 100).moveTo(150, 150).release().perform();
 		drawAction.perform();
 	}
 
 	public void enterTextinCommentsFeild(MobileElement comments_field, String comments) {
 		if (isElementPresent(comments_field)) {
-			 comments_field.click();
-			 enterTextUsingadb(comments);
-			//comments_field.sendKeys(comments);
+			comments_field.click();
+			enterTextUsingadb(comments);
+			// comments_field.sendKeys(comments);
 			hideKeyboardBasedOnPlatform();
 		} else {
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Comments field is not available");
@@ -394,5 +403,20 @@ public abstract class PageBase {
 		return null;
 
 	}
+	
+	public String findRelativeXpath1(AppiumDriver<MobileElement> driver, String page_object) {
+		String result = null;
+		if (Utils.getDriverPlatform(driver).equals("AndroidDriver")) {
+			result = String.format(page_object);
+			return result;
+		} else if (Utils.getDriverPlatform(driver).equals("IOSDriver")) {
+			result = String.format(page_object);
+		}
+		Utils.log("Final XPath: " + result);
+		return null;
+
+	}
+	
+	
 
 }

@@ -28,5 +28,12 @@ public class WOExpensesPageObjects {
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/mobile_expenses__cost')]")
 	public MobileElement COST_FIELD;
+	
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Comments') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/mobile_expenses__cmnts__lbl')]")
+	public MobileElement COMMENT_LABEL;
 
-}
+	@AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/mobile_expenses__cmnt")
+	public MobileElement COMMENT_FIELD;
+	
+	}

@@ -45,7 +45,6 @@ public class HomePage extends PageBase {
   // Initiate Manual sync from the Home screen
   public SyncMonitorPage initiateManualSync() {
 	  assert homePageObjects.SYNC_BUTTON.isDisplayed();
-	  threadSleep(2000);
 	  homePageObjects.SYNC_BUTTON.click();
 	  return new SyncMonitorPage(driver);
   }
@@ -84,5 +83,18 @@ public class HomePage extends PageBase {
   public void switchOnInternet() {
 	  turnOffAirplaneMode();
 	  threadSleep(10000);
+  }
+  
+  // Navigate to Measures screen
+  public WOMeasuresPage launchMeasuresScreen() {
+	  if(homePageObjects.MEASURES_BUTTON.isEnabled()) {
+		  assert homePageObjects.MEASURES_BUTTON.isDisplayed();
+		  homePageObjects.MEASURES_BUTTON.click();
+		  ExtentTestManager.getTest().log(LogStatus.PASS, "Measure button is present and button is clicked");
+		  return new WOMeasuresPage(driver);
+	  } else {
+		  ExtentTestManager.getTest().log(LogStatus.FAIL, "Measure button is not visible in the home screen");
+	  }
+	  return null;
   }
 }

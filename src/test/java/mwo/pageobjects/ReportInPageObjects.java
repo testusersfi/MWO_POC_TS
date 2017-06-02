@@ -19,6 +19,6 @@ public class ReportInPageObjects  {
   @AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView[contains(@text, 'Descriptions')]")
   public MobileElement DESCRIPTIONS_SECTION;
   
-  public String WORKORDER_NUMBER = "//android.widget.TableLayout[1]/android.widget.TableRow[2]/android.widget.TextView[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/work_order__wo_no’) and @text=\"%s\"]";
+  public String WORKORDER_NUMBER = "//android.widget.TableLayout[1]/android.widget.TableRow[2]/android.widget.TextView[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/work_order__wo_no') and @text=\"%s\"]";
 
 }

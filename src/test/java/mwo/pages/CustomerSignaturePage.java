@@ -41,6 +41,8 @@ public class CustomerSignaturePage extends PageBase {
 					"CustomerSignature Page > My Signature Screen is displayed on click of Next button");
 		} else {
 			Utils.log("NEXT Button is not displayed in Customer Signature screen");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,
+					"CustomerSignature Page > NEXT Button is not displayed in Customer Signature screen");
 		}
 		return new MySignaturePage(driver);
 	}
@@ -48,15 +50,12 @@ public class CustomerSignaturePage extends PageBase {
 	// Enter the customer name and collect the digital signature from the
 	// customer
 	public void enterSignature(String username) {
-		waitForPageToLoad(driver, customerSignaturePageObjects.CANVAS_SIGN_PAD_TITLE);
+		waitForPageToLoad(driver, customerSignaturePageObjects.SIGN_BY_TEXT_FIELD);
 		if (isElementPresent(customerSignaturePageObjects.SIGN_BY_TEXT_FIELD)) {
-			CustomerSignScreenUIVerification();
+			//CustomerSignScreenUIVerification();
 			String signature = customerSignaturePageObjects.SIGN_BY_TEXT_FIELD.getText();
 			if (signature.equals("Required")) {
 				customerSignaturePageObjects.SIGN_BY_TEXT_FIELD.click();
-				threadSleep(4000);
-				dismissScanBarCodealert();
-				// customerSignaturePageObjects.SIGN_BY_TEXT_FIELD.sendKeys(username);
 				enterTextUsingadb(username);
 				hideKeyboardBasedOnPlatform();
 				drawSignOntheCanvas(customerSignaturePageObjects.SIGNATURE_AREA);
@@ -65,6 +64,8 @@ public class CustomerSignaturePage extends PageBase {
 			}
 		} else {
 			Utils.log("Customer signature screen is not displayed");
+			ExtentTestManager.getTest().log(LogStatus.FAIL,
+					"CustomerSignature Page > Entering Customer Signature is failed");
 		}
 	}
 }

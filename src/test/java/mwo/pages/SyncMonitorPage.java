@@ -69,7 +69,7 @@ public class SyncMonitorPage extends PageBase {
 			Utils.captureInterimScreenshot(driver);
 			ExtentTestManager.getTest().log(LogStatus.PASS, "Sync is Ended");
 		} else {
-			ExtentTestManager.getTest().log(LogStatus.FAIL, "Sync failed due to some issues");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "Sync failed due to network issues");
 		}
 	}
 

@@ -4,21 +4,21 @@
   <test name="Test(failed)">
     <groups>
       <run>
-        <include name="Testing"/>
+        <include name="Final.All"/>
       </run>
     </groups>
     <classes>
-      <class name="mwo.tests.SyncTests">
+      <class name="mwo.tests.GPMergeTests">
         <methods>
           <include name="afterClass"/>
-          <include name="syncInterruption"/>
+          <include name="activateUserAndIssueMaterialRequest"/>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="afterMethod"/>
           <include name="beforeMethod"/>
           <include name="beforeClass"/>
         </methods>
-      </class> <!-- mwo.tests.SyncTests -->
+      </class> <!-- mwo.tests.GPMergeTests -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [POC_Automation_TestSuite] -->

@@ -22,14 +22,14 @@
             height="20"/>
       <text class="legendtext" x="40" y="105">
 						Failed (
-						100%
+						12%
 						)
 					</text>
       <rect style="fill:green;stroke-width:1;stroke:black;" x="10" y="125" width="20"
             height="20"/>
       <text class="legendtext" x="40" y="143">
 						Passed (
-						0%
+						88%
 						)
 					</text>
       <rect style="fill:yellow;stroke-width:1;stroke:black;" x="10" y="163" width="20"
@@ -40,8 +40,11 @@
 						)
 					</text>
       <g style="stroke:black;stroke-width:1" transform="translate(450,150)">
-         <g style="fill:red" transform="rotate(-0) translate(-16, -0)">
-            <path d="M 0 0 h 130 A 130,130 0,1,0 129.99999999988892,0.00016993334619978658 z"/>
+         <g style="fill:red" transform="rotate(-0) translate(15, -6)">
+            <path d="M 0 0 h 130 A 130,130 0,0,0 91.92389657437764,-91.92386653412227 z"/>
+         </g>
+         <g style="fill:green" transform="rotate(-45)">
+            <path d="M 0 0 h 130 A 130,130 0,1,0 91.92377641329731,91.92398669508479 z"/>
          </g>
       </g>
    </svg>

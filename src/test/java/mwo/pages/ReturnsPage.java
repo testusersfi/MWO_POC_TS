@@ -43,18 +43,19 @@ public class ReturnsPage extends PageBase {
 	public WOActionsPage confirmItemReturn() throws InterruptedException {
 		if(isElementPresent(returnsPageObjects.QUANTITY_TO_RETURN_TEXT_FIELD)) {
 			BasePageObjects.SAVE_BUTTON.click();
-			Thread.sleep(2000);
+			threadSleep(2000);
 			ReturnsScreenUIVerification();
-			Thread.sleep(1000);
+			threadSleep(1000);
 			goBack();
-			Thread.sleep(1000);
+			threadSleep(1000);
 			goBack();
-			Thread.sleep(1000);
+			threadSleep(1000);
 			goBack();
+			return new WOActionsPage(driver);
 		} else {
 			Utils.log("Return parts are not selected");
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "Return parts are not associated with the user");
 		}
-		return new WOActionsPage(driver);
+		return null;
 	}
 }

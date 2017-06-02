@@ -31,5 +31,20 @@ public class WOTimeReportPageObjects {
 
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/edit_object')]")
 	public MobileElement WO_OBJECT_DETAILS_BUTTON;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Operation Description') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/mobile_time_report__operation_desc__lbl')]")
+	public MobileElement OPERATION_LABEL;
+
+	@AndroidFindBy(xpath = "//android.widget.EditText[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/mobile_time_report__operation_desc')]")
+	public MobileElement OPERATION_FIELD;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Name') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/maint_employee__name__lbl')]")
+	public MobileElement EMPLOYEE_NAME_LABEL;
+
+	@AndroidFindBy(xpath = "//android.widget.EditText[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/maint_employee__name')]")
+	public MobileElement EMPLOYEE_NAME_TXTFIELD;
+	
+	
+	
 
 }

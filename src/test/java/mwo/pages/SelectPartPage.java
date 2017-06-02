@@ -31,6 +31,7 @@ public class SelectPartPage extends PageBase {
 			ExtentTestManager.getTest().log(LogStatus.PASS, "Part Selection Screen > Serialized part is selected and issued");
 		} else {
 			Utils.log("No serialized parts are associated with this Work Order");
+			ExtentTestManager.getTest().log(LogStatus.WARNING, "No serialized parts are associated with this Work Order");
 		}
 	}
 
@@ -46,6 +47,7 @@ public class SelectPartPage extends PageBase {
 			ExtentTestManager.getTest().log(LogStatus.PASS, "Part Selection Screen > Part batch number is selected and serial number selection screen is displayed");
 		} else {
 			Utils.log("No Batch Lots are avaialble with the associated parts of this Work Order");
+			ExtentTestManager.getTest().log(LogStatus.WARNING, "No Batch Lots are avaialble with the associated parts of this Work Order");
 		}
 	}
 
@@ -55,17 +57,20 @@ public class SelectPartPage extends PageBase {
 		Utils.captureInterimScreenshot(driver);
 		assert selectPartScreenPageObjects.SELECT_PART_SCREEN_HEADER.isDisplayed();
 		Utils.log("Select Part screen is displayed");
+		threadSleep(2000);
 		if (isElementPresent(selectPartScreenPageObjects.PART_DESCRIPTION)) {
 			Utils.log("Entered if loop to issue parts");
 			//enterSearchText(part_desc);
 			selectPartScreenPageObjects.PART_DESCRIPTION.click();
 			selectLotBatchScreenUI(batch_number);
 			selectSerialNumberScreenUI(serial_number);
+			return new MaterialsPage(driver);
 		} else {
 			Utils.log("No Parts are associated with this Work Order");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "No Parts are associated with this Work Order");
 		}
 
-		return new MaterialsPage(driver);
+		return null;
 	}
 	
 	// return the parts for the work order
@@ -75,15 +80,17 @@ public class SelectPartPage extends PageBase {
 		assert selectPartScreenPageObjects.SELECT_PART_SCREEN_HEADER.isDisplayed();
 		hideKeyboardBasedOnPlatform();
 		if (isElementPresent(selectPartScreenPageObjects.PART_DESCRIPTION)) {
-			enterSearchText(part_desc);
+			//enterSearchText(part_desc);
 			selectPartScreenPageObjects.PART_DESCRIPTION.click();
 			selectLotBatchScreenUI(batch_number);
 			selectSerialNumberScreenUI(serial_number);
+			return new ReturnsPage(driver);
 		} else {
 			Utils.log("No Parts are associated with this Work Order");
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "No Parts are associated with this Work Order");
 		}
 
-		return new ReturnsPage(driver);
+		return null;
 	}
 	
 	// Verify the Item details UI

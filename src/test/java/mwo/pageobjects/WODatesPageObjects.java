@@ -6,7 +6,7 @@ import io.appium.java_client.pagefactory.iOSFindBy;
 
 public class WODatesPageObjects {
 
-	@AndroidFindBy(xpath = "//android.view.View/android.widget.TextView[contains(@text,'Work Order')]")
+	@AndroidFindBy(xpath = "//android.view.ViewGroup/android.widget.TextView[contains(@text,'Work Order')]")
 	@iOSFindBy(xpath = "//UIASTATICTEXT[@text='mWorkOrder'")
 	public MobileElement SCREEN_HEADER;
 	

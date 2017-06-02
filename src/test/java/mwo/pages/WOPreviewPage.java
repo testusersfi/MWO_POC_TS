@@ -35,6 +35,13 @@ public class WOPreviewPage extends PageBase {
 		previewPageObjects.NEXT_BUTTON.click();
 		return new WOActionsPage(driver);
 	}
+	
+	// Navigate to WO Menu screen
+		public WOMenuPage launchWOAMenuScreen() {
+			assert previewPageObjects.WO_OBJECT_MENU.isDisplayed();
+			previewPageObjects.WO_OBJECT_MENU.click();
+			return new WOMenuPage(driver);
+		}
 
 	// Accept the work order
 	public void acceptWorkOrder() {
@@ -157,6 +164,11 @@ public class WOPreviewPage extends PageBase {
 	public ContactDetailsPage launchContactDetailsScreen() {
 		previewPageObjects.WO_CONTACT_DETAILS_BUTTON.click();
 		return new ContactDetailsPage(driver);
+	}
+	
+	public WorkOrdersPage navigateBackToWorkOrdersPage() throws InterruptedException {
+		goBack();
+		return new WorkOrdersPage(driver);
 	}
 
 }

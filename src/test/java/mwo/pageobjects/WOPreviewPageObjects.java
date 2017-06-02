@@ -71,5 +71,11 @@ public class WOPreviewPageObjects {
 	@AndroidFindBy(xpath = "//android.widget.ScrollView/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/edit_object')]")
 	public MobileElement WO_OBJECT_DETAILS_BUTTON;
 	
+	@AndroidFindBy(xpath = "//android.widget.ImageView[1]")
+	public MobileElement WO_OBJECT_MENU;
+	
+	
+	
+	
 	
 }

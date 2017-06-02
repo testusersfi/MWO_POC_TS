@@ -37,7 +37,7 @@
 	<classpathentry kind="lib" path="lib/testng_libs/snakeyaml.jar"/>
 	<classpathentry kind="lib" path="lib/testng_libs/testng-remote.jar"/>
 	<classpathentry kind="lib" path="lib/testng_libs/testng-sources.jar"/>
-	<classpathentry kind="lib" path="lib/testng_libs/testng.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/testng_libs/testng.jar"/>
 	<classpathentry kind="lib" path="lib/cucumber-libs/cucumber-core-1.2.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/cucumber-libs/cucumber-core-1.2.4.jar"/>
 	<classpathentry kind="lib" path="lib/cucumber-libs/cucumber-java-1.2.4-sources.jar"/>

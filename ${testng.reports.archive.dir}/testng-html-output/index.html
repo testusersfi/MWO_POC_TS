@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-POC_Automation_TestSuite">
-                    <span>C:\Users\srinivas.bavirisetti\workspace\mwo_app_tests\testng_mwo.xml</span>
+                    <span>C:\Users\srinivas.bavirisetti\workspace\Github_master\MWO_POC_TS\testng_mwo.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -90,7 +90,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">8 methods, 1 failed,   7 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -101,10 +101,54 @@
                     <div class="method-list-content failed suite-POC_Automation_TestSuite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.LoginTests" hash-for-method="onHoldWorkOrder">onHoldWorkOrder</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.GPMergeTests" hash-for-method="activateUserAndIssueMaterialRequest">activateUserAndIssueMaterialRequest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-POC_Automation_TestSuite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-POC_Automation_TestSuite" class="hide-methods passed suite-POC_Automation_TestSuite"> (hide)</a> <!-- hide-methods passed suite-POC_Automation_TestSuite -->
+                      <a href="#" panel-name="suite-POC_Automation_TestSuite" class="show-methods passed suite-POC_Automation_TestSuite"> (show)</a> <!-- show-methods passed suite-POC_Automation_TestSuite -->
+                    </span>
+                    <div class="method-list-content passed suite-POC_Automation_TestSuite">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.GPMergeTests" hash-for-method="CreateNewWOFromClient">CreateNewWOFromClient</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.GPMergeTests" hash-for-method="ObjectMeasurementsClientToEE">ObjectMeasurementsClientToEE</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.GPMergeTests" hash-for-method="activationFailureTest">activationFailureTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.GPMergeTests" hash-for-method="addExpenseClaimToTheWO">addExpenseClaimToTheWO</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.GPMergeTests" hash-for-method="addPictureToTheWO">addPictureToTheWO</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.GPMergeTests" hash-for-method="completeWorkOrder">completeWorkOrder</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-POC_Automation_TestSuite" title="mwo.tests.GPMergeTests" hash-for-method="verifyUIDesignerAccessAndAddTimeReportToTheWO">verifyUIDesignerAccessAndAddTimeReportToTheWO</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-POC_Automation_TestSuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -119,29 +163,94 @@
           <div class="suite-POC_Automation_TestSuite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">mwo.tests.LoginTests</span>
+              <span class="class-name">mwo.tests.GPMergeTests</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="onHoldWorkOrder">
-                  </a> <!-- onHoldWorkOrder -->
-                  <span class="method-name">onHoldWorkOrder</span>
-                  <div class="stack-trace">java.lang.NullPointerException
-	at com.appium.base.PageBase.enterTextinCommentsFeild(Unknown Source)
-	at mwo.pages.OnHoldPage.enterCommentsInNotesField(Unknown Source)
-	at mwo.pages.OnHoldPage.onHoldWO(Unknown Source)
-	at mwo.tests.LoginTests.onHoldWorkOrder(Unknown Source)
+                  <a name="activateUserAndIssueMaterialRequest">
+                  </a> <!-- activateUserAndIssueMaterialRequest -->
+                  <span class="method-name">activateUserAndIssueMaterialRequest</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Can&apos;t locate an element by this strategy: Locator map: 
+- native content: &quot;By.xpath: //android.widget.ImageView[contains(@content-desc,&apos;More options&apos;)]&quot; 
+- html content: &quot;by id or name &quot;MORE_OPTIONS_ICON&quot;&quot;
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b&apos;, time: &apos;2016-03-15 16:57:40&apos;
+System info: host: &apos;BDC7-L-1Z7XLV1&apos;, ip: &apos;10.246.73.131&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_121&apos;
+Driver info: driver.version: unknown
+	at io.appium.java_client.pagefactory.AppiumElementLocator.findElement(AppiumElementLocator.java:97)
+	at io.appium.java_client.pagefactory.interceptors.InterceptorOfASingleElement.intercept(InterceptorOfASingleElement.java:52)
+	at io.appium.java_client.android.AndroidElement$$EnhancerByCGLIB$$ff0cbada.isDisplayed(&lt;generated&gt;)
+	at mwo.pages.HomePage.homeScreenVerification(Unknown Source)
+	at mwo.pages.HomePage.launchWorkOrders(Unknown Source)
+	at mwo.tests.GPMergeTests.activateUserAndIssueMaterialRequest(Unknown Source)
 ... Removed 23 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-POC_Automation_TestSuite-class-failed -->
+          <div class="suite-POC_Automation_TestSuite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">mwo.tests.GPMergeTests</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="CreateNewWOFromClient">
+                  </a> <!-- CreateNewWOFromClient -->
+                  <span class="method-name">CreateNewWOFromClient</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="ObjectMeasurementsClientToEE">
+                  </a> <!-- ObjectMeasurementsClientToEE -->
+                  <span class="method-name">ObjectMeasurementsClientToEE</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="activationFailureTest">
+                  </a> <!-- activationFailureTest -->
+                  <span class="method-name">activationFailureTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="addExpenseClaimToTheWO">
+                  </a> <!-- addExpenseClaimToTheWO -->
+                  <span class="method-name">addExpenseClaimToTheWO</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="addPictureToTheWO">
+                  </a> <!-- addPictureToTheWO -->
+                  <span class="method-name">addPictureToTheWO</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="completeWorkOrder">
+                  </a> <!-- completeWorkOrder -->
+                  <span class="method-name">completeWorkOrder</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyUIDesignerAccessAndAddTimeReportToTheWO">
+                  </a> <!-- verifyUIDesignerAccessAndAddTimeReportToTheWO -->
+                  <span class="method-name">verifyUIDesignerAccessAndAddTimeReportToTheWO</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-POC_Automation_TestSuite-class-passed -->
         </div> <!-- panel POC_Automation_TestSuite -->
         <div panel-name="test-xml-POC_Automation_TestSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\srinivas.bavirisetti\workspace\mwo_app_tests\testng_mwo.xml</span>
+            <span class="header-content">C:\Users\srinivas.bavirisetti\workspace\Github_master\MWO_POC_TS\testng_mwo.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -160,11 +269,11 @@
         &lt;include name=&quot;Testing&quot;/&gt;
       &lt;/define&gt; &lt;!-- Testing --&gt;
       &lt;run&gt;
-        &lt;include name=&quot;Testing&quot;/&gt;
+        &lt;include name=&quot;Final.All&quot;/&gt;
       &lt;/run&gt;
     &lt;/groups&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;mwo.tests.LoginTests&quot;/&gt;
+      &lt;class name=&quot;mwo.tests.GPMergeTests&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- POC_Automation_TestSuite --&gt;
@@ -189,10 +298,38 @@
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">Testing</span>
+              <span class="test-group-name">Final.Regression.Android</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">onHoldWorkOrder</span>
+                <span class="method-in-group-name">CreateNewWOFromClient</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">ObjectMeasurementsClientToEE</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">activateUserAndIssueMaterialRequest</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">activationFailureTest</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">addExpenseClaimToTheWO</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">addPictureToTheWO</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">completeWorkOrder</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">verifyUIDesignerAccessAndAddTimeReportToTheWO</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -212,16 +349,44 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(8);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'onHoldWorkOrder')
-data.setCell(0, 2, 'mwo.tests.LoginTests')
-data.setCell(0, 3, 221098);
+data.setCell(0, 1, 'activateUserAndIssueMaterialRequest')
+data.setCell(0, 2, 'mwo.tests.GPMergeTests')
+data.setCell(0, 3, 228046);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'addPictureToTheWO')
+data.setCell(1, 2, 'mwo.tests.GPMergeTests')
+data.setCell(1, 3, 218792);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'verifyUIDesignerAccessAndAddTimeReportToTheWO')
+data.setCell(2, 2, 'mwo.tests.GPMergeTests')
+data.setCell(2, 3, 217374);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'addExpenseClaimToTheWO')
+data.setCell(3, 2, 'mwo.tests.GPMergeTests')
+data.setCell(3, 3, 215725);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'CreateNewWOFromClient')
+data.setCell(4, 2, 'mwo.tests.GPMergeTests')
+data.setCell(4, 3, 210133);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'completeWorkOrder')
+data.setCell(5, 2, 'mwo.tests.GPMergeTests')
+data.setCell(5, 3, 190428);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'activationFailureTest')
+data.setCell(6, 2, 'mwo.tests.GPMergeTests')
+data.setCell(6, 3, 109418);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'ObjectMeasurementsClientToEE')
+data.setCell(7, 2, 'mwo.tests.GPMergeTests')
+data.setCell(7, 3, 101705);
 window.suiteTableData['POC_Automation_TestSuite']= { tableData: data, tableDiv: 'times-div-POC_Automation_TestSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
+              <span class="suite-total-time">Total running time: 24 minutes</span>
               <div id="times-div-POC_Automation_TestSuite">
               </div> <!-- times-div-POC_Automation_TestSuite -->
             </div> <!-- times-div -->
@@ -233,7 +398,49 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
-              <span class="reporter-method-name">onHoldWorkOrder</span>
+              <span class="reporter-method-name">ObjectMeasurementsClientToEE</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">verifyUIDesignerAccessAndAddTimeReportToTheWO</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">addPictureToTheWO</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">completeWorkOrder</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">activationFailureTest</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">CreateNewWOFromClient</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">addExpenseClaimToTheWO</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">activateUserAndIssueMaterialRequest</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">We are in Android, now checking for Alert messages...</span>
               </div> <!-- reporter-method-output-div -->
@@ -242,26 +449,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-POC_Automation_TestSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">6 ignored methods</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">mwo.tests.LoginTests</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">searchForInvalidWO</span>
-                <br/>
-                <span class="ignored-method-name">submitExpensesForAWorkOrder</span>
-                <br/>
-                <span class="ignored-method-name">activationFailureTest</span>
-                <br/>
-                <span class="ignored-method-name">suspendWorkOrder</span>
-                <br/>
-                <span class="ignored-method-name">updateContactDetails</span>
-                <br/>
-                <span class="ignored-method-name">submitTimeReportForAWorkOrder</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-POC_Automation_TestSuite" class="panel">
@@ -270,36 +460,120 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">mwo.tests.LoginTests</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">mwo.tests.GPMergeTests</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">beforeSuite</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">beforeClass</span>
-                <span class="method-start">35932 ms</span>
+                <span class="method-start">25797 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">beforeMethod(public void mwo.tests.LoginTests.onHoldWorkOrder() throws java.lang.Exception)</span>
-                <span class="method-start">35947 ms</span>
+                <span class="method-name">beforeMethod(public void mwo.tests.GPMergeTests.activationFailureTest() throws java.lang.Exception)</span>
+                <span class="method-start">25812 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">activationFailureTest</span>
+                <span class="method-start">55053 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=activationFailureTest status=SUCCESS method=GPMergeTests.activationFailureTest()[pr...)</span>
+                <span class="method-start">164471 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.GPMergeTests.activateUserAndIssueMaterialRequest() throws java.lang.Exception)</span>
+                <span class="method-start">175611 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">onHoldWorkOrder</span>
-                <span class="method-start">62122 ms</span>
+                <span class="method-name">activateUserAndIssueMaterialRequest</span>
+                <span class="method-start">201547 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">afterMethod([TestResult name=onHoldWorkOrder status=FAILURE method=LoginTests.onHoldWorkOrder()[pri:4, instance:...)</span>
-                <span class="method-start">283220 ms</span>
+                <span class="method-name">afterMethod([TestResult name=activateUserAndIssueMaterialRequest status=FAILURE method=GPMergeTests.activateUser...)</span>
+                <span class="method-start">429593 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.GPMergeTests.addExpenseClaimToTheWO() throws java.lang.Exception)</span>
+                <span class="method-start">445420 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">addExpenseClaimToTheWO</span>
+                <span class="method-start">471434 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=addExpenseClaimToTheWO status=SUCCESS method=GPMergeTests.addExpenseClaimToTheWO()[...)</span>
+                <span class="method-start">687159 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.GPMergeTests.verifyUIDesignerAccessAndAddTimeReportToTheWO() throws java.lang....)</span>
+                <span class="method-start">698276 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifyUIDesignerAccessAndAddTimeReportToTheWO</span>
+                <span class="method-start">723724 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=verifyUIDesignerAccessAndAddTimeReportToTheWO status=SUCCESS method=GPMergeTests.ve...)</span>
+                <span class="method-start">941098 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.GPMergeTests.addPictureToTheWO() throws java.lang.Exception)</span>
+                <span class="method-start">952387 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">addPictureToTheWO</span>
+                <span class="method-start">977862 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=addPictureToTheWO status=SUCCESS method=GPMergeTests.addPictureToTheWO()[pri:5, ins...)</span>
+                <span class="method-start">1196654 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.GPMergeTests.completeWorkOrder() throws java.lang.Exception)</span>
+                <span class="method-start">1208334 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">completeWorkOrder</span>
+                <span class="method-start">1234060 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=completeWorkOrder status=SUCCESS method=GPMergeTests.completeWorkOrder()[pri:6, ins...)</span>
+                <span class="method-start">1424488 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.GPMergeTests.ObjectMeasurementsClientToEE() throws java.lang.Exception)</span>
+                <span class="method-start">1436075 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">ObjectMeasurementsClientToEE</span>
+                <span class="method-start">1461124 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=ObjectMeasurementsClientToEE status=SUCCESS method=GPMergeTests.ObjectMeasurementsC...)</span>
+                <span class="method-start">1562829 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void mwo.tests.GPMergeTests.CreateNewWOFromClient() throws java.lang.Exception)</span>
+                <span class="method-start">1573934 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">CreateNewWOFromClient</span>
+                <span class="method-start">1599625 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod([TestResult name=CreateNewWOFromClient status=SUCCESS method=GPMergeTests.CreateNewWOFromClient()[pr...)</span>
+                <span class="method-start">1809758 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">291840 ms</span>
+                <span class="method-start">1820877 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">291918 ms</span>
+                <span class="method-start">1820981 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

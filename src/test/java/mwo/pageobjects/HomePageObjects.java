@@ -31,5 +31,8 @@ public class HomePageObjects {
   
   @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/admin")
   public MobileElement ADMIN_BUTTON;
+  
+  @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/measures")
+  public MobileElement MEASURES_BUTTON;
 
 }

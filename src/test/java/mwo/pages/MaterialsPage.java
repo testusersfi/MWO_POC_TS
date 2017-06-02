@@ -44,10 +44,16 @@ public class MaterialsPage extends PageBase {
 
 	// Navigate to MaterialList screen
 	public MaterialListPage launchMaterialListPage() {
+		waitForPageToLoad(driver, materialsPageObjects.ISSUE_PLANNED_LABEL);
 		materialsPageObjects.ISSUE_PLANNED_LABEL.click();
 		ExtentTestManager.getTest().log(LogStatus.PASS,
 				"Materials Page > Material List screen is displayed on click of Issue Planned button");
 		return new MaterialListPage(driver);
+	}
+	
+	public WOActionsPage navigateBackToWOActionsScreen() {
+		goBack();
+		return new WOActionsPage(driver);
 	}
 
 }
