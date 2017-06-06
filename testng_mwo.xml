@@ -18,7 +18,7 @@
 			</define>
 		    <run>
      			<!-- <include name="fail.android" /> -->
-     			<include name="Testing" />
+     			<include name="Final.All" />
     		</run>
   		</groups>
 		<classes>

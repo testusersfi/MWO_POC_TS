@@ -97,7 +97,7 @@ public class GPMergeTests extends TestBase {
 	}
 	
 	/* Following class is for validating the activation failure   */
-	@Test(groups = { "Final.Regression.Android" }, priority = 1)
+	@Test(groups = { "Testing" }, priority = 1)
 	public void activationFailureTest() throws Exception {
 		JSONArray cred = JSonParser.getCredentials("Credentials");
 		JSONObject obj = cred.getJSONObject(1);
@@ -152,7 +152,7 @@ public class GPMergeTests extends TestBase {
 	}
 
 	/* Following class is for for adding expense claim to an existing WO and sync with EE */
-	@Test(groups = { "Testing" }, priority = 3)
+	@Test(groups = { "Final.Regression.Android" }, priority = 3)
 	public void addExpenseClaimToTheWO() throws Exception {
 		JSONArray cred = JSonParser.getCredentials("Credentials");
 		JSONObject obj = cred.getJSONObject(0);
@@ -312,7 +312,7 @@ public class GPMergeTests extends TestBase {
 	}
 
 	/* Following class is to create new work orders from client and Sync with EE */ 
-	@Test(groups = { "Testing" }, priority = 8)
+	@Test(groups = { "Final.Regression.Android" }, priority = 8)
 	public void CreateNewWOFromClient() throws Exception {
 		// Load the Test Data
 		Map<String, Object[]> data = new TreeMap<String, Object[]>();
