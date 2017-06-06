@@ -34,5 +34,8 @@ public class HomePageObjects {
   
   @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/measures")
   public MobileElement MEASURES_BUTTON;
+  
+  @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Sync') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/title')]")
+  public MobileElement MENU_SYNC_BUTTON;
 
 }

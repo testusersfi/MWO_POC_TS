@@ -47,6 +47,7 @@ public class WOAddPicturePage extends PageBase {
 				inputKeyeventUsingadb(27);
 				threadSleep(2000);
 				addPicturePageObjects.POST_CAPTURE_OK_BUTTON.click();
+				ExtentTestManager.getTest().log(LogStatus.PASS, "Image captured using camera and added under pictures");
 			} else {
 				ExtentTestManager.getTest().log(LogStatus.FAIL, "Take Photo button is not displayed in the Pictures Screen");
 			}
@@ -58,10 +59,21 @@ public class WOAddPicturePage extends PageBase {
 	}
 
 	public void addImageToWO() {
+		int prevalue = Integer.parseInt(BasePageObjects.PREVIOUS_BUTTON.getText().replaceAll("[^0-9]", "").trim());
 		captureImageToWO();
 		try {
 			if (isElementPresent(addPicturePageObjects.ATTACHED_CAMERA_IMAGE)) {
 				BasePageObjects.ADD_BUTTON.click();
+				int newvalue = Integer.parseInt(BasePageObjects.PREVIOUS_BUTTON.getText().replaceAll("[^0-9]", "").trim());
+
+				if (newvalue > prevalue) {
+					ExtentTestManager.getTest().log(LogStatus.PASS,
+							"Image is successfully added to the work order");
+				} else {
+					ExtentTestManager.getTest().log(LogStatus.FAIL,
+							"Adding image to the work order is failed");
+
+				}
 			} else {
 				ExtentTestManager.getTest().log(LogStatus.FAIL, "ImageCapture Failed using camera");
 			}
@@ -69,6 +81,9 @@ public class WOAddPicturePage extends PageBase {
 			e.printStackTrace();
 			Utils.log(e.getMessage());
 		}
+		
+		
+
 	}
 
 	public WOPicturesPage navigateBackToPicturesScreen() {

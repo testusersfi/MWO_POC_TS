@@ -11,12 +11,13 @@
       <class name="mwo.tests.GPMergeTests">
         <methods>
           <include name="afterClass"/>
-          <include name="activateUserAndIssueMaterialRequest"/>
           <include name="beforeSuite"/>
           <include name="afterSuite"/>
           <include name="afterMethod"/>
+          <include name="addExpenseClaimToTheWO"/>
           <include name="beforeMethod"/>
           <include name="beforeClass"/>
+          <include name="CreateNewWOFromClient"/>
         </methods>
       </class> <!-- mwo.tests.GPMergeTests -->
     </classes>

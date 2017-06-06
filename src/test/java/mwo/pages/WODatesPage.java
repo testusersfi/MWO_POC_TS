@@ -25,7 +25,7 @@ public class WODatesPage extends PageBase {
 	public void woDatesScreenUIVerification() {
 		waitForPageToLoad(driver, woDatesPageObjects.WODATES_TITLE);
 		Utils.captureInterimScreenshot(driver);
-		assert woDatesPageObjects.ATTCHMENT_ICON.isDisplayed();
+		//assert woDatesPageObjects.ATTCHMENT_ICON.isDisplayed();
 		assert woDatesPageObjects.PLANNING_SECTION_TITLE.isDisplayed();
 		assert woDatesPageObjects.REQUESTED_SECTION_TITLE.isDisplayed();
 		assert woDatesPageObjects.SCREEN_HEADER.isDisplayed();

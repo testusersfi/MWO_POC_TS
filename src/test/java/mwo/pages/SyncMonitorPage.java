@@ -1,8 +1,12 @@
 package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.appium.base.PageBase;
 import com.appium.base.Utils;
@@ -61,7 +65,9 @@ public class SyncMonitorPage extends PageBase {
 
 	// Verification of successful Sync
 	public void syncCompletedVerification() {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(25, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.SECONDS);
 		wait.until(
 				ExpectedConditions.and(ExpectedConditions.invisibilityOfAllElements(syncPageObjects.SYNC_FAILURE_ERROR),
 						ExpectedConditions.visibilityOf(syncPageObjects.SYNC_COMPLETED_MESSAGE)));

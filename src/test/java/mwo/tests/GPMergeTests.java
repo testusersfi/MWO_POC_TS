@@ -136,6 +136,7 @@ public class GPMergeTests extends TestBase {
 		JSONObject part_info = part.getJSONObject(0);
 		materialsPage = selectPartPage.issueParts(part_info.getString("part_description"),
 				part_info.getString("lot_batch_number"), part_info.getString("serial_number"));
+		if(materialsPage !=null) {
 		actionsPage = materialsPage.navigateBackToWOActionsScreen();
 		actionsPage.woActionsScreenVerification();
 		previewPage = actionsPage.navigateBackToPreviewPage();
@@ -146,10 +147,12 @@ public class GPMergeTests extends TestBase {
 		homePage.homeScreenVerification();
 		syncPage = homePage.initiateManualSync();
 		syncPage.syncCompletedVerification();
+		}
+		
 	}
 
 	/* Following class is for for adding expense claim to an existing WO and sync with EE */
-	@Test(groups = { "Final.Regression.Android" }, priority = 3)
+	@Test(groups = { "Testing" }, priority = 3)
 	public void addExpenseClaimToTheWO() throws Exception {
 		JSONArray cred = JSonParser.getCredentials("Credentials");
 		JSONObject obj = cred.getJSONObject(0);
@@ -247,6 +250,7 @@ public class GPMergeTests extends TestBase {
 		addPicturePage = picturesPage.navigateToAddPictureScreen();
 		addPicturePage.addImageToWO();
 		picturesPage = addPicturePage.navigateBackToPicturesScreen();
+		picturesPage.picturesScreenUIVerification();
 		actionsPage = picturesPage.navigateBackToActionsScreen();
 		actionsPage.woActionsScreenVerification();
 		previewPage = actionsPage.navigateBackToPreviewPage();
@@ -295,7 +299,6 @@ public class GPMergeTests extends TestBase {
 		JSONArray cred = JSonParser.getCredentials("Credentials");
 		JSONObject obj = cred.getJSONObject(0);
 		loginPage = new LoginPage(driver);
-		System.out.println("launched mwo application");
 		loginPage.AppLaunchVerification();
 		loginPage.validLoginFunctionality(obj.getString("username"), obj.getString("password"),
 				obj.getString("serviceurl"), obj.getString("systemid"));
@@ -309,7 +312,7 @@ public class GPMergeTests extends TestBase {
 	}
 
 	/* Following class is to create new work orders from client and Sync with EE */ 
-	@Test(groups = { "Final.Regression.Android" }, priority = 8)
+	@Test(groups = { "Testing" }, priority = 8)
 	public void CreateNewWOFromClient() throws Exception {
 		// Load the Test Data
 		Map<String, Object[]> data = new TreeMap<String, Object[]>();
@@ -322,9 +325,8 @@ public class GPMergeTests extends TestBase {
 		loginPage.AppLaunchVerification();
 		loginPage.validLoginFunctionality(obj.getString("username"), obj.getString("password"),
 				obj.getString("serviceurl"), obj.getString("systemid"));
-		syncPage = new SyncMonitorPage(driver);
-		syncPage.syncMonitorScreenVerification();
-		homePage = syncPage.syncVerification();
+		homePage = new HomePage(driver);
+		homePage.homeScreenVerification();
 		// Create multiple work orders
 		for (int i = 1; i <= 2; i++) {
 			newWOPage = homePage.newWorkOrder();

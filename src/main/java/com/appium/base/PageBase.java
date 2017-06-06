@@ -23,6 +23,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
@@ -59,7 +61,10 @@ public abstract class PageBase {
 
 	public static WebElement getElementWhenVisible(WebDriver driver, MobileElement mobileElement) {
 		WebElement el = null;
-		WebDriverWait wait = new WebDriverWait(driver, 20);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(25, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.SECONDS);
+		//WebDriverWait wait = new WebDriverWait(driver, 20);
 		el = wait.until(ExpectedConditions.visibilityOf(mobileElement));
 		return el;
 	}
@@ -72,7 +77,10 @@ public abstract class PageBase {
 	}
 
 	public static void waitUntilElementsAreInvisible(List<WebElement> mobileElement) {
-		WebDriverWait wait = new WebDriverWait(driver, 300);
+		//WebDriverWait wait = new WebDriverWait(driver, 300);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(300, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.SECONDS);
 		wait.until(ExpectedConditions.invisibilityOfAllElements(mobileElement));
 	}
 
@@ -113,7 +121,10 @@ public abstract class PageBase {
 
 	public static boolean waitForPageToLoad(AppiumDriver<MobileElement> driver, WebElement mobileElement) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 10);
+			//WebDriverWait wait = new WebDriverWait(driver, 10);
+			Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+					.withTimeout(20, TimeUnit.SECONDS)
+					.pollingEvery(2, TimeUnit.SECONDS);
 			wait.until(ExpectedConditions.visibilityOf(mobileElement));
 			return true;
 		} catch (TimeoutException | NoSuchElementException e) {
@@ -283,13 +294,6 @@ public abstract class PageBase {
 		threadSleep(2000);
 	}
 
-	public void dismissScanBarCodealert() {
-		if (isElementPresent(BasePageObjects.SCAN_BAR_CODE_LONGPRESS)) {
-			goBack();
-		} else {
-			Utils.log("SCAN BAR CODE ALERT IS NOT DISPLAYED");
-		}
-	}
 
 	public void turnOnAirPlaneMode() {
 		String[] put_ap_on = { "sh", "-c", "adb shell settings put global airplane_mode_on 1" };

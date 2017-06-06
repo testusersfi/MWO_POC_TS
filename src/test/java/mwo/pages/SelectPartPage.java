@@ -60,13 +60,16 @@ public class SelectPartPage extends PageBase {
 		threadSleep(2000);
 		if (isElementPresent(selectPartScreenPageObjects.PART_DESCRIPTION)) {
 			Utils.log("Entered if loop to issue parts");
+			Utils.captureInterimScreenshot(driver);
 			//enterSearchText(part_desc);
 			selectPartScreenPageObjects.PART_DESCRIPTION.click();
 			selectLotBatchScreenUI(batch_number);
 			selectSerialNumberScreenUI(serial_number);
+			Utils.captureInterimScreenshot(driver);
 			return new MaterialsPage(driver);
 		} else {
 			Utils.log("No Parts are associated with this Work Order");
+			goBack();
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "No Parts are associated with this Work Order");
 		}
 

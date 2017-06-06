@@ -43,12 +43,24 @@ public class HomePage extends PageBase {
   }
   
   // Initiate Manual sync from the Home screen
-  public SyncMonitorPage initiateManualSync() {
+  public SyncMonitorPage initiateManualSyncFromHomeScreen() {
 	  assert homePageObjects.SYNC_BUTTON.isDisplayed();
 	  homePageObjects.SYNC_BUTTON.click();
 	  return new SyncMonitorPage(driver);
   }
   
+  public SyncMonitorPage initiateManualSync() {
+	  assert homePageObjects.MORE_OPTIONS_ICON.isDisplayed();
+	  homePageObjects.MORE_OPTIONS_ICON.click();
+	  if(isElementPresent(homePageObjects.MENU_SYNC_BUTTON)) {
+		  homePageObjects.MENU_SYNC_BUTTON.click();
+		  return new SyncMonitorPage(driver);
+	  } else
+	  {
+		  ExtentTestManager.getTest().log(LogStatus.FAIL, "Launching sync monitor from Menu list is failed");
+	  }
+	  return null;
+  }
   //Navigate to New work order screen
   public NewWOPage newWorkOrder() {
 	  if(homePageObjects.NEW_WORK_ORDER_BUTTON.isEnabled()) {
