@@ -30,6 +30,9 @@ public class WOAddPicturePageObjects {
 	@AndroidFindBy(id = "com.sec.android.app.camera:id/okay")
 	public MobileElement POST_CAPTURE_OK_BUTTON;
 	
+	@AndroidFindBy(id = "com.android.camera:id/btn_done")
+	public MobileElement POST_CAPTURE_DONE_BUTTON;
+	
 
 
 }

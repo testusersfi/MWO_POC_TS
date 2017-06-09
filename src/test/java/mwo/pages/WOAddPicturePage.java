@@ -46,7 +46,7 @@ public class WOAddPicturePage extends PageBase {
 				threadSleep(2000);
 				inputKeyeventUsingadb(27);
 				threadSleep(2000);
-				addPicturePageObjects.POST_CAPTURE_OK_BUTTON.click();
+				clickOKButtonPostImageCapture();
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Image captured using camera and added under pictures");
 			} else {
 				ExtentTestManager.getTest().log(LogStatus.FAIL, "Take Photo button is not displayed in the Pictures Screen");
@@ -84,6 +84,18 @@ public class WOAddPicturePage extends PageBase {
 		
 		
 
+	}
+	
+	public void clickOKButtonPostImageCapture() {
+		if(isElementPresent(addPicturePageObjects.POST_CAPTURE_OK_BUTTON)) {
+			addPicturePageObjects.POST_CAPTURE_OK_BUTTON.click();
+		} else if(isElementPresent(addPicturePageObjects.POST_CAPTURE_DONE_BUTTON)) {
+			addPicturePageObjects.POST_CAPTURE_DONE_BUTTON.click();
+		} else
+		{
+			Utils.captureInterimScreenshot(driver);
+			ExtentTestManager.getTest().log(LogStatus.FAIL, "ImageCapture Failed using camera");
+		}
 	}
 
 	public WOPicturesPage navigateBackToPicturesScreen() {

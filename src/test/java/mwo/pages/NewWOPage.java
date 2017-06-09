@@ -52,6 +52,7 @@ public class NewWOPage extends PageBase {
 
 	// extract the system originating id from the New work order screen
 	public String extractWONumber() {
+		waitForPageToLoad(driver, newWOPageObjects.WO_NUMBER);
 		String[] wo_number = newWOPageObjects.WO_NUMBER.getText().split(" ");
 		Utils.log("New Work Order screen title " + wo_number[2]);
 		return wo_number[2];

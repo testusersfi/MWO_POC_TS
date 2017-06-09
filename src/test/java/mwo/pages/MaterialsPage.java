@@ -52,6 +52,7 @@ public class MaterialsPage extends PageBase {
 	}
 	
 	public WOActionsPage navigateBackToWOActionsScreen() {
+		threadSleep(2000);
 		goBack();
 		return new WOActionsPage(driver);
 	}
