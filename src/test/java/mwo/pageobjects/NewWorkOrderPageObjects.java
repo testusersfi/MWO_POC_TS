@@ -6,7 +6,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class NewWorkOrderPageObjects {
 	
-	@AndroidFindBy(xpath = "//android.widget.FrameLayout/android.view.ViewGroup/android.widget.TextView[contains(@text,'Work Order')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Work Order N')]")
 	public MobileElement WO_NUMBER;
 	
 	 @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'New Work Order')]")

@@ -2,6 +2,8 @@ package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.support.PageFactory;
+
+import com.appium.base.BasePageObjects;
 import com.appium.base.PageBase;
 import com.appium.base.Utils;
 import com.relevantcodes.extentreports.LogStatus;
@@ -24,9 +26,9 @@ public class HomePage extends PageBase {
   public void homeScreenVerification() {
 	  waitForPageToLoad(driver, homePageObjects.WORK_ORDERS_BUTTON);
 	  Utils.captureInterimScreenshot(driver);
-	  assert homePageObjects.MORE_OPTIONS_ICON.isDisplayed();
-	  assert homePageObjects.SYSTEM_MENU_HELP.isDisplayed();
-	  assert homePageObjects.WORK_ORDERS_BUTTON.isDisplayed();
+	  soft_assert.assertTrue(BasePageObjects.MORE_OPTIONS_ICON.isDisplayed(), "More Options icon is not shown");
+	  soft_assert.assertTrue(homePageObjects.SYSTEM_MENU_HELP.isDisplayed());
+	  soft_assert.assertTrue(homePageObjects.WORK_ORDERS_BUTTON.isDisplayed());
   } 
   
   //Navigate to Work Orders screen
@@ -49,7 +51,7 @@ public class HomePage extends PageBase {
 	  return new SyncMonitorPage(driver);
   }
   
-  public SyncMonitorPage initiateManualSync() {
+  /* public SyncMonitorPage initiateManualSync() {
 	  assert homePageObjects.MORE_OPTIONS_ICON.isDisplayed();
 	  homePageObjects.MORE_OPTIONS_ICON.click();
 	  if(isElementPresent(homePageObjects.MENU_SYNC_BUTTON)) {
@@ -60,7 +62,21 @@ public class HomePage extends PageBase {
 		  ExtentTestManager.getTest().log(LogStatus.FAIL, "Launching sync monitor from Menu list is failed");
 	  }
 	  return null;
-  }
+  } */
+  
+	public static SyncMonitorPage initiateManualSync() {
+		  assert BasePageObjects.MORE_OPTIONS_ICON.isDisplayed();
+		  BasePageObjects.MORE_OPTIONS_ICON.click();
+		  if(isElementPresent(BasePageObjects.MENU_SYNC_BUTTON)) {
+			  BasePageObjects.MENU_SYNC_BUTTON.click();
+			  return new SyncMonitorPage(driver);
+		  } else
+		  {
+			  ExtentTestManager.getTest().log(LogStatus.FAIL, "Launching sync monitor from Menu list is failed");
+		  }
+		  return null;
+	 }
+	
   //Navigate to New work order screen
   public NewWOPage newWorkOrder() {
 	  if(homePageObjects.NEW_WORK_ORDER_BUTTON.isEnabled()) {

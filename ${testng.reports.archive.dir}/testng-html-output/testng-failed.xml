@@ -10,14 +10,19 @@
     <classes>
       <class name="mwo.tests.GPMergeTests">
         <methods>
-          <include name="afterClass"/>
           <include name="beforeSuite"/>
-          <include name="afterSuite"/>
           <include name="afterMethod"/>
+          <include name="CreateNewWOFromClient"/>
+          <include name="completeWorkOrder"/>
+          <include name="afterClass"/>
+          <include name="ObjectMeasurementsClientToEE"/>
+          <include name="activateUserAndIssueMaterialRequest"/>
+          <include name="verifyUIDesignerAccessAndAddTimeReportToTheWO"/>
+          <include name="afterSuite"/>
+          <include name="addPictureToTheWO"/>
           <include name="addExpenseClaimToTheWO"/>
           <include name="beforeMethod"/>
           <include name="beforeClass"/>
-          <include name="CreateNewWOFromClient"/>
         </methods>
       </class> <!-- mwo.tests.GPMergeTests -->
     </classes>

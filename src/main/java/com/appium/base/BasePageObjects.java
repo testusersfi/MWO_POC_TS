@@ -59,7 +59,9 @@ public class BasePageObjects {
 	
 	@AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/list_item_seperator__header")
 	public static MobileElement LIST_ITEM_SEPERATOR;
-	
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Sync') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/title')]")
+	public static MobileElement MENU_SYNC_BUTTON;
 	
 
 }

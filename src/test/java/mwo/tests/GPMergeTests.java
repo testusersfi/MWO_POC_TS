@@ -50,10 +50,7 @@ import com.appium.reports.ExtentTestManager;
  * @author srinivas.bavirisetti
  *
  */
-/**
- * @author srinivas.bavirisetti
- *
- */
+
 public class GPMergeTests extends TestBase {
 
 	LoginPage loginPage;
@@ -97,7 +94,7 @@ public class GPMergeTests extends TestBase {
 	}
 	
 	/* Following class is for validating the activation failure   */
-	@Test(groups = { "Testing" }, priority = 1)
+	@Test(groups = { "Android.Testing" }, priority = 1)
 	public void activationFailureTest() throws Exception {
 		JSONArray cred = JSonParser.getCredentials("Credentials");
 		JSONObject obj = cred.getJSONObject(1);
@@ -109,7 +106,7 @@ public class GPMergeTests extends TestBase {
 	}
 
 	/* Following class is for validating the user activation and issue material request  */
-	@Test(groups = { "Final.Regression.Android" }, priority = 2)
+	@Test(groups = { "Final.Regression.Android" }, priority = 1)
 	public void activateUserAndIssueMaterialRequest() throws Exception {
 		// final String order_number = PLSQLQueries.createWorkOrder();
 		// Utils.log("WO created using PLSQL" + order_number);
@@ -139,13 +136,7 @@ public class GPMergeTests extends TestBase {
 		if(materialsPage !=null) {
 		actionsPage = materialsPage.navigateBackToWOActionsScreen();
 		actionsPage.woActionsScreenVerification();
-		previewPage = actionsPage.navigateBackToPreviewPage();
-		previewPage.previewScreenVerification();
-		woPage = previewPage.navigateBackToWorkOrdersPage();
-		woPage.WOListScreenHeaderUIVerification();
-		homePage = woPage.navigateBackToHomeScreen();
-		homePage.homeScreenVerification();
-		syncPage = homePage.initiateManualSync();
+		syncPage = actionsPage.initiateManualSync();
 		syncPage.syncCompletedVerification();
 		}
 		
@@ -174,13 +165,7 @@ public class GPMergeTests extends TestBase {
 		expensesPage.SaveExpenseDetails();
 		actionsPage = expensesPage.navigateBackToActionPage();
 		actionsPage.woActionsScreenVerification();
-		previewPage = actionsPage.navigateBackToPreviewPage();
-		previewPage.previewScreenVerification();
-		woPage = previewPage.navigateBackToWorkOrdersPage();
-		woPage.WOListScreenHeaderUIVerification();
-		homePage = woPage.navigateBackToHomeScreen();
-		homePage.homeScreenVerification();
-		syncPage = homePage.initiateManualSync();
+		syncPage = actionsPage.initiateManualSync();
 		syncPage.syncCompletedVerification();
 
 	}
@@ -219,14 +204,8 @@ public class GPMergeTests extends TestBase {
 
 		}
 		actionsPage = timeReportPage.navigateBackToActionPage();
-		previewPage = actionsPage.navigateBackToPreviewPage();
-		previewPage.previewScreenVerification();
-		woPage = previewPage.navigateBackToWorkOrdersPage();
-		woPage.WOListScreenHeaderUIVerification();
-		homePage = woPage.navigateBackToHomeScreen();
-		homePage.homeScreenVerification();
-		//Thread.sleep(2000);
-		syncPage = homePage.initiateManualSync();
+		actionsPage.woActionsScreenVerification();
+		syncPage = actionsPage.initiateManualSync();
 		syncPage.syncCompletedVerification();
 	}
 
@@ -253,13 +232,7 @@ public class GPMergeTests extends TestBase {
 		picturesPage.picturesScreenUIVerification();
 		actionsPage = picturesPage.navigateBackToActionsScreen();
 		actionsPage.woActionsScreenVerification();
-		previewPage = actionsPage.navigateBackToPreviewPage();
-		previewPage.previewScreenVerification();
-		woPage = previewPage.navigateBackToWorkOrdersPage();
-		woPage.WOListScreenHeaderUIVerification();
-		homePage = woPage.navigateBackToHomeScreen();
-		homePage.homeScreenVerification();
-		syncPage = homePage.initiateManualSync();
+		syncPage = actionsPage.initiateManualSync();
 		syncPage.syncCompletedVerification();
 	}
 
@@ -312,7 +285,8 @@ public class GPMergeTests extends TestBase {
 	}
 
 	/* Following class is to create new work orders from client and Sync with EE */ 
-	@Test(groups = { "Final.Regression.Android" }, priority = 8)
+	//@Test(groups = { "Final.Regression.Android" }, priority = 8)
+	@Test(groups = { "Final.Regression.Android" }, priority = 2)
 	public void CreateNewWOFromClient() throws Exception {
 		// Load the Test Data
 		Map<String, Object[]> data = new TreeMap<String, Object[]>();
@@ -327,21 +301,18 @@ public class GPMergeTests extends TestBase {
 				obj.getString("serviceurl"), obj.getString("systemid"));
 		homePage = new HomePage(driver);
 		homePage.homeScreenVerification();
-		// Create multiple work orders
-		for (int i = 1; i <= 2; i++) {
-			newWOPage = homePage.newWorkOrder();
-			String wo_number = newWOPage.extractWONumber();
-			ExtentTestManager.getTest().log(LogStatus.PASS, "System originating id: " + wo_number);
-			String directive_text = "Automation_Test_WO" + Utils.getCurrentDateAndTime();
-			maintOrgPage = newWOPage.launchMaintainanceOrgScreen();
-			newWOPage = maintOrgPage.selectMaintOrg();
-			coDetailsPage = newWOPage.enterDirectiveDescription(directive_text);
-			selectObjectPage = coDetailsPage.launchSelectObjectScreen();
-			coDetailsPage = selectObjectPage.selectObjectID();
-			woDatesPage = coDetailsPage.navigateToWODatesScreen();
-			homePage = woDatesPage.prepareWorkOrder();
-			data.put("1" + i, new Object[] { String.valueOf(i), wo_number, directive_text });
-		}
+		newWOPage = homePage.newWorkOrder();
+		String wo_number = newWOPage.extractWONumber();
+		ExtentTestManager.getTest().log(LogStatus.PASS, "System originating id: " + wo_number);
+		String directive_text = "Automation_Test_WO" + Utils.getCurrentDateAndTime();
+		maintOrgPage = newWOPage.launchMaintainanceOrgScreen();
+		newWOPage = maintOrgPage.selectMaintOrg();
+		coDetailsPage = newWOPage.enterDirectiveDescription(directive_text);
+		selectObjectPage = coDetailsPage.launchSelectObjectScreen();
+		coDetailsPage = selectObjectPage.selectObjectID();
+		woDatesPage = coDetailsPage.navigateToWODatesScreen();
+		homePage = woDatesPage.prepareWorkOrder();
+		data.put("1", new Object[] { 1, wo_number, directive_text });
 		new Utils().writeDataToExcel("MWO_SyncInterruption", data);
 		syncPage = homePage.initiateManualSync();
 		syncPage.syncCompletedVerification();

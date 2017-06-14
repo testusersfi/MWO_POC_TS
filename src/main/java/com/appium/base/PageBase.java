@@ -27,6 +27,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import org.testng.asserts.SoftAssert;
 
 import com.annotation.values.ElementDescription;
 import com.annotation.values.PageName;
@@ -45,11 +46,15 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.remote.HideKeyboardStrategy;
 
+
 public abstract class PageBase {
 	public static AppiumDriver<MobileElement> driver;
 	public static Dimension size;
+	
+	
+	//public static 
 	BasePageObjects basePageObjects = new BasePageObjects();
-
+	public SoftAssert soft_assert = new SoftAssert();
 	public PageBase(AppiumDriver<MobileElement> driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver, 5, TimeUnit.SECONDS), basePageObjects);
@@ -82,8 +87,10 @@ public abstract class PageBase {
 				.withTimeout(300, TimeUnit.SECONDS)
 				.pollingEvery(5, TimeUnit.SECONDS);
 		wait.until(ExpectedConditions.invisibilityOfAllElements(mobileElement));
-	}
+	}	
+	
 
+	  
 	protected static boolean isElementPresent(MobileElement mobileElement) {
 		Boolean elementPresent = true;
 		try {
@@ -139,7 +146,9 @@ public abstract class PageBase {
 	}
 
 	public static void waitForElementsVisible(AppiumDriver<MobileElement> driver, List<WebElement> mobileElement) {
-		WebDriverWait wait = new WebDriverWait(driver, 50);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(10, TimeUnit.SECONDS)
+				.pollingEvery(2, TimeUnit.SECONDS);
 		wait.until(ExpectedConditions.visibilityOfAllElements(mobileElement));
 	}
 
@@ -420,6 +429,7 @@ public abstract class PageBase {
 		return null;
 
 	}
+	
 	
 	
 

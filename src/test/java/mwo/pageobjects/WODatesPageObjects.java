@@ -6,13 +6,12 @@ import io.appium.java_client.pagefactory.iOSFindBy;
 
 public class WODatesPageObjects {
 
-	@AndroidFindBy(xpath = "//android.view.ViewGroup/android.widget.TextView[contains(@text,'Work Order')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'Work Order N')]")
 	@iOSFindBy(xpath = "//UIASTATICTEXT[@text='mWorkOrder'")
 	public MobileElement SCREEN_HEADER;
 	
 	@AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/attachment_option")
 	public MobileElement ATTCHMENT_ICON;
-	
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'WO Dates')]")
 	public MobileElement WODATES_TITLE;

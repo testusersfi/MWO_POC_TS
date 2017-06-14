@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="7" passed="7">
   <reporter-output>
     <line>
       <![CDATA[We are in Android, now checking for Alert messages...]]>
@@ -7,54 +7,74 @@
     <line>
       <![CDATA[We are in Android, now checking for Alert messages...]]>
     </line>
+    <line>
+      <![CDATA[We are in Android, now checking for Alert messages...]]>
+    </line>
+    <line>
+      <![CDATA[We are in Android, now checking for Alert messages...]]>
+    </line>
+    <line>
+      <![CDATA[We are in Android, now checking for Alert messages...]]>
+    </line>
+    <line>
+      <![CDATA[We are in Android, now checking for Alert messages...]]>
+    </line>
+    <line>
+      <![CDATA[We are in Android, now checking for Alert messages...]]>
+    </line>
   </reporter-output>
-  <suite name="POC_Automation_TestSuite" duration-ms="546778" started-at="2017-06-06T09:06:27Z" finished-at="2017-06-06T09:15:33Z">
+  <suite name="POC_Automation_TestSuite" duration-ms="1470966" started-at="2017-06-13T13:19:34Z" finished-at="2017-06-13T13:44:05Z">
     <groups>
-      <group name="Testing">
-        <method signature="GPMergeTests.CreateNewWOFromClient()[pri:8, instance:mwo.tests.GPMergeTests@35d176f7]" name="CreateNewWOFromClient" class="mwo.tests.GPMergeTests"/>
+      <group name="Final.Regression.Android">
+        <method signature="GPMergeTests.CreateNewWOFromClient()[pri:2, instance:mwo.tests.GPMergeTests@35d176f7]" name="CreateNewWOFromClient" class="mwo.tests.GPMergeTests"/>
+        <method signature="GPMergeTests.ObjectMeasurementsClientToEE()[pri:7, instance:mwo.tests.GPMergeTests@35d176f7]" name="ObjectMeasurementsClientToEE" class="mwo.tests.GPMergeTests"/>
+        <method signature="GPMergeTests.activateUserAndIssueMaterialRequest()[pri:2, instance:mwo.tests.GPMergeTests@35d176f7]" name="activateUserAndIssueMaterialRequest" class="mwo.tests.GPMergeTests"/>
         <method signature="GPMergeTests.addExpenseClaimToTheWO()[pri:3, instance:mwo.tests.GPMergeTests@35d176f7]" name="addExpenseClaimToTheWO" class="mwo.tests.GPMergeTests"/>
-      </group> <!-- Testing -->
+        <method signature="GPMergeTests.addPictureToTheWO()[pri:1, instance:mwo.tests.GPMergeTests@35d176f7]" name="addPictureToTheWO" class="mwo.tests.GPMergeTests"/>
+        <method signature="GPMergeTests.completeWorkOrder()[pri:6, instance:mwo.tests.GPMergeTests@35d176f7]" name="completeWorkOrder" class="mwo.tests.GPMergeTests"/>
+        <method signature="GPMergeTests.verifyUIDesignerAccessAndAddTimeReportToTheWO()[pri:4, instance:mwo.tests.GPMergeTests@35d176f7]" name="verifyUIDesignerAccessAndAddTimeReportToTheWO" class="mwo.tests.GPMergeTests"/>
+      </group> <!-- Final.Regression.Android -->
     </groups>
-    <test name="Test" duration-ms="546778" started-at="2017-06-06T09:06:27Z" finished-at="2017-06-06T09:15:33Z">
+    <test name="Test" duration-ms="1470966" started-at="2017-06-13T13:19:34Z" finished-at="2017-06-13T13:44:05Z">
       <class name="mwo.tests.GPMergeTests">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeSuite" is-config="true" duration-ms="26580" started-at="2017-06-06T14:36:00Z" finished-at="2017-06-06T14:36:27Z">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeSuite" is-config="true" duration-ms="35541" started-at="2017-06-13T18:48:58Z" finished-at="2017-06-13T18:49:34Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeClass" is-config="true" duration-ms="15" started-at="2017-06-06T14:36:27Z" finished-at="2017-06-06T14:36:27Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeClass" is-config="true" duration-ms="9" started-at="2017-06-13T18:49:34Z" finished-at="2017-06-13T18:49:34Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="27849" started-at="2017-06-06T14:36:27Z" finished-at="2017-06-06T14:36:55Z">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="20557" started-at="2017-06-13T18:49:34Z" finished-at="2017-06-13T18:49:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void mwo.tests.GPMergeTests.addExpenseClaimToTheWO() throws java.lang.Exception]]>
+                <![CDATA[public void mwo.tests.GPMergeTests.addPictureToTheWO() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="addExpenseClaimToTheWO()[pri:3, instance:mwo.tests.GPMergeTests@35d176f7]" name="addExpenseClaimToTheWO" duration-ms="277287" started-at="2017-06-06T14:36:55Z" finished-at="2017-06-06T14:41:32Z">
+        <test-method status="PASS" signature="addPictureToTheWO()[pri:1, instance:mwo.tests.GPMergeTests@35d176f7]" name="addPictureToTheWO" duration-ms="349915" started-at="2017-06-13T18:49:55Z" finished-at="2017-06-13T18:55:44Z">
           <reporter-output>
             <line>
               <![CDATA[We are in Android, now checking for Alert messages...]]>
             </line>
           </reporter-output>
-        </test-method> <!-- addExpenseClaimToTheWO -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="11296" started-at="2017-06-06T14:41:32Z" finished-at="2017-06-06T14:41:43Z">
+        </test-method> <!-- addPictureToTheWO -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="12022" started-at="2017-06-13T18:55:45Z" finished-at="2017-06-13T18:55:57Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=addExpenseClaimToTheWO status=SUCCESS method=GPMergeTests.addExpenseClaimToTheWO()[pri:3, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
+                <![CDATA[[TestResult name=addPictureToTheWO status=SUCCESS method=GPMergeTests.addPictureToTheWO()[pri:1, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="25754" started-at="2017-06-06T14:41:43Z" finished-at="2017-06-06T14:42:09Z">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="20351" started-at="2017-06-13T18:55:57Z" finished-at="2017-06-13T18:56:17Z">
           <params>
             <param index="0">
               <value>
@@ -65,29 +85,174 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="CreateNewWOFromClient()[pri:8, instance:mwo.tests.GPMergeTests@35d176f7]" name="CreateNewWOFromClient" duration-ms="193218" started-at="2017-06-06T14:42:09Z" finished-at="2017-06-06T14:45:22Z">
+        <test-method status="PASS" signature="CreateNewWOFromClient()[pri:2, instance:mwo.tests.GPMergeTests@35d176f7]" name="CreateNewWOFromClient" duration-ms="139147" started-at="2017-06-13T18:56:17Z" finished-at="2017-06-13T18:58:36Z">
           <reporter-output>
             <line>
               <![CDATA[We are in Android, now checking for Alert messages...]]>
             </line>
           </reporter-output>
         </test-method> <!-- CreateNewWOFromClient -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="11307" started-at="2017-06-06T14:45:22Z" finished-at="2017-06-06T14:45:33Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="7310" started-at="2017-06-13T18:58:36Z" finished-at="2017-06-13T18:58:43Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=CreateNewWOFromClient status=SUCCESS method=GPMergeTests.CreateNewWOFromClient()[pri:8, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
+                <![CDATA[[TestResult name=CreateNewWOFromClient status=SUCCESS method=GPMergeTests.CreateNewWOFromClient()[pri:2, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterClass" is-config="true" duration-ms="36" started-at="2017-06-06T14:45:33Z" finished-at="2017-06-06T14:45:33Z">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="18002" started-at="2017-06-13T18:58:43Z" finished-at="2017-06-13T18:59:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void mwo.tests.GPMergeTests.activateUserAndIssueMaterialRequest() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="activateUserAndIssueMaterialRequest()[pri:2, instance:mwo.tests.GPMergeTests@35d176f7]" name="activateUserAndIssueMaterialRequest" duration-ms="201425" started-at="2017-06-13T18:59:01Z" finished-at="2017-06-13T19:02:23Z">
+          <reporter-output>
+            <line>
+              <![CDATA[We are in Android, now checking for Alert messages...]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- activateUserAndIssueMaterialRequest -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="6517" started-at="2017-06-13T19:02:23Z" finished-at="2017-06-13T19:02:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=activateUserAndIssueMaterialRequest status=SUCCESS method=GPMergeTests.activateUserAndIssueMaterialRequest()[pri:2, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="12590" started-at="2017-06-13T19:02:29Z" finished-at="2017-06-13T19:02:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void mwo.tests.GPMergeTests.addExpenseClaimToTheWO() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="addExpenseClaimToTheWO()[pri:3, instance:mwo.tests.GPMergeTests@35d176f7]" name="addExpenseClaimToTheWO" duration-ms="165653" started-at="2017-06-13T19:02:42Z" finished-at="2017-06-13T19:05:28Z">
+          <reporter-output>
+            <line>
+              <![CDATA[We are in Android, now checking for Alert messages...]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- addExpenseClaimToTheWO -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="6897" started-at="2017-06-13T19:05:28Z" finished-at="2017-06-13T19:05:35Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=addExpenseClaimToTheWO status=SUCCESS method=GPMergeTests.addExpenseClaimToTheWO()[pri:3, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="12621" started-at="2017-06-13T19:05:35Z" finished-at="2017-06-13T19:05:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void mwo.tests.GPMergeTests.verifyUIDesignerAccessAndAddTimeReportToTheWO() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="verifyUIDesignerAccessAndAddTimeReportToTheWO()[pri:4, instance:mwo.tests.GPMergeTests@35d176f7]" name="verifyUIDesignerAccessAndAddTimeReportToTheWO" duration-ms="169501" started-at="2017-06-13T19:05:47Z" finished-at="2017-06-13T19:08:37Z">
+          <reporter-output>
+            <line>
+              <![CDATA[We are in Android, now checking for Alert messages...]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- verifyUIDesignerAccessAndAddTimeReportToTheWO -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="7151" started-at="2017-06-13T19:08:37Z" finished-at="2017-06-13T19:08:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUIDesignerAccessAndAddTimeReportToTheWO status=SUCCESS method=GPMergeTests.verifyUIDesignerAccessAndAddTimeReportToTheWO()[pri:4, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="12686" started-at="2017-06-13T19:08:44Z" finished-at="2017-06-13T19:08:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void mwo.tests.GPMergeTests.completeWorkOrder() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="completeWorkOrder()[pri:6, instance:mwo.tests.GPMergeTests@35d176f7]" name="completeWorkOrder" duration-ms="197603" started-at="2017-06-13T19:08:57Z" finished-at="2017-06-13T19:12:14Z">
+          <reporter-output>
+            <line>
+              <![CDATA[We are in Android, now checking for Alert messages...]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- completeWorkOrder -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="7175" started-at="2017-06-13T19:12:14Z" finished-at="2017-06-13T19:12:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=completeWorkOrder status=SUCCESS method=GPMergeTests.completeWorkOrder()[pri:6, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="beforeMethod" is-config="true" duration-ms="12429" started-at="2017-06-13T19:12:21Z" finished-at="2017-06-13T19:12:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void mwo.tests.GPMergeTests.ObjectMeasurementsClientToEE() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="ObjectMeasurementsClientToEE()[pri:7, instance:mwo.tests.GPMergeTests@35d176f7]" name="ObjectMeasurementsClientToEE" duration-ms="84081" started-at="2017-06-13T19:12:34Z" finished-at="2017-06-13T19:13:58Z">
+          <reporter-output>
+            <line>
+              <![CDATA[We are in Android, now checking for Alert messages...]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ObjectMeasurementsClientToEE -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterMethod" is-config="true" duration-ms="7115" started-at="2017-06-13T19:13:58Z" finished-at="2017-06-13T19:14:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ObjectMeasurementsClientToEE status=SUCCESS method=GPMergeTests.ObjectMeasurementsClientToEE()[pri:7, instance:mwo.tests.GPMergeTests@35d176f7] output=We are in Android, now checking for Alert messages...]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterClass" is-config="true" duration-ms="47" started-at="2017-06-13T19:14:05Z" finished-at="2017-06-13T19:14:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterSuite" is-config="true" duration-ms="641" started-at="2017-06-06T14:45:33Z" finished-at="2017-06-06T14:45:34Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:mwo.tests.GPMergeTests@35d176f7]" name="afterSuite" is-config="true" duration-ms="1177" started-at="2017-06-13T19:14:05Z" finished-at="2017-06-13T19:14:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

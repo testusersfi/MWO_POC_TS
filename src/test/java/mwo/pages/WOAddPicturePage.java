@@ -2,7 +2,7 @@ package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
 
-import org.bouncycastle.jcajce.provider.symmetric.ARC4.Base;
+
 import org.openqa.selenium.support.PageFactory;
 
 import com.appium.base.BasePageObjects;
@@ -31,12 +31,12 @@ public class WOAddPicturePage extends PageBase {
 	public void picturesScreenUIVerification() {
 		waitForPageToLoad(driver, addPicturePageObjects.ATTACH_FILE_BUTTON);
 		Utils.captureInterimScreenshot(driver);
-		assert addPicturePageObjects.ADD_PICTURE_SCREEN_TITLE.isDisplayed();
-		assert addPicturePageObjects.ADD_PICTURE_SCREEN_DESCRIPTION.isDisplayed();
-		assert addPicturePageObjects.PICTURE_DESCRIPTION_LABEL.isDisplayed();
-		assert addPicturePageObjects.PICTURE_DESCRIPTION_TEXT_FIELD.isDisplayed();
-		assert addPicturePageObjects.TAKE_PHOTO_BUTTON.isDisplayed();
-		assert BasePageObjects.PREVIOUS_ENTRIES_BUTTON.isDisplayed();
+		soft_assert.assertTrue(addPicturePageObjects.ADD_PICTURE_SCREEN_TITLE.isDisplayed());
+		soft_assert.assertTrue(addPicturePageObjects.ADD_PICTURE_SCREEN_DESCRIPTION.isDisplayed());
+		soft_assert.assertTrue(addPicturePageObjects.PICTURE_DESCRIPTION_LABEL.isDisplayed());
+		soft_assert.assertTrue(addPicturePageObjects.PICTURE_DESCRIPTION_TEXT_FIELD.isDisplayed());
+		soft_assert.assertTrue(addPicturePageObjects.TAKE_PHOTO_BUTTON.isDisplayed());
+		soft_assert.assertTrue(BasePageObjects.PREVIOUS_ENTRIES_BUTTON.isDisplayed());
 	}
 
 	public void captureImageToWO() {
@@ -48,6 +48,7 @@ public class WOAddPicturePage extends PageBase {
 				threadSleep(2000);
 				clickOKButtonPostImageCapture();
 				ExtentTestManager.getTest().log(LogStatus.PASS, "Image captured using camera and added under pictures");
+				Utils.captureInterimScreenshot(driver);
 			} else {
 				ExtentTestManager.getTest().log(LogStatus.FAIL, "Take Photo button is not displayed in the Pictures Screen");
 			}
@@ -91,8 +92,9 @@ public class WOAddPicturePage extends PageBase {
 			addPicturePageObjects.POST_CAPTURE_OK_BUTTON.click();
 		} else if(isElementPresent(addPicturePageObjects.POST_CAPTURE_DONE_BUTTON)) {
 			addPicturePageObjects.POST_CAPTURE_DONE_BUTTON.click();
-		} else
-		{
+		} else if(isElementPresent(addPicturePageObjects.POST_CAPTURE_V6_DONE_BUTTON)) {
+			addPicturePageObjects.POST_CAPTURE_V6_DONE_BUTTON.click();
+		} else {
 			Utils.captureInterimScreenshot(driver);
 			ExtentTestManager.getTest().log(LogStatus.FAIL, "ImageCapture Failed using camera");
 		}

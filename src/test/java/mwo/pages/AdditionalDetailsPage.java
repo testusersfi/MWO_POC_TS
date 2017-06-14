@@ -23,7 +23,7 @@ public class AdditionalDetailsPage extends PageBase {
 		waitForPageToLoad(driver, additionalDetailsPageObjects.DIRECTIVE_LABEL);
 		Utils.captureInterimScreenshot(driver);
 		
-		assert BasePageObjects.MORE_OPTIONS_ICON.isDisplayed();
+		soft_assert.assertTrue(BasePageObjects.MORE_OPTIONS_ICON.isDisplayed());
 		assert additionalDetailsPageObjects.ADDITIONAL_DETAILS_TITLE.isDisplayed();
 		assert additionalDetailsPageObjects.ADDITIONAL_DETAILS_SUBTITLE.isDisplayed();
 		assert additionalDetailsPageObjects.DIRECTIVE_LABEL.isDisplayed();

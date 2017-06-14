@@ -310,7 +310,7 @@ public void writeDataToExcel(String excelsheetname, Map<String, Object[]> myData
 			try 
 			{
 				//Write the workbook in file system
-			    FileOutputStream out = new FileOutputStream(new File("C:\\Users\\srinivas.bavirisetti\\workspace\\mwo_app_tests\\WorkOrders_Prepared_From_Mobile.xlsx"));
+			    FileOutputStream out = new FileOutputStream(new File(System.getProperty("user.dir") + "\\" + "WorkOrders_Prepared_From_Mobile.xlsx"));
 			    
 			    workbook.write(out);
 			    out.close();			    

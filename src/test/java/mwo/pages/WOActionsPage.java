@@ -26,9 +26,8 @@ public class WOActionsPage extends PageBase {
 	public void woActionsScreenVerification() {
 		waitForPageToLoad(driver, woactionPageObjects.SCREEN_HEADER);
 		Utils.captureInterimScreenshot(driver);
-		assert woactionPageObjects.WOACTIONS_TITLE.isDisplayed();
-		assert woactionPageObjects.WOACTIONS_SUBTITLE.isDisplayed();
-		waitForPageToLoad(driver, woactionPageObjects.WOACTIONS_MATERIAL);
+		soft_assert.assertTrue(woactionPageObjects.WOACTIONS_TITLE.isDisplayed());
+		soft_assert.assertTrue(woactionPageObjects.WOACTIONS_SUBTITLE.isDisplayed());
 	}
 
 	// Navigate to Materials screen
@@ -122,4 +121,17 @@ public class WOActionsPage extends PageBase {
 		goBack();
 		return new WOPreviewPage(driver);
 	}
+	
+	public static SyncMonitorPage initiateManualSync() {
+		  assert BasePageObjects.MORE_OPTIONS_ICON.isDisplayed();
+		  BasePageObjects.MORE_OPTIONS_ICON.click();
+		  if(isElementPresent(BasePageObjects.MENU_SYNC_BUTTON)) {
+			  BasePageObjects.MENU_SYNC_BUTTON.click();
+			  return new SyncMonitorPage(driver);
+		  } else
+		  {
+			  ExtentTestManager.getTest().log(LogStatus.FAIL, "Launching sync monitor from Menu list is failed");
+		  }
+		  return null;
+	 }
 }

@@ -14,9 +14,7 @@ public class HomePageObjects {
   @iOSFindBy(xpath = "//UIASTATICTEXT[@text='Welcome to Home Screen'")
   public MobileElement SYSTEM_MENU_HELP;
   
-  @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'More options')]")
-  @iOSFindBy(xpath = "//UIASTATICTEXT[@text='More options'")
-  public MobileElement MORE_OPTIONS_ICON;
+
   
   //@AndroidFindBy(xpath = "//android.widget.Button[contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/tasks') and contains(@text, 'Work Orders')]")
   @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/tasks")
@@ -35,7 +33,11 @@ public class HomePageObjects {
   @AndroidFindBy(id = "com.ifsworld.mworkorderapps9:id/measures")
   public MobileElement MEASURES_BUTTON;
   
-  @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Sync') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/title')]")
+  /* @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Sync') and contains(@resource-id, 'com.ifsworld.mworkorderapps9:id/title')]")
   public MobileElement MENU_SYNC_BUTTON;
+  
+  @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'More options')]")
+  @iOSFindBy(xpath = "//UIASTATICTEXT[@text='More options'")
+  public MobileElement MORE_OPTIONS_ICON; */
 
 }

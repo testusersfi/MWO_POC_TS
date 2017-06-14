@@ -2,8 +2,11 @@ package mwo.pages;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import com.appium.base.PageBase;
@@ -58,6 +61,7 @@ public class LoginPage extends PageBase {
 	}
 	// Verify the activation alert UI and confirm the alert
 	public void activationAlertDisplay(String Email, String Password) {
+		
 		if (isElementPresent(loginPageObjects.LOGIN_ALERT_MESSAGE)) {
 			assert loginPageObjects.LOGIN_ALERT_TITLE.isDisplayed();
 			assert loginPageObjects.ALERT_CONTINUE_BUTTON.isDisplayed();
@@ -67,12 +71,6 @@ public class LoginPage extends PageBase {
 		}
 		enterStringIntoTextField(Email, loginPageObjects.LOGIN_USERID_FIELD);
 		enterStringIntoTextField(Password, loginPageObjects.LOGIN_PASSWORD_FIELD);
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public void enterStringIntoTextField(String inputText, MobileElement element) {
@@ -126,7 +124,9 @@ public class LoginPage extends PageBase {
 			Reporter.log("We are in IOS, now checking for Alert messages...");
 
 		}
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(25, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.SECONDS);
 		wait.until(ExpectedConditions.or(ExpectedConditions.visibilityOf(loginPageObjects.ACTION_BAR_TITLE),
 				ExpectedConditions.visibilityOf(loginPageObjects.LOGIN_ALERT_MESSAGE)));
 		Utils.log("mwo app Login screen displayed...");

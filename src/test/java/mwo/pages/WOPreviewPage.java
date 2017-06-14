@@ -24,9 +24,9 @@ public class WOPreviewPage extends PageBase {
 	public void previewScreenVerification() {
 		waitForPageToLoad(driver, previewPageObjects.SCREEN_HEADER);
 		Utils.captureInterimScreenshot(driver);
-		assert previewPageObjects.DETAILS_DIRECTIVE_LABEL.isDisplayed();
-		assert previewPageObjects.DETAILS_SITE_LABEL.isDisplayed();
-		assert previewPageObjects.WO_DETAILS_BUTTON.isDisplayed();
+		soft_assert.assertTrue(previewPageObjects.DETAILS_DIRECTIVE_LABEL.isDisplayed());
+		soft_assert.assertTrue(previewPageObjects.DETAILS_SITE_LABEL.isDisplayed());
+		soft_assert.assertTrue(previewPageObjects.WO_DETAILS_BUTTON.isDisplayed());
 	}
 
 	// Navigate to WO Actions screen

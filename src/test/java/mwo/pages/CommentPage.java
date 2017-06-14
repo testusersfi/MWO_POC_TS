@@ -25,7 +25,6 @@ public class CommentPage extends PageBase {
 	// Verify the Expenses screen UI
 	public void CommentScreenVerification() {
 		waitForPageToLoad(driver, commentsObjects.SCREEN_HEADER);
-		Utils.captureInterimScreenshot(driver);
 		assert commentsObjects.COMMENT_FIELD.isDisplayed();
 	}
 
